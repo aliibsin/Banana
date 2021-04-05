@@ -26,16 +26,16 @@ export const signup = user => dispatch => (
   ))
 );
 
-export const login = user => dispatch => (
-  APIUtil.login(user).then(user => (
+export const signin = user => dispatch => (
+  APIUtil.signin(user).then(user => (
     dispatch(receiveCurrentUser(user))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
 );
 
-export const logout = () => dispatch => (
-  APIUtil.logout().then(user => (
-    dispatch(logoutCurrentUser())
+export const signout = () => dispatch => (
+  APIUtil.signout().then(user => (
+    dispatch(signoutCurrentUser())
   ))
 );
