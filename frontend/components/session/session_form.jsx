@@ -6,7 +6,7 @@ class SessionForm extends React.Component {
     this.state = {
       username: '',
       email: '',
-      password: ''
+      password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -40,11 +40,11 @@ class SessionForm extends React.Component {
       <div className="signin-form-container">
         <form onSubmit={this.handleSubmit} className="signin-form-box">
           Welcome to Banana!
-          <br/>
+          
           Please {this.props.formType} or {this.props.navLink}
           {/* {this.renderErrors()} */}
           <div className="signin-form">
-            <br/>
+            
             <label>Username:
               <input type="text"
                 value={this.state.username}
@@ -52,7 +52,7 @@ class SessionForm extends React.Component {
                 className="signin-input"
               />
             </label>
-            <br/>
+            
             <label>Email:
               <input type="text"
                 value={this.state.email}
@@ -60,7 +60,7 @@ class SessionForm extends React.Component {
                 className="signin-input"
               />
             </label>
-            <br/>
+            
             <label>Password:
               <input type="password"
                 value={this.state.password}
@@ -68,8 +68,9 @@ class SessionForm extends React.Component {
                 className="signin-input"
               />
             </label>
-            <br/>
+            
             <input className="session-submit" type="submit" value={this.props.formType} />
+            
           </div>
         </form>
       </div>

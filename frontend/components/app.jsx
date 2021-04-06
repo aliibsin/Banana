@@ -10,16 +10,13 @@ const App = () => {
   return (
     <div>
       <header>Banana</header>
-      
       <Switch>
         <Route path="/signin" component={SigninFormContainer} />
         <Route path="/signup" component={SignupFormContainer} />
         <LandingContainer />
       </Switch>
     </div>
-    
   )
-  
 }
 
 export default App;
