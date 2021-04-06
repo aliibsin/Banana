@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 const Landing = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <nav className="signin-signup">
-      <Link to="/signin">Sign in</Link>
-      &nbsp;or&nbsp;
-      <Link to="/signup">Sign up!</Link>
+      <div>
+        <Link to="/signin">Sign in</Link>
+      </div>
+      <div>
+        <Link to="/signup">Try for free</Link>
+      </div>
     </nav>
   );
   const personalLanding = () => (

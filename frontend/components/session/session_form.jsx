@@ -9,6 +9,7 @@ class SessionForm extends React.Component {
       password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.clearErrs = this.clearErrs.bind(this);
   }
 
   update(field) {
@@ -21,6 +22,12 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+  }
+
+  clearErrs(e) {
+    e.preventDefault();
+    // this.props.clearErrors();
+    this.props.errors.sessionErr = [];
   }
 
   renderErrors() {
@@ -38,10 +45,13 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="signin-form-container">
+        Welcome to Banana!
+        <div>
+          Please {this.props.formType} or <p onClick={this.clearErrs}> {this.props.navLink} </p>
+        </div>
+        
         <form onSubmit={this.handleSubmit} className="signin-form-box">
-          Welcome to Banana!
           
-          Please {this.props.formType} or {this.props.navLink}
           {this.renderErrors()}
           <div className="signin-form">
             

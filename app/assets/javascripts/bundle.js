@@ -115,9 +115,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_CURRENT_USER": () => (/* binding */ RECEIVE_CURRENT_USER),
 /* harmony export */   "SIGNOUT_CURRENT_USER": () => (/* binding */ SIGNOUT_CURRENT_USER),
 /* harmony export */   "RECEIVE_SESSION_ERRORS": () => (/* binding */ RECEIVE_SESSION_ERRORS),
+/* harmony export */   "CLEAR_SESSION_ERRORS": () => (/* binding */ CLEAR_SESSION_ERRORS),
 /* harmony export */   "receiveCurrentUser": () => (/* binding */ receiveCurrentUser),
 /* harmony export */   "signoutCurrentUser": () => (/* binding */ signoutCurrentUser),
 /* harmony export */   "receiveErrors": () => (/* binding */ receiveErrors),
+/* harmony export */   "clearErrors": () => (/* binding */ clearErrors),
 /* harmony export */   "signup": () => (/* binding */ signup),
 /* harmony export */   "signin": () => (/* binding */ signin),
 /* harmony export */   "signout": () => (/* binding */ signout)
@@ -127,6 +129,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var SIGNOUT_CURRENT_USER = 'SIGNOUT_CURRENT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+var CLEAR_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 var receiveCurrentUser = function receiveCurrentUser(user) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -146,6 +149,11 @@ var receiveErrors = function receiveErrors(errs) {
     errors: {
       errs: errs
     }
+  };
+};
+var clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_SESSION_ERRORS
   };
 };
 var signup = function signup(user) {
@@ -236,11 +244,11 @@ var Landing = function Landing(_ref) {
   var sessionLinks = function sessionLinks() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", {
       className: "signin-signup"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       to: "/signin"
-    }, "Sign in"), "\xA0or\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, "Sign in")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       to: "/signup"
-    }, "Sign up!"));
+    }, "Try for free")));
   };
 
   var personalLanding = function personalLanding() {
@@ -385,6 +393,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.clearErrs = _this.clearErrs.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -405,6 +414,13 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       this.props.processForm(user);
     }
   }, {
+    key: "clearErrs",
+    value: function clearErrs(e) {
+      e.preventDefault(); // this.props.clearErrors();
+
+      this.props.errors.sessionErr = [];
+    }
+  }, {
     key: "renderErrors",
     value: function renderErrors() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.errors.sessionErr.map(function (error, i) {
@@ -418,10 +434,12 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signin-form-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      }, "Welcome to Banana!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Please ", this.props.formType, " or ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        onClick: this.clearErrs
+      }, " ", this.props.navLink, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "signin-form-box"
-      }, "Welcome to Banana! Please ", this.props.formType, " or ", this.props.navLink, this.renderErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.renderErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signin-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Username:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
@@ -666,6 +684,9 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
       return action.errors.errs;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
+      return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_SESSION_ERRORS:
       return [];
 
     default:
