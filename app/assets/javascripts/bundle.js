@@ -127,10 +127,12 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var SIGNOUT_CURRENT_USER = 'SIGNOUT_CURRENT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
-var receiveCurrentUser = function receiveCurrentUser(currentUser) {
+var receiveCurrentUser = function receiveCurrentUser(user) {
   return {
     type: RECEIVE_CURRENT_USER,
-    currentUser: currentUser
+    currentUser: {
+      user: user
+    }
   };
 };
 var signoutCurrentUser = function signoutCurrentUser() {
@@ -138,10 +140,12 @@ var signoutCurrentUser = function signoutCurrentUser() {
     type: SIGNOUT_CURRENT_USER
   };
 };
-var receiveErrors = function receiveErrors(errors) {
+var receiveErrors = function receiveErrors(errs) {
   return {
     type: RECEIVE_SESSION_ERRORS,
-    errors: errors
+    errors: {
+      errs: errs
+    }
   };
 };
 var signup = function signup(user) {
@@ -750,7 +754,6 @@ var usersReducer = function usersReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
-      // console.log(action)
       return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
 
     default:
