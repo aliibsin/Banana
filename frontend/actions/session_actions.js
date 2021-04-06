@@ -19,10 +19,6 @@ export const receiveErrors = errs => ({
   errors: {errs}
 });
 
-export const clearErrors = () => ({
-  type: CLEAR_SESSION_ERRORS
-});
-
 export const signup = user => dispatch => (
   APIUtil.signup(user).then(user => (
     dispatch(receiveCurrentUser(user))
@@ -40,7 +36,7 @@ export const signin = user => dispatch => (
 );
 
 export const signout = () => dispatch => (
-  APIUtil.signout().then(user => (
+  APIUtil.signout().then(() => (
     dispatch(signoutCurrentUser())
   ))
 );

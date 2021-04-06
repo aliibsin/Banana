@@ -12,6 +12,23 @@ class SessionForm extends React.Component {
     this.clearErrs = this.clearErrs.bind(this);
   }
 
+  displayUsername() {
+    if (this.props.formType === "signup") {
+      return (
+        <label>Username:
+          <input type="text"
+            value={this.state.username}
+            onChange={this.update('username')}
+            className="signin-input"
+          />
+        </label>
+      ) 
+    } 
+    else {
+      return null;
+    }
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -22,12 +39,6 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
-  }
-
-  clearErrs(e) {
-    e.preventDefault();
-    // this.props.clearErrors();
-    this.props.errors.sessionErr = [];
   }
 
   renderErrors() {
@@ -41,28 +52,26 @@ class SessionForm extends React.Component {
       </ul>
     );
   }
+  
+  clearErrs(e) {
+    e.preventDefault();
+    this.props.errors.sessionErr = [];
+  }
 
   render() {
+    
     return (
       <div className="signin-form-container">
         Welcome to Banana!
-        <div>
-          Please {this.props.formType} or <p onClick={this.clearErrs}> {this.props.navLink} </p>
-        </div>
+        
         
         <form onSubmit={this.handleSubmit} className="signin-form-box">
           
           {this.renderErrors()}
           <div className="signin-form">
             
-            <label>Username:
-              <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="signin-input"
-              />
-            </label>
-            
+          {this.displayUsername()}
+
             <label>Email:
               <input type="text"
                 value={this.state.email}
@@ -83,6 +92,11 @@ class SessionForm extends React.Component {
 
           </div>
         </form>
+
+        <div>
+          {this.props.message} <p onClick={this.clearErrs}> {this.props.navLink} </p>
+        </div>
+
       </div>
     );
   }

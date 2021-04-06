@@ -6,7 +6,8 @@ export const signin = user => {
     $.ajax({
       method: 'POST',
       url: '/api/session',
-      data: {user}
+      // data: {user}
+      data: {user: {email: user.email, password: user.password}}
     })
   );
 };
@@ -25,7 +26,7 @@ export const signout = () => {
   return (
     $.ajax({
       method: 'DELETE',
-     url: '/api/session'
+      url: '/api/session'
     })
   );
 };
