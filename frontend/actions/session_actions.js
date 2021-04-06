@@ -21,30 +21,18 @@ export const receiveErrors = errs => ({
 export const signup = user => dispatch => (
   APIUtil.signup(user).then(user => (
     dispatch(receiveCurrentUser(user))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
   ))
 );
-
-// export const signup = user => dispatch => (
-//   APIUtil.signup(user).then(user => (
-//     dispatch(receiveCurrentUser(user))
-//   ), err => (
-//     dispatch(receiveErrors(err.responseJSON))
-//   ))
-// );
 
 export const signin = user => dispatch => (
   APIUtil.signin(user).then(user => (
     dispatch(receiveCurrentUser(user))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
   ))
 );
-
-// export const signin = user => dispatch => (
-//   APIUtil.signin(user).then(user => (
-//     dispatch(receiveCurrentUser(user))
-//   ), err => (
-//     dispatch(receiveErrors(err.responseJSON))
-//   ))
-// );
 
 export const signout = () => dispatch => (
   APIUtil.signout().then(user => (

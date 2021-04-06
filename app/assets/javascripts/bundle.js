@@ -152,30 +152,20 @@ var signup = function signup(user) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signup(user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
-}; // export const signup = user => dispatch => (
-//   APIUtil.signup(user).then(user => (
-//     dispatch(receiveCurrentUser(user))
-//   ), err => (
-//     dispatch(receiveErrors(err.responseJSON))
-//   ))
-// );
-
+};
 var signin = function signin(user) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signin(user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
-}; // export const signin = user => dispatch => (
-//   APIUtil.signin(user).then(user => (
-//     dispatch(receiveCurrentUser(user))
-//   ), err => (
-//     dispatch(receiveErrors(err.responseJSON))
-//   ))
-// );
-
+};
 var signout = function signout() {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signout().then(function (user) {
@@ -417,7 +407,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.errors.map(function (error, i) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.errors.sessionErr.map(function (error, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: "error-".concat(i)
         }, error);
@@ -431,7 +421,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "signin-form-box"
-      }, "Welcome to Banana! Please ", this.props.formType, " or ", this.props.navLink, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "Welcome to Banana! Please ", this.props.formType, " or ", this.props.navLink, this.renderErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signin-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Username:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
@@ -485,10 +475,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
-  var state = _ref.state;
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    // errors: state.errors.session,
+    errors: state.errors,
     formType: 'signin',
     navLink: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       to: "/signup"
@@ -530,10 +519,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
-  var state = _ref.state;
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    // errors: state.errors.session,
+    errors: state.errors,
     formType: 'signup',
     navLink: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       to: "/signin"
@@ -620,7 +608,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default
+  sessionErr: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
 
@@ -647,8 +635,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
-  session: _session_reducer__WEBPACK_IMPORTED_MODULE_1__.default // errors: errorsReducer,
-
+  session: _session_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
+  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_2__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);
 
@@ -675,8 +663,7 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SESSION_ERRORS:
-      return action.errors;
-    // return null;
+      return action.errors.errs;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
       return [];
@@ -754,7 +741,7 @@ var usersReducer = function usersReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
-      return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+      return Object.assign({}, state, _defineProperty({}, action.currentUser.user.id, action.currentUser.user));
 
     default:
       return state;
