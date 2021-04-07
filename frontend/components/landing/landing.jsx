@@ -6,11 +6,16 @@ const Landing = (props) => {
   
   const sessionLinks = () => (
     <nav className="landing-nav-bar">
-      <div></div>
+      <div className="landing-logo-container"> 
+        <Link to="/">
+          <img src={window.logo} /> 
+        </Link>
+      </div>
       <div className="signin-signup">
         <div className="sign-in-button">
           <Link to="/signin">Sign in</Link>
         </div>
+        <span id="auth-divider"></span>
         <div className="sign-up-button">
           <Link to="/signup">Try for free</Link>
         </div>

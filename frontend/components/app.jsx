@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import LandingContainer from './landing/landing_container'
 import SigninFormContainer from './session/signin_form_container';
 import SignupFormContainer from './session/signup_form_container';
@@ -16,6 +16,8 @@ const App = () => {
         <LandingContainer />
 
         <Route render={() => <Redirect to="/" />} />
+
+        <Redirect to="/" />
       </Switch>
     </div>
   )
