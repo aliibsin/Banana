@@ -10,19 +10,13 @@ const App = () => {
   // <Route path="/" />
   return (
     <div>
-      <header>Banana</header>
       <Switch>
         <AuthRoute path="/signin" component={SigninFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <LandingContainer />
-      </Switch>
-      {/* <header>
-        <h1>Banana</h1>
-        <LandingContainer />
-      </header>
 
-      <Route path="/signin" component={SigninFormContainer} />
-      <Route path="/signup" component={SignupFormContainer} /> */}
+        <Route render={() => <Redirect to="/" />} />
+      </Switch>
     </div>
   )
 }

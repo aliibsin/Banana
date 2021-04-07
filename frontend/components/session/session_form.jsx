@@ -13,9 +13,10 @@ class SessionForm extends React.Component {
   }
 
   displayUsername() {
-    if (this.props.formType === "signup") {
+    if (this.props.formType === "Sign Up") {
       return (
-        <label>Username:
+        <label>
+          <h3>Username</h3>
           <input type="text"
             value={this.state.username}
             onChange={this.update('username')}
@@ -62,25 +63,26 @@ class SessionForm extends React.Component {
     
     return (
       <div className="signin-form-container">
-        Welcome to Banana!
-        
-        
+        <div className="signup-logo"></div>
+        <div className="err-messages"> {this.renderErrors()} </div>
         <form onSubmit={this.handleSubmit} className="signin-form-box">
           
-          {this.renderErrors()}
+          
           <div className="signin-form">
-            
-          {this.displayUsername()}
 
-            <label>Email:
+            <label>
+              <h3>Email</h3>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="signin-input"
               />
             </label>
+
+            {this.displayUsername()}
             
-            <label>Password:
+            <label>
+              <h3>Password</h3>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
@@ -93,7 +95,7 @@ class SessionForm extends React.Component {
           </div>
         </form>
 
-        <div>
+        <div id="change-session">
           {this.props.message} <p onClick={this.clearErrs}> {this.props.navLink} </p>
         </div>
 
