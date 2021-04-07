@@ -202,15 +202,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__.AuthRoute, {
+    exact: true,
     path: "/signin",
     component: _session_signin_form_container__WEBPACK_IMPORTED_MODULE_2__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__.AuthRoute, {
+    exact: true,
     path: "/signup",
     component: _session_signup_form_container__WEBPACK_IMPORTED_MODULE_3__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_landing_landing_container__WEBPACK_IMPORTED_MODULE_1__.default, null)));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    exact: true,
+    path: "/",
+    component: _landing_landing_container__WEBPACK_IMPORTED_MODULE_1__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Redirect, {
+    exact: true,
+    from: "/*",
+    to: "/"
+  })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -264,7 +273,7 @@ var Landing = function Landing(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
       className: "header-name"
     }, "Hi, ", props.currentUser.username, "!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-      className: "header-button",
+      className: "logout-button",
       onClick: props.signout
     }, "Sign Out"));
   };
@@ -400,6 +409,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.demoLogin = _this.demoLogin.bind(_assertThisInitialized(_this));
     _this.clearErrs = _this.clearErrs.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -452,6 +462,16 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       this.props.errors.sessionErr = [];
     }
   }, {
+    key: "demoLogin",
+    value: function demoLogin() {
+      this.state = {
+        email: "demoEmail@banana.com",
+        password: "demopassword"
+      };
+      var user = Object.assign({}, this.state);
+      this.props.demoLogin(user);
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -463,8 +483,9 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: window.logo
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "demo-login"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "demo-login",
+        onClick: this.demoLogin
+      }, "Sign In with a DEMO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "err-messages"
       }, this.renderErrors()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
@@ -537,6 +558,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     processForm: function processForm(user) {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signin)(user));
+    },
+    demoLogin: function demoLogin(user) {
+      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signin)(user));
     }
   };
 };
@@ -582,6 +606,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     processForm: function processForm(user) {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signup)(user));
+    },
+    demoLogin: function demoLogin(user) {
+      return dispatch(signin(user));
     }
   };
 };
@@ -863,6 +890,7 @@ var Auth = function Auth(_ref) {
     exact: exact,
     render: function render(props) {
       return !signedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Component, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
+        exact: true,
         to: "/"
       });
     }
@@ -879,6 +907,7 @@ var Protected = function Protected(_ref2) {
     exact: exact,
     render: function render(props) {
       return signedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Component, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
+        exact: true,
         to: "/login"
       });
     }

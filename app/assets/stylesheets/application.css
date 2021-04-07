@@ -168,8 +168,6 @@ a {
 	height: 150px;
 }
 
-
-
 .signin-form {
 	display: flex;
 	flex-direction: column;
@@ -217,6 +215,10 @@ label h3 {
 	cursor: pointer;
 }
 
+.session-submit:hover {
+	background-color: #635AC7;
+}
+
 #change-session {
 	display: flex;
 	justify-content: center;
@@ -229,6 +231,10 @@ label h3 {
 
 #change-session p {
 	padding-left: 10px;
+}
+
+.change-session p:hover {
+	background-color: #635AC7;
 }
 
 .signup-logo-container {
@@ -252,6 +258,17 @@ label h3 {
 	left: 50%;
 	top: 22%;
 	transform: translate(-50%, -50%);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #796eff;
+	color: white;
+	cursor: pointer;
+}
+
+.demo-login:hover {
+	background-color: #4e40e7
 }
 
 .err-messages {
@@ -270,4 +287,27 @@ label h3 {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+
+	color: red;
+	font-size: 16;
+}
+
+
+
+.header-group {
+	display: flex;
+	justify-content: space-between;
+}
+
+.logout-button {
+	padding: 7px;
+	background-color: #796eff;
+	color: white;
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.logout-button:hover {
+	background-color: #4e40e7
 }
