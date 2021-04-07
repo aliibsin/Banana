@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import LandingContainer from './landing/landing_container'
 import SigninFormContainer from './session/signin_form_container';
 import SignupFormContainer from './session/signup_form_container';
+import { AuthRoute } from '../util/route_util'
 
 
 const App = () => {
@@ -11,8 +12,8 @@ const App = () => {
     <div>
       <header>Banana</header>
       <Switch>
-        <Route path="/signin" component={SigninFormContainer} />
-        <Route path="/signup" component={SignupFormContainer} />
+        <AuthRoute path="/signin" component={SigninFormContainer} />
+        <AuthRoute path="/signup" component={SignupFormContainer} />
         <LandingContainer />
       </Switch>
       {/* <header>
