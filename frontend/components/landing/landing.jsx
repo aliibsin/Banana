@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Landing = ({ currentUser, logout }) => {
+const Landing = (props) => {
+  
   const sessionLinks = () => (
     <nav className="signin-signup">
       <div>
@@ -14,12 +15,12 @@ const Landing = ({ currentUser, logout }) => {
   );
   const personalLanding = () => (
     <hgroup className="header-group">
-      <h2 className="header-name">Hi, {currentUser.username}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
+      <h2 className="header-name">Hi, {props.currentUser.username}!</h2>
+      <button className="header-button" onClick={props.signout}>Sign Out</button>
     </hgroup>
   );
 
-  return currentUser ? personalLanding() : sessionLinks();
+  return props.currentUser ? personalLanding() : sessionLinks();
 };
 
 

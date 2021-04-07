@@ -15,6 +15,13 @@ const App = () => {
         <Route path="/signup" component={SignupFormContainer} />
         <LandingContainer />
       </Switch>
+      {/* <header>
+        <h1>Banana</h1>
+        <LandingContainer />
+      </header>
+
+      <Route path="/signin" component={SigninFormContainer} />
+      <Route path="/signup" component={SignupFormContainer} /> */}
     </div>
   )
 }
