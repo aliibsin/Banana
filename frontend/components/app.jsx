@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { Redirect } from 'react-router'
 import LandingContainer from './landing/landing_container'
 import SigninFormContainer from './session/signin_form_container';
 import SignupFormContainer from './session/signup_form_container';
@@ -7,7 +8,7 @@ import { AuthRoute } from '../util/route_util'
 
 
 const App = () => {
-  // <Route path="/" />
+  
   return (
     <div>
       <Switch>
@@ -15,9 +16,12 @@ const App = () => {
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <LandingContainer />
 
-        <Route render={() => <Redirect to="/" />} />
-
-        <Redirect to="/" />
+       
+        
+        {/* <Redirect from="/signin/*" to="/signin" />
+        <Redirect from="/signup/*" to="/signup" />
+        <Redirect from="/*" to="/" />
+         */}
       </Switch>
     </div>
   )
