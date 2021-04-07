@@ -254,16 +254,20 @@ var Landing = function Landing(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       to: "/signup"
     }, "Try for free"))));
-  }; // const personalLanding = () => (
-  //   <hgroup className="header-group">
-  //     <h2 className="header-name">Hi, {props.currentUser.username}!</h2>
-  //     <button className="header-button" onClick={props.signout}>Sign Out</button>
-  //   </hgroup>
-  // );
-  // return props.currentUser ? personalLanding() : sessionLinks();
+  };
 
+  var personalLanding = function personalLanding() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hgroup", {
+      className: "header-group"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+      className: "header-name"
+    }, "Hi, ", props.currentUser.username, "!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "header-button",
+      onClick: props.signout
+    }, "Sign Out"));
+  };
 
-  return sessionLinks();
+  return props.currentUser ? personalLanding() : sessionLinks(); // return sessionLinks();
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Landing);
