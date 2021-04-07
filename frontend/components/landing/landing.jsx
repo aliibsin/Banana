@@ -6,7 +6,7 @@ const Landing = (props) => {
   
   const sessionLinks = () => (
     <nav className="landing-nav-bar">
-      
+      <div></div>
       <div className="signin-signup">
         <div className="sign-in-button">
           <Link to="/signin">Sign in</Link>

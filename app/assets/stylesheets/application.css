@@ -84,7 +84,7 @@ body {
 	padding: 0 64px;
 	overflow: hidden;
 	border-bottom: 1px solid whitesmoke;
-	box-shadow: 0 5px 20px 0 rgb(21 27 38 / 8%);
+	box-shadow: 0 5px 20px 0 rgba(21, 27, 38, 8%);
 }
 
 .signin-signup {
@@ -132,7 +132,7 @@ a {
   width: 50%;
 	margin: auto;
 	background-color: white;
-	box-shadow: 0 5px 20px 0 rgb(21 27 38 / 8%);
+	box-shadow: 0 5px 20px 0 rgba(21, 27, 38, 8%);
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
