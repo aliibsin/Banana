@@ -859,6 +859,60 @@ var configureStore = function configureStore() {
 
 /***/ }),
 
+/***/ "./frontend/util/project_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/project_api_util.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchProjects": () => (/* binding */ fetchProjects),
+/* harmony export */   "fetchProject": () => (/* binding */ fetchProject),
+/* harmony export */   "createProject": () => (/* binding */ createProject),
+/* harmony export */   "updateProject": () => (/* binding */ updateProject),
+/* harmony export */   "deleteProject": () => (/* binding */ deleteProject)
+/* harmony export */ });
+var fetchProjects = function fetchProjects() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/projects'
+  });
+};
+var fetchProject = function fetchProject(projectId) {
+  return $.ajax({
+    method: 'GET',
+    url: "api/projects/".concat(projectId)
+  });
+};
+var createProject = function createProject(project) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/projects',
+    data: {
+      project: project
+    }
+  });
+};
+var updateProject = function updateProject(project) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "/api/projects/".concat(project.id),
+    data: {
+      project: project
+    }
+  });
+};
+var deleteProject = function deleteProject(projectId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "/api/projects/".concat(projectId)
+  });
+};
+
+/***/ }),
+
 /***/ "./frontend/util/route_util.jsx":
 /*!**************************************!*\
   !*** ./frontend/util/route_util.jsx ***!
@@ -940,7 +994,6 @@ var signin = function signin(user) {
   return $.ajax({
     method: 'POST',
     url: '/api/session',
-    // data: {user}
     data: {
       user: {
         email: user.email,
@@ -37360,13 +37413,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/project_api_util */ "./frontend/util/project_api_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
+ // import { signin, signout, signup } from './actions/session_actions';
 
 document.addEventListener("DOMContentLoaded", function () {
   var root = document.getElementById("root");
@@ -37388,10 +37442,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.store = store; //temp use to test. remove when done
+  // window.signup = signup;
+  // window.signin = signin;
+  // window.signout = signout;
 
-  window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__.signup;
-  window.signin = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__.signin;
-  window.signout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__.signout;
+  window.fetchProjects = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.fetchProjects;
+  window.fetchProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.fetchProject;
+  window.createProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.createProject;
+  window.updateProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.updateProject;
+  window.deleteProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.deleteProject;
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__.default, {
     store: store
   }), root);

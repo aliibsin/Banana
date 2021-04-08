@@ -4,7 +4,6 @@ export const signin = user => {
     $.ajax({
       method: 'POST',
       url: '/api/session',
-      // data: {user}
       data: {user: {email: user.email, password: user.password}}
     })
   );
