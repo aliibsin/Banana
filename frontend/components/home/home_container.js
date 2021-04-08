@@ -4,9 +4,9 @@ import { signout } from '../../actions/session_actions';
 import Home from './home'
 
 const mapStateToProps = (state) => {
-  return {
+  return ({
     currentUser: state.entities.users[state.session.id]
-  };
+  });
 };
 
 const mapDispatchToProps = dispatch => ({

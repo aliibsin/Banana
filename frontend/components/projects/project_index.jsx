@@ -11,15 +11,17 @@ class ProjectIndex extends React.Component {
   }
 
   render() {
-    <div>
-      <ul>
-        {
-          this.props.projects.map(project => (
-            <ProjectIndexItem project={project} key={project.id}/>
-          ))
-        }
-      </ul>
-    </div>
+    return (
+      <div>
+        <ul>
+          {
+            this.props.projects.map(project => (
+              <ProjectIndexItem project={project} key={project.id}/>
+            ))
+          }
+        </ul>
+      </div>
+    )
   }
 }
 
