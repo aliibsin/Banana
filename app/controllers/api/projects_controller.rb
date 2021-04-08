@@ -1,6 +1,6 @@
 class Api::ProjectsController < ApplicationController
 
-  before_action: :require_sign_in
+  before_action :require_sign_in
 
   def create
     @project = Project.new(project_params)
