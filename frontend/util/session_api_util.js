@@ -1,6 +1,4 @@
 
-
-
 export const signin = user => {
   return (
     $.ajax({
