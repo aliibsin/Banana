@@ -22,16 +22,16 @@ const Landing = (props) => {
       </div>
     </nav>
   );
-  const personalLanding = () => (
-    <hgroup className="header-group">
-      <h2 className="header-name">Hi, {props.currentUser.username}!</h2>
-      <button className="logout-button" onClick={props.signout}>Sign Out</button>
-    </hgroup>
-  );
+  // const personalLanding = () => (
+  //   <hgroup className="header-group">
+  //     <h2 className="header-name">Hi, {props.currentUser.username}!</h2>
+  //     <button className="logout-button" onClick={props.signout}>Sign Out</button>
+  //   </hgroup>
+  // );
 
-  return props.currentUser ? personalLanding() : sessionLinks();
+  // return props.currentUser ? personalLanding() : sessionLinks();
 
-  // return sessionLinks();
+  return sessionLinks();
 };
 
 
