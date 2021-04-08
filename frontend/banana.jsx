@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
+// import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
+import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
 // import { signin, signout, signup } from './actions/session_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,11 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.signin = signin;
   // window.signout = signout;
 
+  
   window.fetchProjects = fetchProjects;
   window.fetchProject = fetchProject;
   window.createProject = createProject;
   window.updateProject = updateProject;
   window.deleteProject = deleteProject;
+  
+  
 
   ReactDOM.render(<Root store={store} />, root);
 })

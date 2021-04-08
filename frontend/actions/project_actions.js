@@ -3,7 +3,7 @@ import * as ProjectAPIUtil from '../util/project_api_util';
 export const RECEIEVE_PROJECTS = "RECEIEVE_PROJECTS";
 export const RECEIEVE_PROJECT = "RECEIEVE_PROJECT";
 export const REMOVE_PROJECT = "REMOVE_PROJECT";
-export const RECEIVE_PROJECT_ERRORS = "RECEIVE_PROJECT_ERRORS;
+export const RECEIVE_PROJECT_ERRORS = "RECEIVE_PROJECT_ERRORS";
 
 const receiveProjects = projects => ({
   type: RECEIEVE_PROJECTS,
