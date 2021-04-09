@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-// import { falinkedin } from '@fortawesome/free-brands-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Landing = (props) => {
   
@@ -50,8 +50,13 @@ const Landing = (props) => {
         </div>
       </div>
       <footer>
-        {/* <FontAwesomeIcon icon={falinkedin} /> */}
-
+        {/* <h1>test</h1> */}
+        <div className="splash-external">
+          <FontAwesomeIcon icon={faLinkedin} />
+        </div>
+        <div className="splash-external">
+          <FontAwesomeIcon icon={faGithub} />
+        </div>
       </footer>
     </div>
   );

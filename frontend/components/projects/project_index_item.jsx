@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 
 const ProjectIndexItem = props => (
   <li>
-    {/* <Link to={``}></Link> */}
-    {props.project.name}
+    <div class="project-icon"></div>
+    <Link to={`/home/${props.project.id}`}>
+      {props.project.name}
+    </Link>
   </li>
 )
 

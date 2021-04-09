@@ -226,6 +226,22 @@ footer {
 	border-top: 1px solid whitesmoke;
 	box-shadow: 0px 0px #888, 0 5px 20px 0 rgba(21, 27, 38, 8%);
 	z-index: 100;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.splash-external {
+	font-size: 50px;
+	color: #273240;
+	padding:10px;
+	cursor: pointer;
+}
+
+.splash-external:hover {
+	font-size: 60px;
+	color: blue;
 }
 
 /* signup/signin form */

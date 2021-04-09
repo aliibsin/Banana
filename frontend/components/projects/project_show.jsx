@@ -12,8 +12,8 @@ class ProjectShow extends React.Component {
   render() {
     return (
       <div>
-        <h1>{Project.title}</h1>
-        <p>{Project.description}</p>
+        <h1>{this.props.project.name}</h1>
+        <p>{this.props.project.description}</p>
       </div>
     )
   }

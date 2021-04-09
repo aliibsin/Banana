@@ -4,11 +4,12 @@ import { fetchProject } from '../../actions/project_actions'
 import ProjectShow from './project_show';
 
 const mapStateToProps = (state, ownProps) => {
-  projectId = ownProps.match.params.projectId;
+  const projectId = parseInt(ownProps.match.params.projectId);
+
   return ({
     errors: state.errors,
     projectId: projectId,
-    project: state.projects[projectId]
+    project: state.entities.projects[projectId]
   });
 };
 
