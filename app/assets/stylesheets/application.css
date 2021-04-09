@@ -128,7 +128,7 @@ a {
 	background-color: #151B26;
 }
 
-.sign-up-button a {
+.sign-up-button {
 	color: white;
 }
 
@@ -145,6 +145,65 @@ a {
 	justify-content: space-between;
 }
 
+.home-text-container {
+	display: flex;
+	flex-direction: column;
+	width: 820px;
+	padding: 70px;
+	padding-left: 150px;
+}
+
+.home-big-text {
+	font-size: 60px;
+	padding-top: 20px;
+	padding-bottom: 100px;
+	padding-left: 20px;
+}
+
+.home-big-text h1 {
+	padding-top: 10px;
+}
+
+.home-page-line {
+	padding-left: 20px;
+	padding-top: 70px;
+}
+
+hr {
+	width: 150px;
+	text-align: left;
+	margin-left :0;
+}
+
+.home-small-text {
+	font-size: 24px;
+	padding-left: 20px;
+	padding-top: 50px;
+	padding-bottom: 60px;
+}
+
+.home-small-text p {
+	padding-top: 10px;
+}
+
+.text-sign-up-button {
+	padding-left: 20px;
+	background-color: #273240;
+	border-radius: 10px;
+	padding: 10px;
+	font-size: 16px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.text-sign-up-button:hover {
+	background-color: #151B26;
+}
+
+.text-sign-up-button {
+	color: white;
+}
+
 .home-image {
 	max-width: 960px;
 	height: 750px;
@@ -154,7 +213,6 @@ a {
 	width: 100%;
 	height: 100%;
 }
-
 
 footer {
 	position: fixed;
