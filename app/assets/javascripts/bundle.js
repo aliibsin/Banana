@@ -16572,8 +16572,8 @@ const animated = host.animated;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RECEIEVE_PROJECTS": () => (/* binding */ RECEIEVE_PROJECTS),
-/* harmony export */   "RECEIEVE_PROJECT": () => (/* binding */ RECEIEVE_PROJECT),
+/* harmony export */   "RECEIVE_PROJECTS": () => (/* binding */ RECEIVE_PROJECTS),
+/* harmony export */   "RECEIVE_PROJECT": () => (/* binding */ RECEIVE_PROJECT),
 /* harmony export */   "REMOVE_PROJECT": () => (/* binding */ REMOVE_PROJECT),
 /* harmony export */   "RECEIVE_PROJECT_ERRORS": () => (/* binding */ RECEIVE_PROJECT_ERRORS),
 /* harmony export */   "fetchProjects": () => (/* binding */ fetchProjects),
@@ -16584,21 +16584,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/project_api_util */ "./frontend/util/project_api_util.js");
 
-var RECEIEVE_PROJECTS = "RECEIEVE_PROJECTS";
-var RECEIEVE_PROJECT = "RECEIEVE_PROJECT";
+var RECEIVE_PROJECTS = "RECEIVE_PROJECTS";
+var RECEIVE_PROJECT = "RECEIVE_PROJECT";
 var REMOVE_PROJECT = "REMOVE_PROJECT";
 var RECEIVE_PROJECT_ERRORS = "RECEIVE_PROJECT_ERRORS";
 
 var receiveProjects = function receiveProjects(projects) {
   return {
-    type: RECEIEVE_PROJECTS,
+    type: RECEIVE_PROJECTS,
     projects: projects
   };
 };
 
 var receiveProject = function receiveProject(project) {
   return {
-    type: RECEIEVE_PROJECT,
+    type: RECEIVE_PROJECT,
     project: project
   };
 };
@@ -16638,7 +16638,7 @@ var createProject = function createProject(project) {
     return _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__.createProject(project).then(function (project) {
       return dispatch(receiveProject(project));
     }, function (err) {
-      return dispatch(receiveErrors(err.response.JSON));
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -16647,7 +16647,7 @@ var updateProject = function updateProject(project) {
     return _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__.updateProject(project).then(function (project) {
       return dispatch(receiveProject(project));
     }, function (err) {
-      return dispatch(receiveErrors(err.response.JSON));
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -16656,7 +16656,7 @@ var deleteProject = function deleteProject(projectId) {
     return _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__.deleteProject(projectId).then(function () {
       return dispatch(removeProject(projectId));
     }, function (err) {
-      return dispatch(receiveErrors(err.response.JSON));
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -16675,9 +16675,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_CURRENT_USER": () => (/* binding */ RECEIVE_CURRENT_USER),
 /* harmony export */   "SIGNOUT_CURRENT_USER": () => (/* binding */ SIGNOUT_CURRENT_USER),
 /* harmony export */   "RECEIVE_SESSION_ERRORS": () => (/* binding */ RECEIVE_SESSION_ERRORS),
-/* harmony export */   "receiveCurrentUser": () => (/* binding */ receiveCurrentUser),
-/* harmony export */   "signoutCurrentUser": () => (/* binding */ signoutCurrentUser),
-/* harmony export */   "receiveErrors": () => (/* binding */ receiveErrors),
 /* harmony export */   "signup": () => (/* binding */ signup),
 /* harmony export */   "signin": () => (/* binding */ signin),
 /* harmony export */   "signout": () => (/* binding */ signout)
@@ -16687,6 +16684,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var SIGNOUT_CURRENT_USER = 'SIGNOUT_CURRENT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+
 var receiveCurrentUser = function receiveCurrentUser(user) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -16695,11 +16693,13 @@ var receiveCurrentUser = function receiveCurrentUser(user) {
     }
   };
 };
+
 var signoutCurrentUser = function signoutCurrentUser() {
   return {
     type: SIGNOUT_CURRENT_USER
   };
 };
+
 var receiveErrors = function receiveErrors(errs) {
   return {
     type: RECEIVE_SESSION_ERRORS,
@@ -16708,6 +16708,7 @@ var receiveErrors = function receiveErrors(errs) {
     }
   };
 };
+
 var signup = function signup(user) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signup(user).then(function (user) {
@@ -17126,6 +17127,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _project_create_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_create_form */ "./frontend/components/projects/create/project_create_form.jsx");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/project_actions */ "./frontend/actions/project_actions.js");
+
 
 
 
@@ -17138,19 +17141,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    createProject: function (_createProject) {
-      function createProject(_x) {
-        return _createProject.apply(this, arguments);
-      }
-
-      createProject.toString = function () {
-        return _createProject.toString();
-      };
-
-      return createProject;
-    }(function (project) {
-      return dispatch(createProject(project));
-    })
+    createProject: function createProject(project) {
+      return dispatch((0,_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__.createProject)(project));
+    }
   };
 };
 
@@ -17327,16 +17320,9 @@ var ProjectIndex = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var openModal = function openModal() {
-        if (_this2.state.showModal === true) {
-          _this2.setState({
-            showModal: false
-          });
-        } else {
-          _this2.setState({
-            showModal: true
-          });
-        } // this.setState({ showModal: true })
-
+        _this2.setState({
+          showModal: true
+        });
       };
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
@@ -17936,7 +17922,7 @@ var projectErrorsReducer = function projectErrorsReducer() {
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_PROJECT_ERRORS:
       return action.errors.errs;
 
-    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIEVE_PROJECT:
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_PROJECT:
       return [];
 
     default:
@@ -17967,13 +17953,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var projectsReducer = function projectsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
+  Object.freeze(state); // debugger;
 
   switch (action.type) {
-    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIEVE_PROJECTS:
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_PROJECTS:
       return action.projects;
 
-    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIEVE_PROJECT:
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_PROJECT:
       var newProject = _defineProperty({}, action.project.id, action.project);
 
       return Object.assign({}, state, newProject);
@@ -54891,15 +54877,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/project_api_util */ "./frontend/util/project_api_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
- // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
 
- // import { signin, signout, signup } from './actions/session_actions';
+ // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
+// import { signin, signout, signup } from './actions/session_actions';
 
 document.addEventListener("DOMContentLoaded", function () {
   var root = document.getElementById("root");
@@ -54925,11 +54911,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // window.signin = signin;
   // window.signout = signout;
 
-  window.fetchProjects = _actions_project_actions__WEBPACK_IMPORTED_MODULE_4__.fetchProjects;
-  window.fetchProject = _actions_project_actions__WEBPACK_IMPORTED_MODULE_4__.fetchProject;
-  window.createProject = _actions_project_actions__WEBPACK_IMPORTED_MODULE_4__.createProject;
-  window.updateProject = _actions_project_actions__WEBPACK_IMPORTED_MODULE_4__.updateProject;
-  window.deleteProject = _actions_project_actions__WEBPACK_IMPORTED_MODULE_4__.deleteProject;
+  window.fetchProjects = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.fetchProjects;
+  window.fetchProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.fetchProject;
+  window.createProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.createProject;
+  window.updateProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.updateProject;
+  window.deleteProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.deleteProject;
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__.default, {
     store: store
   }), root);

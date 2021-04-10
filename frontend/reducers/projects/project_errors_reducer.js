@@ -1,14 +1,15 @@
 import {
-  RECEIEVE_PROJECT,
+  RECEIVE_PROJECT,
   RECEIVE_PROJECT_ERRORS
 } from '../../actions/project_actions';
 
 const projectErrorsReducer = (state = [], action) => {
   Object.freeze(state);
+  
   switch (action.type) {
     case RECEIVE_PROJECT_ERRORS:
       return action.errors.errs;
-    case RECEIEVE_PROJECT:
+    case RECEIVE_PROJECT:
       return [];  
     default:
       return state;

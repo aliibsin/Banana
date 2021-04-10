@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-// import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
-import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
+import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
+// import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
 // import { signin, signout, signup } from './actions/session_actions';
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -19,13 +19,7 @@ class ProjectIndex extends React.Component {
   render() {
 
     const openModal = () => {
-      if (this.state.showModal === true) {
-        this.setState({ showModal: false })
-      } else {
-        this.setState({ showModal: true })
-      }
-
-      // this.setState({ showModal: true })
+      this.setState({ showModal: true })
     }
 
     return (
@@ -36,10 +30,6 @@ class ProjectIndex extends React.Component {
           ))
         }
         <li>
-          {/* <div onClick={() => openModal()} className="create-project-button">
-            Create Project
-          </div>
-          <ProjectCreateModalContainer showModal={this.state.showModal}/> */}
           <ProjectCreateModalContainer />
         </li>
       </ul>
