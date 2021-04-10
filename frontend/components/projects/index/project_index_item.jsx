@@ -4,8 +4,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTasks } from '@fortawesome/free-solid-svg-icons';
 
 const ProjectIndexItem = props => (
-  <li className="project-list-element">
-    <Link to={`/home/${props.project.id}`}>
+  <Link to={`/home/${props.project.id}`}>
+    <li className="project-list-element">
+    
       <div className="project-individual">
         <div className="project-icon">
           <FontAwesomeIcon icon={faTasks} />
@@ -15,8 +16,9 @@ const ProjectIndexItem = props => (
           {props.project.name}
         </h3>
       </div>
-    </Link>
-  </li>
+   
+    </li>
+  </Link>
 )
 
 export default ProjectIndexItem;

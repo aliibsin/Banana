@@ -453,6 +453,7 @@ label h3 {
 }
 
 .project-list-element {
+	cursor: pointer;
 	padding: 20px;
 	border-radius: 10px;
 }
@@ -466,8 +467,9 @@ label h3 {
 	transition: all 500ms ease;
 	border: 1px solid rgb(110, 253, 165);
 	background-color: rgb(110, 253, 165);
-	font-size: 80px;
-	padding: 5px;
+	font-size: 90px;
+	padding: 10px;
+	padding-bottom: 15px;
 }
 
 .project-individual {
@@ -475,10 +477,12 @@ label h3 {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	width: 120px;
 }
 
 .project-icon {
 	width: 100%;
+	height: 120px;
 	font-size: 70px;
 	border: 1px solid rgb(110, 189, 253);
 	background-color: rgb(110, 189, 253);

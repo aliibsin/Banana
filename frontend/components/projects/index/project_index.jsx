@@ -29,9 +29,7 @@ class ProjectIndex extends React.Component {
             <ProjectIndexItem project={project} key={project.id}/>
           ))
         }
-        <li>
-          <ProjectCreateModalContainer />
-        </li>
+        <ProjectCreateModalContainer />
       </ul>
     )
   }
