@@ -6,7 +6,6 @@ import {
 
 const projectsReducer = (state = {}, action) => {
   Object.freeze(state);
-  // debugger;
   switch (action.type) {
     case RECEIVE_PROJECTS:
       return action.projects;

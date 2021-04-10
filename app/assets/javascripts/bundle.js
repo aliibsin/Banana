@@ -16822,7 +16822,7 @@ var Home = function Home(props) {
       className: "header-group"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "header-name"
-    }, "Hi, ", props.currentUser.username, "!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    }, "Hi, ", props.currentUser.username, "!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "signout-button",
       onClick: props.signout
     }, "Sign Out")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -17068,6 +17068,18 @@ var CreateProjectForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var project = Object.assign({}, this.state);
       this.props.createProject(project);
+      this.handleModal();
+    }
+  }, {
+    key: "handleModal",
+    value: function handleModal() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        if (_this3.props.errors.length === 0) {
+          _this3.props.setShowModal(false);
+        }
+      }, 500);
     }
   }, {
     key: "renderErrors",
@@ -17133,9 +17145,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    errors: state.errors
+    showModal: ownProps.showModal,
+    setShowModal: ownProps.setShowModal,
+    errors: state.errors.projectErr
   };
 };
 
@@ -17240,7 +17254,10 @@ var ProjectCreateModal = function ProjectCreateModal(props) {
       onClick: openModal
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
       icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faTimes
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_project_create_form_container__WEBPACK_IMPORTED_MODULE_3__.default, null))));
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_project_create_form_container__WEBPACK_IMPORTED_MODULE_3__.default, {
+      showModal: showModal,
+      setShowModal: setShowModal
+    }))));
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       onClick: openModal
@@ -17953,7 +17970,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var projectsReducer = function projectsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state); // debugger;
+  Object.freeze(state);
 
   switch (action.type) {
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_PROJECTS:

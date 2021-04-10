@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProjectCreateModal from './project_create_form'
+import CreateProjectForm from './project_create_form'
 import {createProject} from '../../../actions/project_actions'
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return ({
-    errors: state.errors,
+    showModal: ownProps.showModal,
+    setShowModal: ownProps.setShowModal,
+    errors: state.errors.projectErr,
   })
 }
 
@@ -15,4 +17,4 @@ const mapDispatchToProps = dispatch => {
   })
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectCreateModal);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProjectForm);

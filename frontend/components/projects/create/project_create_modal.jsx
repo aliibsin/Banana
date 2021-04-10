@@ -49,7 +49,7 @@ const ProjectCreateModal = (props) => {
                 <FontAwesomeIcon icon={faTimes} />
               </div>
             </div>
-            <ProjectCreateFormContainer />
+            <ProjectCreateFormContainer showModal={showModal} setShowModal={setShowModal}/>
           </div>
         </animated.div>
       </div>

@@ -8,7 +8,7 @@ const Home = props => {
       <hgroup className="header-group">
         <h1>Home</h1>
         <div className="header-name">Hi, {props.currentUser.username}!</div>
-        <button className="signout-button" onClick={props.signout}>Sign Out</button>
+        <div className="signout-button" onClick={props.signout}>Sign Out</div>
       </hgroup>
       <div className="home-project-container">
         <div>
