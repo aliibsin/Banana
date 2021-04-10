@@ -13673,9 +13673,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -13702,6 +13705,119 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var ProjectCreateModal = /*#__PURE__*/function (_React$Component) {
+  _inherits(ProjectCreateModal, _React$Component);
+
+  var _super = _createSuper(ProjectCreateModal);
+
+  function ProjectCreateModal(props) {
+    var _this;
+
+    _classCallCheck(this, ProjectCreateModal);
+
+    _this = _super.call(this, props); // this.state = {
+    //   name: '',
+    //   description: ''
+    // };
+
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.clearErrs = _this.clearErrs.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ProjectCreateModal, [{
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "clearErrs",
+    value: function clearErrs(e) {
+      e.preventDefault();
+      this.props.errors.sessionErr = [];
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var project = Object.assign({}, this.state);
+      this.props.createProject(project);
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "err-list"
+      }, this.props.errors.sessionErr.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: "error-".concat(i)
+        }, error);
+      }));
+    }
+  }, {
+    key: "modalDisplay",
+    value: function modalDisplay() {
+      var _this3 = this;
+
+      if (this.props.showModal) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "create-project-modal-background"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "create-project-modal"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "close-icon",
+          onClick: function onClick() {
+            return _this3.setState({
+              showModal: false
+            });
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
+          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faTimes
+        }))));
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log(this.state);
+      console.log(this.props);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "modal-container"
+      }, this.modalDisplay());
+    }
+  }]);
+
+  return ProjectCreateModal;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProjectCreateModal);
+
+/***/ }),
+
+/***/ "./frontend/components/projects/project_create_modal_container.js":
+/*!************************************************************************!*\
+  !*** ./frontend/components/projects/project_create_modal_container.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _project_create_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_create_modal */ "./frontend/components/projects/project_create_modal.jsx");
+
+
+
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     errors: state.errors
@@ -13710,35 +13826,23 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    createProject: function createProject(project) {
-      return dispatch((0,_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__.createProject)(project));
-    }
+    createProject: function (_createProject) {
+      function createProject(_x) {
+        return _createProject.apply(this, arguments);
+      }
+
+      createProject.toString = function () {
+        return _createProject.toString();
+      };
+
+      return createProject;
+    }(function (project) {
+      return dispatch(createProject(project));
+    })
   };
 };
 
-var ProjectCreateModal = /*#__PURE__*/function (_React$Component) {
-  _inherits(ProjectCreateModal, _React$Component);
-
-  var _super = _createSuper(ProjectCreateModal);
-
-  function ProjectCreateModal(props) {
-    _classCallCheck(this, ProjectCreateModal);
-
-    return _super.call(this, props);
-  }
-
-  _createClass(ProjectCreateModal, [{
-    key: "render",
-    value: function render() {
-      console.log(this.props);
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.props.showModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " im a modal ") : null);
-    }
-  }]);
-
-  return ProjectCreateModal;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(ProjectCreateModal));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(_project_create_modal__WEBPACK_IMPORTED_MODULE_2__.default));
 
 /***/ }),
 
@@ -13755,7 +13859,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _project_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_index_item */ "./frontend/components/projects/project_index_item.jsx");
-/* harmony import */ var _project_create_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_create_modal */ "./frontend/components/projects/project_create_modal.jsx");
+/* harmony import */ var _project_create_modal_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_create_modal_container */ "./frontend/components/projects/project_create_modal_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13811,10 +13915,15 @@ var ProjectIndex = /*#__PURE__*/function (_React$Component) {
 
       var openModal = function openModal() {
         if (_this2.state.showModal === true) {
-          _this2.state.showModal = false;
+          _this2.setState({
+            showModal: false
+          });
         } else {
-          _this2.state.showModal = true;
-        }
+          _this2.setState({
+            showModal: true
+          });
+        } // this.setState({ showModal: true })
+
       };
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
@@ -13824,9 +13933,12 @@ var ProjectIndex = /*#__PURE__*/function (_React$Component) {
           project: project,
           key: project.id
         });
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: openModal()
-      }, "open model"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_project_create_modal__WEBPACK_IMPORTED_MODULE_2__.default, {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        onClick: function onClick() {
+          return openModal();
+        },
+        className: "create-project-button"
+      }, "Create Project"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_project_create_modal_container__WEBPACK_IMPORTED_MODULE_2__.default, {
         showModal: this.state.showModal
       })));
     }

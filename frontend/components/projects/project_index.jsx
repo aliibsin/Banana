@@ -1,14 +1,15 @@
 import React from 'react';
 import ProjectIndexItem from './project_index_item';
-import ProjectCreateModal from './project_create_modal';
+import ProjectCreateModalContainer from './project_create_modal_container';
 
 class ProjectIndex extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {showModal: false};
+    this.state = {
+      showModal: false,
+    };
 
-    
   }
 
   componentDidMount() {
@@ -19,12 +20,14 @@ class ProjectIndex extends React.Component {
 
     const openModal = () => {
       if (this.state.showModal === true) {
-        this.state.showModal = false;
+        this.setState({ showModal: false })
       } else {
-        this.state.showModal = true;
+        this.setState({ showModal: true })
       }
-    }
 
+      // this.setState({ showModal: true })
+    }
+    
     return (
       <ul className="project-list-container">
         {
@@ -33,10 +36,10 @@ class ProjectIndex extends React.Component {
           ))
         }
         <li>
-          <button onClick={openModal()}>
-            open model
-          </button>
-          <ProjectCreateModal showModal={this.state.showModal}/>
+          <div onClick={() => openModal()} className="create-project-button">
+            Create Project
+          </div>
+          <ProjectCreateModalContainer showModal={this.state.showModal}/>
         </li>
       </ul>
     )
