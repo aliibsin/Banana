@@ -5,7 +5,7 @@ import LandingContainer from './landing/landing_container'
 import SigninFormContainer from './session/signin_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import HomeContainer from './home/home_container';
-import ProjectShowContainer from './projects/project_show_container';
+import ProjectShowContainer from './projects/show/project_show_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 

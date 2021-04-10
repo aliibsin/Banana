@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProjectIndexContainer from '../projects/project_index_container'
+import ProjectIndexContainer from '../projects/index/project_index_container'
 
 const Home = props => {
   const personalLanding = () => (

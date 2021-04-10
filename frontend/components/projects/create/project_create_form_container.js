@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProjectCreateModal from './project_create_modal'
+import ProjectCreateModal from './project_create_form'
 
 const mapStateToProps = state => {
   return ({

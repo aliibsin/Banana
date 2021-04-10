@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ProjectIndexItem from './project_index_item';
-import ProjectCreateModalContainer from './project_create_modal_container';
+import ProjectCreateModalContainer from '../create/project_create_modal';
 
 class ProjectIndex extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class ProjectIndex extends React.Component {
 
       // this.setState({ showModal: true })
     }
-    
+
     return (
       <ul className="project-list-container">
         {
@@ -36,10 +36,11 @@ class ProjectIndex extends React.Component {
           ))
         }
         <li>
-          <div onClick={() => openModal()} className="create-project-button">
+          {/* <div onClick={() => openModal()} className="create-project-button">
             Create Project
           </div>
-          <ProjectCreateModalContainer showModal={this.state.showModal}/>
+          <ProjectCreateModalContainer showModal={this.state.showModal}/> */}
+          <ProjectCreateModalContainer />
         </li>
       </ul>
     )
