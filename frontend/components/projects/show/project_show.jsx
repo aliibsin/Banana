@@ -15,11 +15,6 @@ class ProjectShow extends React.Component {
   render() {
     
     return (
-      // <div>
-      //   <h1></h1>
-      //   <p>{this.props.project.description}</p>
-      // </div>
-
       <div className="home-page-full">
         <hgroup className="header-group">
           <div className="back-button-container">

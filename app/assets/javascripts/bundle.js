@@ -16784,7 +16784,7 @@ var App = function App() {
     component: _home_home_container__WEBPACK_IMPORTED_MODULE_4__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__.ProtectedRoute, {
     exact: true,
-    path: "/home/:projectId",
+    path: "/home/:projectId/list",
     component: _projects_show_project_show_container__WEBPACK_IMPORTED_MODULE_5__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Redirect, {
     exact: true,
@@ -17104,12 +17104,14 @@ var CreateProjectForm = /*#__PURE__*/function (_React$Component) {
         type: "text",
         value: this.state.name,
         onChange: this.update('name'),
-        className: "signin-input"
+        className: "signin-input",
+        placeholder: "e.g. New Project"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
         value: this.state.description,
         onChange: this.update('description'),
-        className: "signin-input"
+        className: "signin-input",
+        placeholder: "Add a description..."
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "session-submit",
         type: "submit",
@@ -17431,7 +17433,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ProjectIndexItem = function ProjectIndexItem(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-    to: "/home/".concat(props.project.id)
+    to: "/home/".concat(props.project.id, "/list")
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     className: "project-list-element"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -17510,37 +17512,30 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return (
-        /*#__PURE__*/
-        // <div>
-        //   <h1></h1>
-        //   <p>{this.props.project.description}</p>
-        // </div>
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "home-page-full"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hgroup", {
-          className: "header-group"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "back-button-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-          to: "/home"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "back-button"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
-          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faChevronLeft
-        })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "header-project-info"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
-          className: "show-project-name"
-        }, this.props.project.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-          className: "show-project-description"
-        }, this.props.project.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "signout-button",
-          onClick: this.props.signout
-        }, "Sign Out")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "home-project-container"
-        }))
-      );
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "home-page-full"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hgroup", {
+        className: "header-group"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "back-button-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+        to: "/home"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "back-button"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faChevronLeft
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "header-project-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+        className: "show-project-name"
+      }, this.props.project.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "show-project-description"
+      }, this.props.project.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "signout-button",
+        onClick: this.props.signout
+      }, "Sign Out")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "home-project-container"
+      }));
     }
   }]);
 

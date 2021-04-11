@@ -620,6 +620,7 @@ label h3 {
 }
 
 .show-project-description {
+	height: 16px;
 	padding-top: 5px;
 	font-size: 14px;
 	color: rgb(112, 112, 112) ;

@@ -63,6 +63,7 @@ class CreateProjectForm extends React.Component {
                 value={this.state.name}
                 onChange={this.update('name')}
                 className="signin-input"
+                placeholder="e.g. New Project"
               />
             </label>
             
@@ -72,6 +73,7 @@ class CreateProjectForm extends React.Component {
                 value={this.state.description}
                 onChange={this.update('description')}
                 className="signin-input"
+                placeholder="Add a description..."
               />
             </label>
             

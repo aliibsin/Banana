@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTasks } from '@fortawesome/free-solid-svg-icons';
 
 const ProjectIndexItem = props => (
-  <Link to={`/home/${props.project.id}`}>
+  <Link to={`/home/${props.project.id}/list`}>
     <li className="project-list-element">
     
       <div className="project-individual">
