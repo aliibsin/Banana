@@ -17505,12 +17505,15 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
+      name: _this.props.project.name,
       description: _this.props.project.description
     };
     _this.descriptionInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+    _this.nameInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
     _this.handleDescriptionChange = _this.handleDescriptionChange.bind(_assertThisInitialized(_this));
     _this.handleDescriptionUpdate = _this.handleDescriptionUpdate.bind(_assertThisInitialized(_this));
-    _this.handleKeyDown = _this.handleKeyDown.bind(_assertThisInitialized(_this));
+    _this.handleNameChange = _this.handleNameChange.bind(_assertThisInitialized(_this));
+    _this.handleNameUpdate = _this.handleNameUpdate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -17520,30 +17523,29 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
       this.props.fetchProject(this.props.match.params.projectId);
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      if (prevProps.description !== this.props.description) {
-        this.setState({
-          description: this.props.description
-        });
-      }
-    }
-  }, {
     key: "deleteProj",
     value: function deleteProj() {
       this.props.deleteProject(this.props.match.params.projectId);
     }
   }, {
     key: "handleDescriptionChange",
-    value: function handleDescriptionChange(evt) {
-      var editedDescription = evt.target.value.replace(/[\t]+/g, '');
+    value: function handleDescriptionChange(e) {
+      var editedDescription = e.target.value.replace(/[\t]+/g, '');
       this.setState({
         description: editedDescription
       });
     }
   }, {
+    key: "handleNameChange",
+    value: function handleNameChange(e) {
+      var editedName = e.target.value.replace(/[\t]+/g, '');
+      this.setState({
+        name: editedName
+      });
+    }
+  }, {
     key: "handleDescriptionUpdate",
-    value: function handleDescriptionUpdate(evt) {
+    value: function handleDescriptionUpdate(e) {
       var stateDescription = this.state.description;
       this.props.updateProject({
         id: this.props.projectId,
@@ -17551,19 +17553,22 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "handleKeyDown",
-    value: function handleKeyDown(evt) {
-      if (evt.key === "Enter" || evt.keyCode === 13) {
-        evt.preventDefault();
-        this.descriptionInput.current.blur();
-      }
+    key: "handleNameUpdate",
+    value: function handleNameUpdate(e) {
+      var stateName = this.state.name;
+      this.props.updateProject({
+        id: this.props.projectId,
+        name: stateName
+      });
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
+      console.log(this.props);
       var stateDescription = this.state.description;
+      var stateName = this.state.name;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "home-page-full"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hgroup", {
@@ -17580,9 +17585,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         className: "header-project-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "project-name-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
-        className: "show-project-name"
-      }, this.props.project.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
         to: "/home"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "delete-project-button",
@@ -17591,15 +17594,35 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faTimes
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "show-project-name-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "show-project-name",
+        onChange: this.handleNameChange,
+        onBlur: this.handleNameUpdate,
+        ref: this.nameInput,
+        value: stateName,
+        placeholder: "Project Name can't be blank",
+        autoComplete: "off",
+        autoCorrect: "off",
+        autoCapitalize: "off",
+        spellCheck: "false"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "show-project-desc-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
         className: "show-project-description",
         onChange: this.handleDescriptionChange,
         onBlur: this.handleDescriptionUpdate,
         ref: this.descriptionInput,
         value: stateDescription,
-        placeholder: "Click to add a description..."
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        placeholder: "Click to add a description...",
+        autoComplete: "off",
+        autoCorrect: "off",
+        autoCapitalize: "off",
+        spellCheck: "false"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signout-button",
         onClick: this.props.signout
       }, "Sign Out")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

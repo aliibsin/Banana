@@ -619,20 +619,57 @@ label h3 {
 	color: rgb(110, 253, 165);
 }
 
-.show-project-description {
-	height: 16px;
-	padding-top: 5px;
-	font-size: 14px;
-	color: rgb(112, 112, 112) ;
-}
-
 .project-name-container {
 	display: flex;
+	margin-bottom: 1px;
 }
 
+.show-project-name-cont {
+	height: 32px;
+	width: 100%;
+}
+
+.show-project-name {
+	border: none;
+	font-size: 20px;
+	height: 24px;
+	font-weight: 600;
+	outline: none;
+	width: 300px;
+}
+
+.show-project-description {
+	border: none;
+	height: 16px;
+	font-size: 14px;
+	color: rgb(83, 83, 83) ;
+	outline: none;
+	width: 300px;
+}
+
+.show-project-name:focus, .show-project-description:focus {
+	transition: all 500ms ease;
+	background-color: rgb(110, 253, 165);
+	outline: 1px solid wheat;
+}
+
+.show-project-name:hover, .show-project-description:hover {
+	transition: all 500ms ease;
+	background-color: rgb(110, 253, 165);
+	/* outline: 1px solid whitesmoke; */
+}
+
+
 .delete-project-button {
-	margin-left: 5px;
 	font-size: 12px;
 	color: rgb(112, 112, 112);
 	cursor: pointer;
+	position: absolute;
+	top: 10px;
+	left: 135px;
+}
+
+.delete-project-button:hover {
+	transition: all 250ms ease;
+	color: rgb(110, 253, 165);
 }

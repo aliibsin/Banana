@@ -9,48 +9,52 @@ class ProjectShow extends React.Component {
     super(props);
 
     this.state = {
+      name: this.props.project.name,
       description: this.props.project.description,
+      
     };
 
     this.descriptionInput = React.createRef();
+    this.nameInput = React.createRef();
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleDescriptionUpdate = this.handleDescriptionUpdate.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleNameUpdate = this.handleNameUpdate.bind(this);
+
   }
 
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.description !== this.props.description) {
-      this.setState({ description: this.props.description })
-    }
-  }
-
   deleteProj() {
     this.props.deleteProject(this.props.match.params.projectId);
   }
 
-  handleDescriptionChange(evt) {
-    const editedDescription = evt.target.value.replace(/[\t]+/g, '');
+  handleDescriptionChange(e) {
+    const editedDescription = e.target.value.replace(/[\t]+/g, '');
     this.setState({ description: editedDescription });
   }
 
-  handleDescriptionUpdate(evt) {
+  handleNameChange(e) {
+    const editedName = e.target.value.replace(/[\t]+/g, '');
+    this.setState({ name: editedName });
+  }
+
+  handleDescriptionUpdate(e) {
     const { description: stateDescription } = this.state;
     this.props.updateProject({ id: this.props.projectId, description: stateDescription });
   }
 
-  handleKeyDown(evt) {
-    if (evt.key === "Enter" || evt.keyCode === 13) {
-      evt.preventDefault();
-      this.descriptionInput.current.blur();
-    }
+  handleNameUpdate(e) {
+    const { name: stateName } = this.state;
+    this.props.updateProject({ id: this.props.projectId, name: stateName });
   }
 
   render() {
+    console.log(this.props)
     const { description: stateDescription } = this.state;
+    const { name: stateName } = this.state;
     return (
       <div className="home-page-full">
         <hgroup className="header-group">
@@ -63,20 +67,42 @@ class ProjectShow extends React.Component {
           </div>
           <div className="header-project-info">
             <div className="project-name-container">
-              <h1 className="show-project-name">{this.props.project.name}</h1>
               <Link to="/home">
                 <div className="delete-project-button" onClick={() => this.deleteProj()}>
                   <FontAwesomeIcon icon={faTimes} />
                 </div>
               </Link>
+              <div className="show-project-name-cont">
+                <input
+                  type="text"
+                  className="show-project-name"
+                  onChange={this.handleNameChange}
+                  onBlur={this.handleNameUpdate}
+                  ref={this.nameInput}
+                  value={stateName}
+                  placeholder="Project Name can't be blank"
+                  autoComplete="off" 
+                  autoCorrect="off" 
+                  autoCapitalize="off"
+                  spellCheck="false"
+                />
+              </div>
             </div>
-            <input type="text" className="show-project-description"
-              onChange={this.handleDescriptionChange}
-              onBlur={this.handleDescriptionUpdate}
-              ref={this.descriptionInput}
-              value={stateDescription}
-              placeholder={"Click to add a description..."}
-            />
+            <div className="show-project-desc-cont">
+              <input 
+                type="text" 
+                className="show-project-description"
+                onChange={this.handleDescriptionChange}
+                onBlur={this.handleDescriptionUpdate}
+                ref={this.descriptionInput}
+                value={stateDescription}
+                placeholder={"Click to add a description..."}
+                autoComplete="off" 
+                autoCorrect="off" 
+                autoCapitalize="off"
+                spellCheck="false"
+              />
+            </div>
           </div>
           <div className="signout-button" onClick={this.props.signout}>Sign Out</div>
         </hgroup>
