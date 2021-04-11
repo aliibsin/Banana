@@ -599,3 +599,29 @@ label h3 {
 .create-project-form-title {
 	font-size: 30px;
 }
+
+
+/* Project Show */
+
+.back-button-container {
+	position: absolute;
+	left: 50px;
+}
+
+.back-button {
+	color: black;
+	cursor: pointer;
+	font-size: 25px;
+}
+
+.back-button:hover {
+	transition: all 250ms ease;
+	color: rgb(110, 253, 165);
+}
+
+.show-project-description {
+	padding-top: 5px;
+	font-size: 14px;
+	color: rgb(112, 112, 112) ;
+}
+
