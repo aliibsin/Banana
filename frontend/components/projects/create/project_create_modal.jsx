@@ -9,8 +9,13 @@ const ProjectCreateModal = (props) => {
   const [showModal, setShowModal] = useState(false);
   
   const openModal = () => {
-    setShowModal(prev => !prev)
+    setShowModal(prev => !prev);
+    clearErrs();
   };
+
+  const clearErrs = () => {
+    props.errors.projectErr = [];
+  }
 
   const modalRef = useRef();
 
@@ -27,7 +32,7 @@ const ProjectCreateModal = (props) => {
       <div className="create-project-modal-background" ref={modalRef} onClick={closeModal}>
         <animated.div style={animation}>
           <div className="create-project-modal">
-            <div>
+            <div className="close-icon-container">
               <div className="close-icon" onClick={openModal}>
                 <FontAwesomeIcon icon={faTimes} />
               </div>
@@ -46,7 +51,7 @@ const ProjectCreateModal = (props) => {
           <div className="project-icon">
             <FontAwesomeIcon icon={faPlus} />
           </div>
-          <div className="home-project-name">  
+          <div className="home-newproject-name">  
             New Project
           </div>
         </div>
@@ -72,6 +77,7 @@ const ProjectCreateModal = (props) => {
   }, [keyPress])
 
   if (showModal) {
+
     return (
       <div>
         {modalButton()}

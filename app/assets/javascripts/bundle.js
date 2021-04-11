@@ -17043,7 +17043,6 @@ var CreateProjectForm = /*#__PURE__*/function (_React$Component) {
       description: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.clearErrs = _this.clearErrs.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -17055,12 +17054,6 @@ var CreateProjectForm = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
-    }
-  }, {
-    key: "clearErrs",
-    value: function clearErrs(e) {
-      e.preventDefault();
-      this.props.errors.sessionErr = [];
     }
   }, {
     key: "handleSubmit",
@@ -17086,7 +17079,7 @@ var CreateProjectForm = /*#__PURE__*/function (_React$Component) {
     value: function renderErrors() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "err-list"
-      }, this.props.errors.sessionErr.map(function (error, i) {
+      }, this.props.errors.map(function (error, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: "error-".concat(i)
         }, error);
@@ -17095,10 +17088,14 @@ var CreateProjectForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "signin-form-box"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+        className: "create-project-form-title"
+      }, "Create a new Project"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "err-messages"
+      }, this.renderErrors()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signin-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
@@ -17114,7 +17111,7 @@ var CreateProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: "Create"
-      })));
+      }))));
     }
   }]);
 
@@ -17209,6 +17206,11 @@ var ProjectCreateModal = function ProjectCreateModal(props) {
     setShowModal(function (prev) {
       return !prev;
     });
+    clearErrs();
+  };
+
+  var clearErrs = function clearErrs() {
+    props.errors.projectErr = [];
   };
 
   var modalRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
@@ -17229,7 +17231,9 @@ var ProjectCreateModal = function ProjectCreateModal(props) {
       style: animation
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "create-project-modal"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "close-icon-container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "close-icon",
       onClick: openModal
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
@@ -17251,7 +17255,7 @@ var ProjectCreateModal = function ProjectCreateModal(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
       icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faPlus
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "home-project-name"
+      className: "home-newproject-name"
     }, "New Project")));
   };
 
@@ -17332,15 +17336,9 @@ var ProjectIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ProjectIndex);
 
   function ProjectIndex(props) {
-    var _this;
-
     _classCallCheck(this, ProjectIndex);
 
-    _this = _super.call(this, props);
-    _this.state = {
-      showModal: false
-    };
-    return _this;
+    return _super.call(this, props);
   }
 
   _createClass(ProjectIndex, [{
@@ -17351,14 +17349,6 @@ var ProjectIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      var openModal = function openModal() {
-        _this2.setState({
-          showModal: true
-        });
-      };
-
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "project-list-container"
       }, this.props.projects.map(function (project) {
@@ -17366,7 +17356,9 @@ var ProjectIndex = /*#__PURE__*/function (_React$Component) {
           project: project,
           key: project.id
         });
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_create_project_create_modal__WEBPACK_IMPORTED_MODULE_2__.default, null));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_create_project_create_modal__WEBPACK_IMPORTED_MODULE_2__.default, {
+        errors: this.props.errors
+      }));
     }
   }]);
 
@@ -17397,6 +17389,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
+    errors: state.errors,
     projects: Object.values(state.entities.projects)
   };
 };

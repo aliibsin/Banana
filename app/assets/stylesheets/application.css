@@ -500,6 +500,14 @@ label h3 {
 	color: black;
 }
 
+.home-newproject-name {
+	padding-top: 10px;
+	color:rgb(25, 0, 255)
+}
+
+.project-list-element:hover .home-newproject-name {
+	color: rgb(29, 3, 124)
+}
 
 /* Create project modal */
 
@@ -514,6 +522,7 @@ label h3 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 2000;
 }
 
 .create-project-modal {
@@ -521,9 +530,32 @@ label h3 {
 	height: 500px;
 	background-color: white;
 	color: black;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
 	position: relative;
 	z-index: 10;
 	border-radius: 10px;
+}
+
+.close-icon-container {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.close-icon {
+	font-size: 30px;
+	cursor: pointer;
+	margin: 20px;
+}
+
+.close-icon:hover {
+	transition: all 250ms ease;
+	color: rgb(110, 253, 165);
+}
+
+.signin-form-box  {
+	display: flex;
+	justify-content: center;
+}
+
+.create-project-form-title {
+	font-size: 30px;
 }

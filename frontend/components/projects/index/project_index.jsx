@@ -6,10 +6,6 @@ class ProjectIndex extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showModal: false,
-    };
-
   }
 
   componentDidMount() {
@@ -17,11 +13,7 @@ class ProjectIndex extends React.Component {
   }
 
   render() {
-
-    const openModal = () => {
-      this.setState({ showModal: true })
-    }
-
+    
     return (
       <ul className="project-list-container">
         {
@@ -29,7 +21,7 @@ class ProjectIndex extends React.Component {
             <ProjectIndexItem project={project} key={project.id}/>
           ))
         }
-        <ProjectCreateModalContainer />
+        <ProjectCreateModalContainer errors={this.props.errors}/>
       </ul>
     )
   }
