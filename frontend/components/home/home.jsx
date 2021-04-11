@@ -11,9 +11,11 @@ const Home = props => {
         <div className="signout-button" onClick={props.signout}>Sign Out</div>
       </hgroup>
       <div className="home-project-container">
-        <div>
+        <div className="home-project-header">
           <h2>Projects</h2>
-          
+          <div className="home-project-line">
+            <hr />
+          </div>
         </div>
         <ProjectIndexContainer/>
       </div>

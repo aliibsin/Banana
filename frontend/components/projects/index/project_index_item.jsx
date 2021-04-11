@@ -12,9 +12,10 @@ const ProjectIndexItem = props => (
           <FontAwesomeIcon icon={faTasks} />
         </div>
     
-        <h3 className="home-project-name">
+        <div className="home-project-name">
           {props.project.name}
-        </h3>
+        </div>
+        
       </div>
    
     </li>

@@ -77,7 +77,6 @@ const ProjectCreateModal = (props) => {
   }, [keyPress])
 
   if (showModal) {
-
     return (
       <div>
         {modalButton()}
@@ -89,9 +88,6 @@ const ProjectCreateModal = (props) => {
       modalButton()
     )
   }
-  
-
-
 } 
 
 

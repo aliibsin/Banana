@@ -16827,7 +16827,11 @@ var Home = function Home(props) {
       onClick: props.signout
     }, "Sign Out")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "home-project-container"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Projects")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_projects_index_project_index_container__WEBPACK_IMPORTED_MODULE_1__.default, null)));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "home-project-header"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "home-project-line"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_projects_index_project_index_container__WEBPACK_IMPORTED_MODULE_1__.default, null)));
   };
 
   return personalLanding();
@@ -17437,7 +17441,7 @@ var ProjectIndexItem = function ProjectIndexItem(props) {
     className: "project-icon"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faTasks
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "home-project-name"
   }, props.project.name))));
 };
