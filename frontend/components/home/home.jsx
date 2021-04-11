@@ -17,12 +17,15 @@ const Home = props => {
             <hr />
           </div>
         </div>
-        <ProjectIndexContainer/>
+        <ProjectIndexContainer />
       </div>
     </div>
   );
 
-  return personalLanding();
+  return (
+  
+    personalLanding()
+  );
 }
 
 
