@@ -626,3 +626,13 @@ label h3 {
 	color: rgb(112, 112, 112) ;
 }
 
+.project-name-container {
+	display: flex;
+}
+
+.delete-project-button {
+	margin-left: 5px;
+	font-size: 12px;
+	color: rgb(112, 112, 112);
+	cursor: pointer;
+}

@@ -17075,7 +17075,7 @@ var CreateProjectForm = /*#__PURE__*/function (_React$Component) {
         if (_this3.props.errors.length === 0) {
           _this3.props.setShowModal(false);
         }
-      }, 500);
+      }, 100);
     }
   }, {
     key: "renderErrors",
@@ -17499,9 +17499,19 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ProjectShow);
 
   function ProjectShow(props) {
+    var _this;
+
     _classCallCheck(this, ProjectShow);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      description: _this.props.project.description
+    };
+    _this.descriptionInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+    _this.handleDescriptionChange = _this.handleDescriptionChange.bind(_assertThisInitialized(_this));
+    _this.handleDescriptionUpdate = _this.handleDescriptionUpdate.bind(_assertThisInitialized(_this));
+    _this.handleKeyDown = _this.handleKeyDown.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ProjectShow, [{
@@ -17510,8 +17520,50 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
       this.props.fetchProject(this.props.match.params.projectId);
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.description !== this.props.description) {
+        this.setState({
+          description: this.props.description
+        });
+      }
+    }
+  }, {
+    key: "deleteProj",
+    value: function deleteProj() {
+      this.props.deleteProject(this.props.match.params.projectId);
+    }
+  }, {
+    key: "handleDescriptionChange",
+    value: function handleDescriptionChange(evt) {
+      var editedDescription = evt.target.value.replace(/[\t]+/g, '');
+      this.setState({
+        description: editedDescription
+      });
+    }
+  }, {
+    key: "handleDescriptionUpdate",
+    value: function handleDescriptionUpdate(evt) {
+      var stateDescription = this.state.description;
+      this.props.updateProject({
+        id: this.props.projectId,
+        description: stateDescription
+      });
+    }
+  }, {
+    key: "handleKeyDown",
+    value: function handleKeyDown(evt) {
+      if (evt.key === "Enter" || evt.keyCode === 13) {
+        evt.preventDefault();
+        this.descriptionInput.current.blur();
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var stateDescription = this.state.description;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "home-page-full"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hgroup", {
@@ -17526,11 +17578,28 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faChevronLeft
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "header-project-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "project-name-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
         className: "show-project-name"
-      }, this.props.project.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-        className: "show-project-description"
-      }, this.props.project.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.props.project.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+        to: "/home"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "delete-project-button",
+        onClick: function onClick() {
+          return _this2.deleteProj();
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faTimes
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "show-project-description",
+        onChange: this.handleDescriptionChange,
+        onBlur: this.handleDescriptionUpdate,
+        ref: this.descriptionInput,
+        value: stateDescription,
+        placeholder: "Click to add a description..."
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signout-button",
         onClick: this.props.signout
       }, "Sign Out")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -17580,6 +17649,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchProject: function fetchProject(projectId) {
       return dispatch((0,_actions_project_actions__WEBPACK_IMPORTED_MODULE_1__.fetchProject)(projectId));
+    },
+    deleteProject: function deleteProject(projectId) {
+      return dispatch((0,_actions_project_actions__WEBPACK_IMPORTED_MODULE_1__.deleteProject)(projectId));
+    },
+    updateProject: function updateProject(project) {
+      return dispatch((0,_actions_project_actions__WEBPACK_IMPORTED_MODULE_1__.updateProject)(project));
     },
     signout: function signout() {
       return dispatch(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signout);

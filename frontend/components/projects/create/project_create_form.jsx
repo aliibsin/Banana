@@ -16,8 +16,6 @@ class CreateProjectForm extends React.Component {
     });
   }
 
-  
-
   handleSubmit(e) {
     e.preventDefault();
     const project = Object.assign({}, this.state);
@@ -28,9 +26,9 @@ class CreateProjectForm extends React.Component {
   handleModal() {
     setTimeout(() => {
       if (this.props.errors.length === 0) {
-        this.props.setShowModal(false);
+        this.props.setShowModal(false)
       }
-    }, 500)
+    }, 100)
   }
 
   renderErrors() {
