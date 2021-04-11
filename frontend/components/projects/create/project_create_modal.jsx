@@ -48,7 +48,7 @@ const ProjectCreateModal = (props) => {
     return (
       <li onClick={openModal} className="project-list-element" >
         <div className="project-individual" >
-          <div className="project-icon">
+          <div className="project-icon-add">
             <FontAwesomeIcon icon={faPlus} />
           </div>
           <div className="home-newproject-name">  
