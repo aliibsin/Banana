@@ -50,13 +50,26 @@ const Landing = (props) => {
         </div>
       </div>
       <footer>
-        {/* <h1>test</h1> */}
-        <div className="splash-external">
-          <FontAwesomeIcon icon={faLinkedin} />
-        </div>
-        <div className="splash-external">
-          <FontAwesomeIcon icon={faGithub} />
-        </div>
+        <a 
+          href="https://www.linkedin.com/in/ali-ibsin-1b9732132" 
+          target={"_blank"} 
+          rel="noreferrer noopener"
+          onClick={(evt) => evt.currentTarget.blur()}
+        >
+          <div className="splash-external">
+            <FontAwesomeIcon icon={faLinkedin} />
+          </div>
+        </a>
+        <a 
+          href="https://github.com/aliibsin/Banana" 
+          target={"_blank"} 
+          rel="noreferrer noopener"
+          onClick={(evt) => evt.currentTarget.blur()}
+        >
+          <div className="splash-external">
+            <FontAwesomeIcon icon={faGithub} />
+          </div>
+        </a>
       </footer>
     </div>
   );

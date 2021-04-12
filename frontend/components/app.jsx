@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import LandingContainer from './landing/landing_container'
@@ -20,7 +20,15 @@ const App = () => {
         <ProtectedRoute exact path="/home" component={HomeContainer} />
         <ProtectedRoute exact path="/home/:projectId/list" component={ProjectShowContainer}/>
 
+        <Route 
+          path="linked-in" 
+          render={() => {
+            window.location.href = "www.linkedin.com/in/ali-ibsin-1b9732132";
+            return null;
+          }} 
+        />
         <Redirect exact from="/*" to="/" />
+        
         
       </Switch>
     </div>
