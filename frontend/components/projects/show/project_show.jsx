@@ -52,7 +52,6 @@ class ProjectShow extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     const { description: stateDescription } = this.state;
     const { name: stateName } = this.state;
     return (

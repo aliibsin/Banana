@@ -18,3 +18,8 @@ demoUser = User.create!(username: "BrownBanana", email:"brownBanana@banana.com",
 testProject = Project.create!(name: "TestProject", description: "I am a test project", creator_id: 1)
 testProject = Project.create!(name: "TestProject2", description: "I am another test project", creator_id: 1)
 testProject = Project.create!(name: "TestProject3", description: "I am the end of projects", creator_id: 1)
+
+
+testSection = Section.create!({name: "TestSection1", project_id: 1})
+testSection = Section.create!({name: "TestSection2", project_id: 1})
+testSection = Section.create!({name: "TestSection3", project_id: 1})
