@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
-// import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
 // import { signin, signout, signup } from './actions/session_actions';
-import {fetchSections, createSection, updateSection, deleteSection} from './util/section_api_util'
+// import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
+// import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
+// import {fetchSections, createSection, updateSection, deleteSection} from './util/section_api_util'
+import {fetchSections, createSection, updateSection, deleteSection} from './actions/section_actions'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.updateProject = updateProject;
   // window.deleteProject = deleteProject;
 
+  //all work
   window.fetchSections = fetchSections;
   window.createSection = createSection;
   window.updateSection = updateSection;

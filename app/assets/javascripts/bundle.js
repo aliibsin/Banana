@@ -16663,6 +16663,98 @@ var deleteProject = function deleteProject(projectId) {
 
 /***/ }),
 
+/***/ "./frontend/actions/section_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/section_actions.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_SECTIONS": () => (/* binding */ RECEIVE_SECTIONS),
+/* harmony export */   "RECEIVE_SECTION": () => (/* binding */ RECEIVE_SECTION),
+/* harmony export */   "REMOVE_SECTION": () => (/* binding */ REMOVE_SECTION),
+/* harmony export */   "RECEIVE_SECTION_ERRORS": () => (/* binding */ RECEIVE_SECTION_ERRORS),
+/* harmony export */   "fetchSections": () => (/* binding */ fetchSections),
+/* harmony export */   "createSection": () => (/* binding */ createSection),
+/* harmony export */   "updateSection": () => (/* binding */ updateSection),
+/* harmony export */   "deleteSection": () => (/* binding */ deleteSection)
+/* harmony export */ });
+/* harmony import */ var _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/section_api_util */ "./frontend/util/section_api_util.js");
+
+var RECEIVE_SECTIONS = "RECEIVE_SECTIONS";
+var RECEIVE_SECTION = "RECEIVE_SECTION";
+var REMOVE_SECTION = "REMOVE_SECTION";
+var RECEIVE_SECTION_ERRORS = "RECEIVE_SECTION_ERRORS";
+
+var receiveSections = function receiveSections(sections) {
+  return {
+    type: RECEIVE_SECTIONS,
+    sections: sections
+  };
+};
+
+var receiveSection = function receiveSection(section) {
+  return {
+    type: RECEIVE_SECTION,
+    section: section
+  };
+};
+
+var removeSection = function removeSection(sectionId) {
+  return {
+    type: REMOVE_SECTION,
+    sectionId: sectionId
+  };
+};
+
+var receiveErrors = function receiveErrors(errs) {
+  return {
+    type: RECEIVE_SECTION_ERRORS,
+    errors: {
+      errs: errs
+    }
+  };
+};
+
+var fetchSections = function fetchSections() {
+  return function (dispatch) {
+    return _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchSections().then(function (sections) {
+      return dispatch(receiveSections(sections));
+    });
+  };
+};
+var createSection = function createSection(section) {
+  return function (dispatch) {
+    return _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__.createSection(section).then(function (section) {
+      return dispatch(receiveSection(section));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+var updateSection = function updateSection(section) {
+  return function (dispatch) {
+    return _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__.updateSection(section).then(function (section) {
+      return dispatch(receiveSection(section));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+var deleteSection = function deleteSection(sectionId) {
+  return function (dispatch) {
+    return _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__.deleteSection(sectionId).then(function () {
+      return dispatch(removeSection(sectionId));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -18038,15 +18130,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _projects_projects_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects/projects_reducer */ "./frontend/reducers/projects/projects_reducer.js");
+/* harmony import */ var _sections_sections_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sections/sections_reducer */ "./frontend/reducers/sections/sections_reducer.js");
 
 
 
-var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
-  projects: _projects_projects_reducer__WEBPACK_IMPORTED_MODULE_1__.default
+  projects: _projects_projects_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
+  sections: _sections_sections_reducer__WEBPACK_IMPORTED_MODULE_2__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
 
@@ -18063,15 +18158,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 /* harmony import */ var _projects_project_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects/project_errors_reducer */ "./frontend/reducers/projects/project_errors_reducer.js");
+/* harmony import */ var _sections_section_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sections/section_errors_reducer */ "./frontend/reducers/sections/section_errors_reducer.js");
 
 
 
-var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+
+var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
   sessionErr: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
-  projectErr: _projects_project_errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default
+  projectErr: _projects_project_errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
+  sectionErr: _sections_section_errors_reducer__WEBPACK_IMPORTED_MODULE_2__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
 
@@ -18181,6 +18279,85 @@ var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
   errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_2__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/sections/section_errors_reducer.js":
+/*!**************************************************************!*\
+  !*** ./frontend/reducers/sections/section_errors_reducer.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/section_actions */ "./frontend/actions/section_actions.js");
+
+
+var sectionErrorsReducer = function sectionErrorsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SECTION_ERRORS:
+      return action.errors.errs;
+
+    case _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SECTION:
+      return [];
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sectionErrorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/sections/sections_reducer.js":
+/*!********************************************************!*\
+  !*** ./frontend/reducers/sections/sections_reducer.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/section_actions */ "./frontend/actions/section_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var sectionsReducer = function sectionsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SECTIONS:
+      return action.sections;
+
+    case _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SECTION:
+      var newSection = _defineProperty({}, action.section.id, action.section);
+
+      return Object.assign({}, state, newSection);
+
+    case _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_SECTION:
+      var newState = Object.assign({}, state);
+      delete newState[action.sectionId];
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sectionsReducer);
 
 /***/ }),
 
@@ -55102,16 +55279,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/project_api_util */ "./frontend/util/project_api_util.js");
-/* harmony import */ var _util_section_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/section_api_util */ "./frontend/util/section_api_util.js");
+/* harmony import */ var _actions_section_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/section_actions */ "./frontend/actions/section_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
-
- // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
-// import { signin, signout, signup } from './actions/session_actions';
+ // import { signin, signout, signup } from './actions/session_actions';
+// import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
+// import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
+// import {fetchSections, createSection, updateSection, deleteSection} from './util/section_api_util'
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -55144,11 +55321,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // window.createProject = createProject;
   // window.updateProject = updateProject;
   // window.deleteProject = deleteProject;
+  //all work
 
-  window.fetchSections = _util_section_api_util__WEBPACK_IMPORTED_MODULE_5__.fetchSections;
-  window.createSection = _util_section_api_util__WEBPACK_IMPORTED_MODULE_5__.createSection;
-  window.updateSection = _util_section_api_util__WEBPACK_IMPORTED_MODULE_5__.updateSection;
-  window.deleteSection = _util_section_api_util__WEBPACK_IMPORTED_MODULE_5__.deleteSection;
+  window.fetchSections = _actions_section_actions__WEBPACK_IMPORTED_MODULE_4__.fetchSections;
+  window.createSection = _actions_section_actions__WEBPACK_IMPORTED_MODULE_4__.createSection;
+  window.updateSection = _actions_section_actions__WEBPACK_IMPORTED_MODULE_4__.updateSection;
+  window.deleteSection = _actions_section_actions__WEBPACK_IMPORTED_MODULE_4__.deleteSection;
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__.default, {
     store: store
   }), root);
