@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SectionDisplayContainer from '../../sections/section_display_container';
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronDown, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -105,7 +107,8 @@ class ProjectShow extends React.Component {
           </div>
           <div className="signout-button" onClick={this.props.signout}>Sign Out</div>
         </hgroup>
-        <div className="home-project-container">
+        <div>
+          <SectionDisplayContainer project_id={this.props.project.id}/>
         </div>
       </div>
     )

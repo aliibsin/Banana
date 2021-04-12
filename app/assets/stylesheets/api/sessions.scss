@@ -2,8 +2,156 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* signup/signin form */
 
 
-.signin-form-box {
-  display: flex;
+.signin-form-container {
+  width: 50%;
+	margin: auto;
+	background-color: white;
+	box-shadow: 0 5px 20px 0 rgba(21, 27, 38, 8%);
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 80px;
+	max-width: 440px;
+	height: 680px;
+	align-items: center;
+
+	border-radius: 10px;
+
+	position: relative;
+}
+
+.signup-logo {
+	width: 100%;
+	height: 150px;
+}
+
+.signin-form {
+	display: flex;
+	flex-direction: column;
+
+	position: absolute;
+	left: 50%;
+	top: 60%;
+	transform: translate(-50%, -50%);
+}
+
+.signin-form label {
+	padding: 10px
+}
+
+.signin-form label input {
+	padding: 6px;
+	height: 18px;
+	width: 330px;
+	border-radius: 5px;
+	border: .5px solid #9ca6af;
+	
+}
+
+label h3 {
+	padding-bottom: 8px;
+	font-size: 12px;
+	color: #646f79;
+}
+
+.session-submit {
+	display: inline-flex;
+	align-items: center;
+	border: 1px solid;
+	border-radius: 6px;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	justify-content: center;
+	overflow: hidden;
+	background-color: #796eff;
+	color: white;
+	margin: 10px;
+	padding: 10px;
+	padding-top: 10px;
+
+	cursor: pointer;
+}
+
+.session-submit:hover {
+	background-color: #635AC7;
+	transition: all 250ms ease;
+}
+
+#change-session {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	top: 85%;
+	transform: translate(-50%, -50%);
+}
+
+#change-session p {
+	padding-left: 10px;
+}
+
+.change-session p:hover {
+	background-color: #635AC7;
+	transition: all 250ms ease;
+}
+
+.signup-logo-container {
+	width: 150px;
+	position: absolute;
+	padding: 2em;
+	left: 50%;
+	top: 10%;
+	transform: translate(-50%, -50%);
+}
+
+.signup-logo-container img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.demo-login {
+	width: 100%;
+	height: 50px;
+	position: absolute;
+	left: 50%;
+	top: 22%;
+	transform: translate(-50%, -50%);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #796eff;
+	color: white;
+	cursor: pointer;
+}
+
+.demo-login:hover {
+	transition: all 250ms ease;
+	background-color: #4e40e7;
+}
+
+.err-messages {
+	width: 100%;
+	height: 50px;
+	display: flex;
+
+	position: absolute;
+	left: 50%;
+	top: 35%;
+	transform: translate(-50%, -50%);
+}
+
+.err-list {
+	margin: auto;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+
+	color: red;
+	font-size: 16;
 }

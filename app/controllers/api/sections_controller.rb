@@ -11,6 +11,14 @@ class Api::SectionsController < ApplicationController
     end
   end
 
+  # def projectSections
+  #   sections = {}
+  #   current_user.projects.each do |project|
+  #     @sections[project.id] = project.sections
+  #   end
+  #   return sections
+  # end
+
   def index 
     @sections = {}
     current_user.projects.each do |project|
