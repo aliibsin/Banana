@@ -16786,12 +16786,6 @@ var App = function App() {
     exact: true,
     path: "/home/:projectId/list",
     component: _projects_show_project_show_container__WEBPACK_IMPORTED_MODULE_5__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
-    path: "linked-in",
-    render: function render() {
-      window.location.href = "www.linkedin.com/in/ali-ibsin-1b9732132";
-      return null;
-    }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Redirect, {
     exact: true,
     from: "/*",

@@ -20,13 +20,6 @@ const App = () => {
         <ProtectedRoute exact path="/home" component={HomeContainer} />
         <ProtectedRoute exact path="/home/:projectId/list" component={ProjectShowContainer}/>
 
-        <Route 
-          path="linked-in" 
-          render={() => {
-            window.location.href = "www.linkedin.com/in/ali-ibsin-1b9732132";
-            return null;
-          }} 
-        />
         <Redirect exact from="/*" to="/" />
         
         
