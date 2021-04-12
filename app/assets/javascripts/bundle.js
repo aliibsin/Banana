@@ -18426,6 +18426,53 @@ var ProtectedRoute = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter
 
 /***/ }),
 
+/***/ "./frontend/util/section_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/section_api_util.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchSections": () => (/* binding */ fetchSections),
+/* harmony export */   "createSection": () => (/* binding */ createSection),
+/* harmony export */   "updateSection": () => (/* binding */ updateSection),
+/* harmony export */   "deleteSection": () => (/* binding */ deleteSection)
+/* harmony export */ });
+var fetchSections = function fetchSections() {
+  return $.ajax({
+    method: "GET",
+    url: "api/sections"
+  });
+};
+var createSection = function createSection(section) {
+  return $.ajax({
+    method: "POST",
+    url: "api/sections",
+    data: {
+      section: section
+    }
+  });
+};
+var updateSection = function updateSection(section) {
+  return $.ajax({
+    method: "PATCH",
+    url: "api/sections/".concat(section.id),
+    data: {
+      section: section
+    }
+  });
+};
+var deleteSection = function deleteSection(sectionId) {
+  return $.ajax({
+    method: "DELETE",
+    url: "api/sections/".concat(sectionId)
+  });
+};
+
+/***/ }),
+
 /***/ "./frontend/util/session_api_util.js":
 /*!*******************************************!*\
   !*** ./frontend/util/session_api_util.js ***!
@@ -55042,6 +55089,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/project_api_util */ "./frontend/util/project_api_util.js");
+/* harmony import */ var _util_section_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/section_api_util */ "./frontend/util/section_api_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -55050,6 +55098,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
  // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
 // import { signin, signout, signup } from './actions/session_actions';
+
 
 document.addEventListener("DOMContentLoaded", function () {
   var root = document.getElementById("root");
@@ -55075,12 +55124,17 @@ document.addEventListener("DOMContentLoaded", function () {
   // window.signup = signup;
   // window.signin = signin;
   // window.signout = signout;
+  //all work
+  // window.fetchProjects = fetchProjects;
+  // window.fetchProject = fetchProject;
+  // window.createProject = createProject;
+  // window.updateProject = updateProject;
+  // window.deleteProject = deleteProject;
 
-  window.fetchProjects = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.fetchProjects;
-  window.fetchProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.fetchProject;
-  window.createProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.createProject;
-  window.updateProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.updateProject;
-  window.deleteProject = _util_project_api_util__WEBPACK_IMPORTED_MODULE_4__.deleteProject;
+  window.fetchSections = _util_section_api_util__WEBPACK_IMPORTED_MODULE_5__.fetchSections;
+  window.createSection = _util_section_api_util__WEBPACK_IMPORTED_MODULE_5__.createSection;
+  window.updateSection = _util_section_api_util__WEBPACK_IMPORTED_MODULE_5__.updateSection;
+  window.deleteSection = _util_section_api_util__WEBPACK_IMPORTED_MODULE_5__.deleteSection;
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__.default, {
     store: store
   }), root);

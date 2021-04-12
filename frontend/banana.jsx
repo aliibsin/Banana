@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
 // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
 // import { signin, signout, signup } from './actions/session_actions';
+import {fetchSections, createSection, updateSection, deleteSection} from './util/section_api_util'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -13,12 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const preloadedState = {
       entities: {
         users: { [window.currentUser.id]: window.currentUser },
-        projects: window.currentUserProjects
+        projects: window.currentUserProjects,
       },
       session: { id: window.currentUser.id }
   };
     store = configureStore(preloadedState);
     delete window.currentUser;
+    
   } else {
     store = configureStore();
   }
@@ -28,12 +30,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.signin = signin;
   // window.signout = signout;
 
-  
-  window.fetchProjects = fetchProjects;
-  window.fetchProject = fetchProject;
-  window.createProject = createProject;
-  window.updateProject = updateProject;
-  window.deleteProject = deleteProject;
+  //all work
+  // window.fetchProjects = fetchProjects;
+  // window.fetchProject = fetchProject;
+  // window.createProject = createProject;
+  // window.updateProject = updateProject;
+  // window.deleteProject = deleteProject;
+
+  window.fetchSections = fetchSections;
+  window.createSection = createSection;
+  window.updateSection = updateSection;
+  window.deleteSection = deleteSection;
   
   
 

@@ -5,22 +5,25 @@ class Api::SectionsController < ApplicationController
   def create
     @section = Section.new(section_params)
     if @section.save
-      render :index
+      render :show
     else
       render json: @section.errors.full_messages, status: 422
     end
   end
 
   def index 
-    @sections = Project.find_by(id: params[:project_id]).sections
-    render: index
+    @sections = {}
+    current_user.projects.each do |project|
+      @sections[project.id] = project.sections
+    end
+    render json: @sections
   end
 
   def update
     @section = Section.find_by(id: params[:id])
 
     if @section.update(section_params)
-      render :index
+      render :show
     else
       render json: @section.errors.full_messages, status: 422
     end
@@ -29,7 +32,7 @@ class Api::SectionsController < ApplicationController
   def destroy 
     @section = Section.find_by(id: params[:id])
     @section.destroy
-    render :index
+    render :show
   end
 
   private
