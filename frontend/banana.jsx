@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       entities: {
         users: { [window.currentUser.id]: window.currentUser },
         projects: window.currentUserProjects,
-        sections: fetchSections()
+        sections: window.currentUserSections
       },
       session: { id: window.currentUser.id }
   };

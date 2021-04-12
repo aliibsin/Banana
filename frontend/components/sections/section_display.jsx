@@ -12,10 +12,6 @@ class SectionDisplay extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchSections();
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     const section = Object.assign({}, this.state);
@@ -23,37 +19,29 @@ class SectionDisplay extends React.Component {
   }
 
   render() {
-   
-    let sections = this.props.state.entities.sections[this.props.project_id];
-    
-    if (sections) {
-      return (
-        <div className="section-container">
-          <ul>
-            {
-              sections.map(section => (
-                <SectionDisplayItem 
-                  key={section.id}
-                  section={section}
-                  updateSection={this.props.updateSection}
-                  deleteSection={this.props.deleteSection}
-                />
-              ))
-            }
-            <div>
-              <form onSubmit={this.handleSubmit}>
-                <input type="submit" value='Add Section' />
-              </form>
+
+    return (
+      <div className="section-container">
+        <ul>
+          {
+            this.props.sections.map(section => (
+              <SectionDisplayItem 
+                key={section.id}
+                section={section}
+                updateSection={this.props.updateSection}
+                deleteSection={this.props.deleteSection}
+              />
+            ))
+          }
+          <div>
+            <div onSubmit={this.handleSubmit}>
+              <input type="submit" value='Add Section' />
             </div>
-          </ul>
-          
-        </div>
+          </div>
+        </ul>
         
-      ) 
-    } else {
-      return null;
-    }
-    
+      </div>
+    )         
   }
 }
 

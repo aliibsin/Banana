@@ -17885,11 +17885,6 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(SectionDisplay, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchSections();
-    }
-  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
@@ -17901,27 +17896,21 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var sections = this.props.state.entities.sections[this.props.project_id];
-
-      if (sections) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "section-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, sections.map(function (section) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_section_display_index__WEBPACK_IMPORTED_MODULE_1__.default, {
-            key: section.id,
-            section: section,
-            updateSection: _this2.props.updateSection,
-            deleteSection: _this2.props.deleteSection
-          });
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-          onSubmit: this.handleSubmit
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-          type: "submit",
-          value: "Add Section"
-        })))));
-      } else {
-        return null;
-      }
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "section-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.sections.map(function (section) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_section_display_index__WEBPACK_IMPORTED_MODULE_1__.default, {
+          key: section.id,
+          section: section,
+          updateSection: _this2.props.updateSection,
+          deleteSection: _this2.props.deleteSection
+        });
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "submit",
+        value: "Add Section"
+      })))));
     }
   }]);
 
@@ -17953,16 +17942,13 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var project_id = ownProps.project_id;
   return {
-    state: state,
+    sections: Object.values(state.entities.sections),
     project_id: project_id
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchSections: function fetchSections() {
-      return dispatch((0,_actions_section_actions__WEBPACK_IMPORTED_MODULE_2__.fetchSections)());
-    },
     createSection: function createSection(section) {
       return dispatch((0,_actions_section_actions__WEBPACK_IMPORTED_MODULE_2__.createSection)(section));
     },
@@ -55478,7 +55464,7 @@ document.addEventListener("DOMContentLoaded", function () {
       entities: {
         users: _defineProperty({}, window.currentUser.id, window.currentUser),
         projects: window.currentUserProjects,
-        sections: (0,_actions_section_actions__WEBPACK_IMPORTED_MODULE_4__.fetchSections)()
+        sections: window.currentUserSections
       },
       session: {
         id: window.currentUser.id

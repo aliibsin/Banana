@@ -8,8 +8,12 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :projects,
-  foreign_key: :creator_id,
-  class_name: :Project
+    foreign_key: :creator_id,
+    class_name: :Project
+
+  has_many :sections,
+    through: :projects,
+    source: :sections
 
 
   def self.find_by_credentials(email, password)
