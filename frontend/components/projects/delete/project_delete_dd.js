@@ -1,5 +1,6 @@
 
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -60,11 +61,13 @@ class Dropdown extends React.Component {
         </div>
         { this.state.open && (
           <ul className="dd-list">
-            <li className="dd-list-item" onClick={() => this.deleteProj()}>
-              <div>
-                Delete Project
-              </div>
-            </li>
+            <Link to="/home">
+              <li className="dd-list-item" onClick={() => this.deleteProj()}>
+                <div>
+                  Delete Project
+                </div>
+              </li>
+            </Link>
           </ul>
         )}
       </div>

@@ -70,11 +70,6 @@ class ProjectShow extends React.Component {
           </div>
           <div className="header-project-info">
             <div className="project-name-container">
-              {/* <Link to="/home">
-                <div className="delete-project-button" onClick={() => this.deleteProj()}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </div>
-              </Link> */}
               <Dropdown deleteProject={this.props.deleteProject } projectId={this.props.projectId} />
               <div className="show-project-name-cont">
                 <input
