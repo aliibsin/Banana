@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react';
-import {useSpring, animated} from 'react-spring';
+import {useSpring, animated} from 'react-spring/renderprops.cjs';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTimes, faPlus } from '@fortawesome/free-solid-svg-icons';
 
