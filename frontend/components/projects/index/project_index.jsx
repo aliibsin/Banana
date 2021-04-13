@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ProjectIndexItem from './project_index_item';
 import ProjectCreateModalContainer from '../create/project_create_modal';
 
