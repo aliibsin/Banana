@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react';
+import React from 'react';
 
 import ProjectDeleteModal from './project_delete_modal';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { fetchProject, deleteProject, updateProject } from '../../../actions/project_actions'
-import { signout } from '../../../actions/session_actions';
+import { fetchProject, deleteProject, updateProject } from '../../../../actions/project_actions'
+import { signout } from '../../../../actions/session_actions';
 import ProjectShow from './project_show';
 
 const mapStateToProps = (state, ownProps) => {

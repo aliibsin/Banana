@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SectionDisplayContainer from '../../sections/section_display_container';
-import Dropdown from '../delete/project_delete_dd.js'
+import SectionDisplayContainer from '../../../sections/section_display_container';
+import Dropdown from '../../delete/project_delete_dd'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronDown, faTimes } from '@fortawesome/free-solid-svg-icons';
