@@ -56,6 +56,7 @@ class ProjectShow extends React.Component {
   render() {
     const { description: stateDescription } = this.state;
     const { name: stateName } = this.state;
+    
     return (
       <div className="home-page-full">
         <hgroup className="header-group">

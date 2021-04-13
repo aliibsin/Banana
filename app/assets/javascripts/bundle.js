@@ -17809,7 +17809,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch((0,_actions_project_actions__WEBPACK_IMPORTED_MODULE_1__.updateProject)(project));
     },
     signout: function signout() {
-      return dispatch(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signout);
+      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signout)());
     }
   };
 };
@@ -17907,6 +17907,11 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(SectionDisplay, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchSections();
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
@@ -17918,7 +17923,6 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      // console.log(this.props.sections)
       var filteredSections = this.props.sections.filter(function (section) {
         return section.project_id === _this2.props.project_id;
       });
@@ -17988,6 +17992,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    fetchSections: function fetchSections() {
+      return dispatch((0,_actions_section_actions__WEBPACK_IMPORTED_MODULE_2__.fetchSections)());
+    },
     createSection: function createSection(section) {
       return dispatch((0,_actions_section_actions__WEBPACK_IMPORTED_MODULE_2__.createSection)(section));
     },

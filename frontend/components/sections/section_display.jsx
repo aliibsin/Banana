@@ -12,6 +12,10 @@ class SectionDisplay extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchSections();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const section = Object.assign({}, this.state);
@@ -19,7 +23,6 @@ class SectionDisplay extends React.Component {
   }
 
   render() {
-    // console.log(this.props.sections)
     let filteredSections = this.props.sections.filter(section => section.project_id === this.props.project_id);
     return (
       <div className="section-container">

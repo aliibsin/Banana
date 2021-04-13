@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
     fetchProject: projectId => dispatch(fetchProject(projectId)),
     deleteProject: projectId => dispatch(deleteProject(projectId)),
     updateProject: project => dispatch(updateProject(project)),
-    signout: () => dispatch(signout)
+    signout: () => dispatch(signout())
   });
 };
 

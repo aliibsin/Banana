@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import SectionDisplay from './section_display';
-import { 
+import {
+  fetchSections,
   createSection, 
   updateSection, 
   deleteSection
@@ -18,6 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
+    fetchSections: () => dispatch(fetchSections()),
     createSection: section => dispatch(createSection(section)),
     updateSection: section => dispatch(updateSection(section)),
     deleteSection: sectionId => dispatch(deleteSection(sectionId))

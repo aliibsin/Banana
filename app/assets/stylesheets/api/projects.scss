@@ -254,7 +254,7 @@
 .show-project-name:focus, .show-project-description:focus {
 	transition: all 500ms ease;
 	background-color: rgb(234, 255, 230);
-	outline: 1px solid wheat;
+	border: 1px solid wheat;
 }
 
 .show-project-name:hover, .show-project-description:hover {
