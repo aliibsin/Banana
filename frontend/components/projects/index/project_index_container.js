@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import {fetchProjects, createProject} from '../../../actions/project_actions'
+import {fetchProjects} from '../../../actions/project_actions'
 import ProjectIndex from './project_index';
 
 const mapStateToProps = (state) => {

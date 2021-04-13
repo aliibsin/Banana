@@ -17201,7 +17201,7 @@ var CreateProjectForm = /*#__PURE__*/function (_React$Component) {
         if (_this3.props.errors.length === 0) {
           _this3.props.setShowModal(false);
         }
-      }, 100);
+      }, 500);
     }
   }, {
     key: "renderErrors",
@@ -17305,10 +17305,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-spring */ "./node_modules/react-spring/web.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var _project_create_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project_create_form_container */ "./frontend/components/projects/create/project_create_form_container.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _project_create_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_create_form_container */ "./frontend/components/projects/create/project_create_form_container.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -17321,7 +17320,7 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-
+ // import {useSpring, animated} from 'react-spring';
 
 
 
@@ -17344,22 +17343,19 @@ var ProjectCreateModal = function ProjectCreateModal(props) {
     props.errors.projectErr = [];
   };
 
-  var modalRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-  var animation = (0,react_spring__WEBPACK_IMPORTED_MODULE_1__.useSpring)({
-    config: {
-      duration: 500
-    },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? "translateY(0%)" : "translateY(-100%)"
-  });
+  var modalRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(); // const animation = useSpring({
+  //   config: {
+  //     duration: 500
+  //   },
+  //   opacity: showModal ? 1 : 0,
+  //   transform: showModal ? `translateY(0%)` : `translateY(-100%)`
+  // });
 
   var modalContents = function modalContents() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "create-project-modal-background",
       ref: modalRef,
       onClick: closeModal
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_spring__WEBPACK_IMPORTED_MODULE_1__.animated.div, {
-      style: animation
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "create-project-modal"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -17367,12 +17363,12 @@ var ProjectCreateModal = function ProjectCreateModal(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "close-icon",
       onClick: openModal
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
-      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faTimes
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_project_create_form_container__WEBPACK_IMPORTED_MODULE_3__.default, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faTimes
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_project_create_form_container__WEBPACK_IMPORTED_MODULE_2__.default, {
       showModal: showModal,
       setShowModal: setShowModal
-    }))));
+    })));
   };
 
   var modalButton = function modalButton() {
@@ -17383,8 +17379,8 @@ var ProjectCreateModal = function ProjectCreateModal(props) {
       className: "project-individual"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "project-icon-add"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
-      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faPlus
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPlus
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "home-newproject-name"
     }, "New Project")));
