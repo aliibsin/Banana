@@ -34,7 +34,7 @@ class SectionDisplayItem extends React.Component {
     return (
       
       <li className="indiv-section-cont">
-        <div>
+        <div >
           <div id="del-sec-but-cont">
             <div className="delete-section-button" onClick={() => this.deleteSection()}>
               <FontAwesomeIcon icon={faTimes} />

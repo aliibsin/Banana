@@ -46,14 +46,14 @@
 }
 
 .indiv-section-cont {
-  
-  height: 40px;
+  height: 50px;
   width: 100%;
   border-bottom: 1px solid rgb(185, 185, 185);
+  display: flex;
+  align-items: center;
 }
 
 .indiv-section-cont > div {
-  height: 100%;
   width: 100%;
   display: flex;
 }
