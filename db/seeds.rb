@@ -15,4 +15,6 @@ demoUser = User.create!(username: "BrownBanana", email:"brownBanana@banana.com",
 
 
 
-
+testProject = Project.create!(name: "TestProject", description: "I am a test project", creator_id: 1)
+testProject = Project.create!(name: "TestProject2", description: "I am another test project", creator_id: 1)
+testProject = Project.create!(name: "TestProject3", description: "I am the end of projects", creator_id: 1)

@@ -3,6 +3,10 @@
   	window.currentUser = <%= render("api/users/user.json.jbuilder",
   		user: current_user).html_safe %>
   </script>
+  <script id="bootstrap-user-projects" type="text/javascript">
+  	window.currentUserProjects = <%= render("api/projects/projects.json.jbuilder",
+  		projects: current_user.projects).html_safe %>
+  </script>
 <% end %>
 
 <div id="root">Something broke</div>
