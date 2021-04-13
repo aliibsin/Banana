@@ -20,6 +20,11 @@ const App = () => {
         <ProtectedRoute exact path="/home" component={HomeContainer} />
         <ProtectedRoute exact path="/home/:projectId/list" component={ProjectShowContainer}/>
 
+        <Redirect exact from="/signin/*" to="/signin" />
+        <Redirect exact from="/signup/*" to="/signup" />
+        <Redirect exact from="/home/:projectId/list/*" to="/home/:projectId/list" />
+        <Redirect exact from="/home/:projectId/*" to="/home/:projectId/list" />
+        <Redirect exact from="/home/*" to="/home" />
         <Redirect exact from="/*" to="/" />
         
         

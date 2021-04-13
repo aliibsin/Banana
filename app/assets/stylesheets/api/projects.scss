@@ -14,7 +14,7 @@
 	margin: 0 auto;
 	padding: 0 150px;
 	overflow: hidden;
-	border-bottom: 1px solid whitesmoke;
+	border-bottom: 1px solid rgb(248, 255, 251);
 	box-shadow: 0 5px 20px 0 rgba(21, 27, 38, 8%);
 	position: sticky;
 	top: 0;
@@ -236,6 +236,8 @@
 	font-weight: 600;
 	outline: none;
 	width: 300px;
+	border-radius: 6px;
+	padding-left: 5px;
 }
 
 .show-project-description {
@@ -245,22 +247,23 @@
 	color: rgb(83, 83, 83) ;
 	outline: none;
 	width: 300px;
+	border-radius: 6px;
+	padding-left: 5px;
 }
 
 .show-project-name:focus, .show-project-description:focus {
 	transition: all 500ms ease;
-	background-color: rgb(110, 253, 165);
+	background-color: rgb(234, 255, 230);
 	outline: 1px solid wheat;
 }
 
 .show-project-name:hover, .show-project-description:hover {
 	transition: all 500ms ease;
-	background-color: rgb(110, 253, 165);
+	background-color: rgb(234, 255, 230);
 }
 
-
 .delete-project-button {
-	font-size: 12px;
+	font-size: 14px;
 	color: rgb(112, 112, 112);
 	cursor: pointer;
 	position: absolute;
@@ -270,5 +273,6 @@
 
 .delete-project-button:hover {
 	transition: all 250ms ease;
-	color: rgb(110, 253, 165);
+	color: rgb(255, 103, 82);
 }
+

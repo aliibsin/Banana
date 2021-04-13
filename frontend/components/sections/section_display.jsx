@@ -1,5 +1,5 @@
 import React from 'react';
-import SectionDisplayItem from './section_display_index'
+import SectionDisplayItem from './section_display_item'
 
 class SectionDisplay extends React.Component {
   constructor(props) {
@@ -23,7 +23,21 @@ class SectionDisplay extends React.Component {
     let filteredSections = this.props.sections.filter(section => section.project_id === this.props.project_id);
     return (
       <div className="section-container">
-        <ul>
+        <div className="task-table-header">
+          <div className="tth-task-name">
+            <h4>Task Name</h4>
+          </div>
+          <div className="tth-task-status">
+            <div className="tth-task-due">
+              <h4 >Due Date</h4>
+            </div>
+            <div className="tth-task-priority">
+              <h4 >Priority</h4>
+            </div>
+          </div>
+        </div>
+
+        <ul className="sections-list">
           {
             filteredSections.map(section => (
               <SectionDisplayItem 
@@ -36,7 +50,7 @@ class SectionDisplay extends React.Component {
           }
           <div>
             <form onSubmit={this.handleSubmit}>
-              <input type="submit" value='Add Section' />
+              <input className="section-create" type="submit" value='Add Section' />
             </form>
           </div>
         </ul>
