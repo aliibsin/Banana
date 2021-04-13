@@ -13874,7 +13874,7 @@ var CreateProjectForm = /*#__PURE__*/function (_React$Component) {
         if (_this3.props.errors.length === 0) {
           _this3.props.setShowModal(false);
         }
-      }, 100);
+      }, 500);
     }
   }, {
     key: "renderErrors",

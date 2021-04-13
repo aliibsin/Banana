@@ -28,7 +28,7 @@ class CreateProjectForm extends React.Component {
       if (this.props.errors.length === 0) {
         this.props.setShowModal(false)
       }
-    }, 100)
+    }, 500)
   }
 
   renderErrors() {
