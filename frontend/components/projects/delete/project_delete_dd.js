@@ -24,8 +24,8 @@ class Dropdown extends React.Component {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
-  handleClickOutside(event) {
-    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+  handleClickOutside(e) {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(e.target)) {
       this.setState({
         open: false,
       });

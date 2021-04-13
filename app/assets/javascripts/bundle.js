@@ -17494,8 +17494,8 @@ var Dropdown = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleClickOutside",
-    value: function handleClickOutside(event) {
-      if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+    value: function handleClickOutside(e) {
+      if (this.wrapperRef && !this.wrapperRef.current.contains(e.target)) {
         this.setState({
           open: false
         });
