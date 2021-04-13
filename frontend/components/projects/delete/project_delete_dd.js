@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+
+import ProjectDeleteModal from './project_delete_modal';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -36,11 +37,6 @@ class Dropdown extends React.Component {
     this.setState({open: !this.state.open})
   };
 
-
-  deleteProj() {
-    this.props.deleteProject(this.props.projectId);
-  }
-
   render() {
     
     return (
@@ -61,13 +57,10 @@ class Dropdown extends React.Component {
         </div>
         { this.state.open && (
           <ul className="dd-list">
-            <Link to="/home">
-              <li className="dd-list-item" onClick={() => this.deleteProj()}>
-                <div>
-                  Delete Project
-                </div>
-              </li>
-            </Link>
+            <ProjectDeleteModal 
+              deleteProject={this.props.deleteProject} 
+              projectId={this.props.projectId}
+            />
           </ul>
         )}
       </div>
