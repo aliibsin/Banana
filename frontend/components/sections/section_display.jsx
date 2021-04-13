@@ -34,9 +34,9 @@ class SectionDisplay extends React.Component {
             ))
           }
           <div>
-            <div onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
               <input type="submit" value='Add Section' />
-            </div>
+            </form>
           </div>
         </ul>
         
