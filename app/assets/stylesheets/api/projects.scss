@@ -1,3 +1,304 @@
 // Place all the styles related to the Api::Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* Home page */
+
+.header-group {
+	display: flex;
+	justify-content: space-between;
+	background-color: white;
+	height: 8vh;
+	align-items: center;
+	margin: 0 auto;
+	padding: 0 150px;
+	overflow: hidden;
+	border-bottom: 1px solid rgb(248, 255, 251);
+	box-shadow: 0 5px 20px 0 rgba(21, 27, 38, 8%);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+	
+.header-group h1 {
+	font-size: 20px;
+	font-weight: 800;
+}
+
+.header-name {
+	padding: 20px
+}
+
+.signout-button {
+	padding: 9px;
+	background-color: #796eff;
+	border-color: #796eff;
+	color: white;
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.signout-button:hover {
+	transition: all 250ms ease;
+	background-color: #4e40e7;
+	border-color: #4e40e7;
+}
+
+.home-project-container {
+	display: flex;
+	flex-direction: column;
+	padding-top: 40px;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.home-project-header {
+	display: flex;
+	flex-direction: column;
+}
+
+.home-project-header h2 {
+	font-size: 20px;
+}
+.home-project-line {
+	margin-top: 20px;
+}
+
+.home-project-line hr {
+	width: 100%;
+	height: 1px;
+	color:rgb(226, 188, 188);
+	background-color:rgb(226, 188, 188);
+}
+
+.project-list-container {
+	padding-top: 20px;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.project-list-element {
+	cursor: pointer;
+	padding: 20px;
+	border-radius: 10px;
+	height: 180px;
+}
+
+.project-list-element:hover {
+	background-color: rgb(204, 204, 204);
+	transition: all 500ms ease;
+}
+
+.project-list-element:hover .project-icon,  
+.project-list-element:hover .project-icon-add {
+	transition: all 500ms ease;
+	border: 1px solid rgb(110, 253, 165);
+	background-color: rgb(110, 253, 165);
+	font-size: 90px;
+	padding: 10px;
+	padding-bottom: 15px;
+	color:black;
+}
+
+
+.project-individual {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 120px;
+}
+
+
+.project-icon, .project-icon-add {
+	width: 100%;
+	height: 120px;
+	font-size: 70px;
+	border: 1px solid rgb(110, 189, 253);
+	background-color: rgb(110, 189, 253);
+	border-radius: 10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+
+.project-icon-add {
+	border: 1px solid rgb(19, 54, 252);
+	background-color: rgb(19, 54, 252);
+}
+
+.home-project-name {
+	padding-top: 10px;
+	color: black;
+	word-wrap: break-word;
+}
+
+.home-newproject-name {
+	padding-top: 10px;
+	color:rgb(25, 0, 255)
+}
+
+.project-list-element:hover .home-newproject-name {
+	transition: all 250ms ease;
+	color: rgb(29, 3, 124)
+}
+
+/* Create project modal */
+
+.create-project-modal-background {
+	transition: all 500ms ease;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2000;
+}
+
+.create-project-modal {
+	width: 400px;
+	height: 500px;
+	background-color: white;
+	color: black;
+	position: relative;
+	z-index: 10;
+	border-radius: 10px;
+}
+
+.close-icon-container {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.close-icon {
+	font-size: 30px;
+	cursor: pointer;
+	margin: 20px;
+}
+
+.close-icon:hover {
+	transition: all 250ms ease;
+	color: rgb(110, 253, 165);
+}
+
+.signin-form-box  {
+	display: flex;
+	justify-content: center;
+}
+
+.create-project-form-title {
+	font-size: 30px;
+}
+
+
+/* Project Show */
+
+.back-button-container {
+	position: absolute;
+	left: 30px;
+}
+
+.back-button {
+	color: black;
+	cursor: pointer;
+	font-size: 25px;
+}
+
+.back-button:hover {
+	transition: all 250ms ease;
+	color: rgb(110, 253, 165);
+	font-size: 30px;
+}
+
+.project-name-container {
+	display: flex;
+	margin-bottom: 1px;
+	margin-left: 5px;
+}
+
+.show-project-desc-cont {
+	margin-left: 5px;
+}
+
+.show-project-name-cont {
+	height: 32px;
+	width: 100%;
+}
+
+.show-project-name {
+	border: none;
+	font-size: 20px;
+	height: 24px;
+	font-weight: 600;
+	outline: none;
+	width: 300px;
+	border-radius: 6px;
+	padding-left: 5px;
+}
+
+.show-project-description {
+	border: none;
+	height: 16px;
+	font-size: 14px;
+	color: rgb(83, 83, 83) ;
+	outline: none;
+	width: 300px;
+	border-radius: 6px;
+	padding-left: 5px;
+}
+
+.show-project-name:focus, .show-project-description:focus {
+	transition: all 500ms ease;
+	background-color: rgb(234, 255, 230);
+	border: 1px solid wheat;
+}
+
+.show-project-name:hover, .show-project-description:hover {
+	transition: all 500ms ease;
+	background-color: rgb(234, 255, 230);
+}
+
+//project delete
+
+.delete-project-button {
+	font-size: 14px;
+	color: rgb(112, 112, 112);
+	cursor: pointer;
+	position: absolute;
+	top: 17px;
+	left: 135px;
+}
+
+.delete-project-button:hover {
+	transition: all 250ms ease;
+	color: rgb(255, 103, 82);
+}
+
+.dd-list {
+	position: absolute;
+	top: 35px;
+	left: 55px;
+	padding: 5px;
+	cursor: pointer;
+	border: .5px solid rgb(255, 103, 82);
+	background-color: rgb(255, 215, 211);
+	border-radius: 4px;
+}
+
+
+
+.dd-list-item > div {
+	font-size: 14px;
+	color: red
+}
+

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SectionDisplayContainer from '../../sections/section_display_container';
+import Dropdown from '../delete/project_delete_dd.js'
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronDown, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -52,9 +55,9 @@ class ProjectShow extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     const { description: stateDescription } = this.state;
     const { name: stateName } = this.state;
+    
     return (
       <div className="home-page-full">
         <hgroup className="header-group">
@@ -67,11 +70,7 @@ class ProjectShow extends React.Component {
           </div>
           <div className="header-project-info">
             <div className="project-name-container">
-              <Link to="/home">
-                <div className="delete-project-button" onClick={() => this.deleteProj()}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </div>
-              </Link>
+              <Dropdown deleteProject={this.props.deleteProject } projectId={this.props.projectId} />
               <div className="show-project-name-cont">
                 <input
                   type="text"
@@ -106,7 +105,8 @@ class ProjectShow extends React.Component {
           </div>
           <div className="signout-button" onClick={this.props.signout}>Sign Out</div>
         </hgroup>
-        <div className="home-project-container">
+        <div className="section-disp-cont">
+          <SectionDisplayContainer project_id={this.props.project.id}/>
         </div>
       </div>
     )
