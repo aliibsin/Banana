@@ -17732,7 +17732,9 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signout-button",
         onClick: this.props.signout
-      }, "Sign Out")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_sections_section_display_container__WEBPACK_IMPORTED_MODULE_1__.default, {
+      }, "Sign Out")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "section-disp-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_sections_section_display_container__WEBPACK_IMPORTED_MODULE_1__.default, {
         project_id: this.props.project.id
       })));
     }
@@ -17896,9 +17898,13 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      // console.log(this.props.sections)
+      var filteredSections = this.props.sections.filter(function (section) {
+        return section.project_id === _this2.props.project_id;
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "section-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.sections.map(function (section) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, filteredSections.map(function (section) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_section_display_index__WEBPACK_IMPORTED_MODULE_1__.default, {
           key: section.id,
           section: section,

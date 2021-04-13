@@ -19,12 +19,13 @@ class SectionDisplay extends React.Component {
   }
 
   render() {
-
+    // console.log(this.props.sections)
+    let filteredSections = this.props.sections.filter(section => section.project_id === this.props.project_id);
     return (
       <div className="section-container">
         <ul>
           {
-            this.props.sections.map(section => (
+            filteredSections.map(section => (
               <SectionDisplayItem 
                 key={section.id}
                 section={section}

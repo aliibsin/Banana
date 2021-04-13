@@ -107,7 +107,7 @@ class ProjectShow extends React.Component {
           </div>
           <div className="signout-button" onClick={this.props.signout}>Sign Out</div>
         </hgroup>
-        <div>
+        <div className="section-disp-cont">
           <SectionDisplayContainer project_id={this.props.project.id}/>
         </div>
       </div>
