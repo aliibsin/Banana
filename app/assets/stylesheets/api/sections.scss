@@ -90,6 +90,7 @@
 }
 
 .section-create:hover {
+  transition: all 250ms ease;
   color: rgb(102, 189, 3);
 }
 
@@ -110,6 +111,7 @@
 .delete-section-button:hover {
 	transition: all 250ms ease;
 	color: rgb(255, 103, 82);
+  font-size: 20px;
 }
 
 .indiv-section-cont:hover .delete-section-button {

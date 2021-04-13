@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionDisplayContainer from '../../sections/section_display_container';
+import Dropdown from '../delete/project_delete_dd.js'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronDown, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -69,11 +70,12 @@ class ProjectShow extends React.Component {
           </div>
           <div className="header-project-info">
             <div className="project-name-container">
-              <Link to="/home">
+              {/* <Link to="/home">
                 <div className="delete-project-button" onClick={() => this.deleteProj()}>
                   <FontAwesomeIcon icon={faTimes} />
                 </div>
-              </Link>
+              </Link> */}
+              <Dropdown deleteProject={this.props.deleteProject } projectId={this.props.projectId} />
               <div className="show-project-name-cont">
                 <input
                   type="text"

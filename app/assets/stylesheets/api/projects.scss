@@ -205,7 +205,7 @@
 
 .back-button-container {
 	position: absolute;
-	left: 50px;
+	left: 30px;
 }
 
 .back-button {
@@ -217,11 +217,17 @@
 .back-button:hover {
 	transition: all 250ms ease;
 	color: rgb(110, 253, 165);
+	font-size: 30px;
 }
 
 .project-name-container {
 	display: flex;
 	margin-bottom: 1px;
+	margin-left: 5px;
+}
+
+.show-project-desc-cont {
+	margin-left: 5px;
 }
 
 .show-project-name-cont {
@@ -262,17 +268,37 @@
 	background-color: rgb(234, 255, 230);
 }
 
+//project delete
+
 .delete-project-button {
 	font-size: 14px;
 	color: rgb(112, 112, 112);
 	cursor: pointer;
 	position: absolute;
-	top: 10px;
+	top: 17px;
 	left: 135px;
 }
 
 .delete-project-button:hover {
 	transition: all 250ms ease;
 	color: rgb(255, 103, 82);
+}
+
+.dd-list {
+	position: absolute;
+	top: 35px;
+	left: 55px;
+	padding: 5px;
+	cursor: pointer;
+	border: .5px solid rgb(255, 103, 82);
+	background-color: rgb(255, 215, 211);
+	border-radius: 4px;
+}
+
+
+
+.dd-list-item > div {
+	font-size: 14px;
+	color: red
 }
 
