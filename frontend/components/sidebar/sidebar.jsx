@@ -6,15 +6,16 @@ import { faBars, faHome, faCheckCircle } from '@fortawesome/free-solid-svg-icons
 import SidebarProjectCreate from './sidebar_project_create';
 
 const Sidebar = props => {
+  console.log(props)
   return (
-    <div className="sidebar">
+    <div className={`${props.sidebarOpen ? "sidebar" : "sidebar-collapsed"}`}>
       <div>
         <div className="sidebar-logo-container">
           <Link to="/home">
             <img src={window.logo} /> 
           </Link>
           <div>
-            <div className="sidebar-collapse">
+            <div className="sidebar-collapse" onClick={() => props.toggleSidebar()}>
               <FontAwesomeIcon icon={faBars} />
             </div> 
           </div>
@@ -42,7 +43,7 @@ const Sidebar = props => {
         <div className="sidebar-proj-links-cont">
           <div className="sidebar-projects-header">
             <span>My Projects</span>
-            <div>
+            <div className="sidebar-proj-create-cont">
               <SidebarProjectCreate errors={props.errors} />
             </div>
           </div>
