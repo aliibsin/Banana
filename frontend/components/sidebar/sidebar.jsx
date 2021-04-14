@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faBars, faHome, faCheckCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faHome, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+
+import SidebarProjectCreate from './sidebar_project_create';
 
 const Sidebar = props => {
-  console.log(props)
   return (
     <div className="sidebar">
       <div>
@@ -41,6 +42,9 @@ const Sidebar = props => {
         <div className="sidebar-proj-links-cont">
           <div className="sidebar-projects-header">
             <span>My Projects</span>
+            <div>
+              <SidebarProjectCreate errors={props.errors} />
+            </div>
           </div>
           <div className="sidebar-proj-links">
             <ul>
