@@ -11,7 +11,7 @@
 	background-color: white;
 	height: 8vh;
 	align-items: center;
-	padding: 0 50px;
+	padding: 0 130px;
 	overflow: hidden;
 	border-bottom: 1px solid rgb(248, 255, 251);
 	box-shadow: 0 5px 20px 0 rgba(21, 27, 38, 8%);
@@ -276,8 +276,8 @@
 	color: rgb(112, 112, 112);
 	cursor: pointer;
 	position: absolute;
-	top: 17px;
-	left: 135px;
+	top: 15px;
+	left: 115px;
 }
 
 .delete-project-button:hover {
@@ -287,8 +287,8 @@
 
 .dd-list {
 	position: absolute;
-	top: 35px;
-	left: 55px;
+	top: 30px;
+	left: 35px;
 	padding: 5px;
 	cursor: pointer;
 	border: .5px solid rgb(255, 103, 82);

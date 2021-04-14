@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SectionDisplayContainer from '../../../sections/section_display_container';
-import Dropdown from '../../delete/project_delete_dd'
+import SidebarContainer from '../../../sidebar/sidebar_container';
+import Dropdown from '../../delete/project_delete_dd';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronDown, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 
 class ProjectShow extends React.Component {
@@ -60,26 +60,47 @@ class ProjectShow extends React.Component {
     
     return (
       <div className="home-page-full">
-        <hgroup className="header-group">
-          <div className="back-button-container">
-            <Link to="/home">
-              <div className="back-button">
-              <FontAwesomeIcon icon={faChevronLeft} />
+        <div className="sidebar-expand" onClick={() => this.props.toggleSidebar()}>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
+        <SidebarContainer />
+        <div className="nav-contents">
+          <hgroup className="header-group">
+            {/* <div className="back-button-container">
+              <Link to="/home">
+                <div className="back-button">
+                <FontAwesomeIcon icon={faChevronLeft} />
+                </div>
+              </Link>
+            </div> */}
+            <div className="header-project-info">
+              <div className="project-name-container">
+                <Dropdown deleteProject={this.props.deleteProject } projectId={this.props.projectId} />
+                <div className="show-project-name-cont">
+                  <input
+                    type="text"
+                    className="show-project-name"
+                    onChange={this.handleNameChange}
+                    onBlur={this.handleNameUpdate}
+                    ref={this.nameInput}
+                    value={stateName}
+                    placeholder="Project Name can't be blank"
+                    autoComplete="off" 
+                    autoCorrect="off" 
+                    autoCapitalize="off"
+                    spellCheck="false"
+                  />
+                </div>
               </div>
-            </Link>
-          </div>
-          <div className="header-project-info">
-            <div className="project-name-container">
-              <Dropdown deleteProject={this.props.deleteProject } projectId={this.props.projectId} />
-              <div className="show-project-name-cont">
-                <input
-                  type="text"
-                  className="show-project-name"
-                  onChange={this.handleNameChange}
-                  onBlur={this.handleNameUpdate}
-                  ref={this.nameInput}
-                  value={stateName}
-                  placeholder="Project Name can't be blank"
+              <div className="show-project-desc-cont">
+                <input 
+                  type="text" 
+                  className="show-project-description"
+                  onChange={this.handleDescriptionChange}
+                  onBlur={this.handleDescriptionUpdate}
+                  ref={this.descriptionInput}
+                  value={stateDescription}
+                  placeholder={"Click to add a description..."}
                   autoComplete="off" 
                   autoCorrect="off" 
                   autoCapitalize="off"
@@ -87,26 +108,11 @@ class ProjectShow extends React.Component {
                 />
               </div>
             </div>
-            <div className="show-project-desc-cont">
-              <input 
-                type="text" 
-                className="show-project-description"
-                onChange={this.handleDescriptionChange}
-                onBlur={this.handleDescriptionUpdate}
-                ref={this.descriptionInput}
-                value={stateDescription}
-                placeholder={"Click to add a description..."}
-                autoComplete="off" 
-                autoCorrect="off" 
-                autoCapitalize="off"
-                spellCheck="false"
-              />
-            </div>
+            <div className="signout-button" onClick={this.props.signout}>Sign Out</div>
+          </hgroup>
+          <div className="section-disp-cont">
+            <SectionDisplayContainer project_id={this.props.project.id}/>
           </div>
-          <div className="signout-button" onClick={this.props.signout}>Sign Out</div>
-        </hgroup>
-        <div className="section-disp-cont">
-          <SectionDisplayContainer project_id={this.props.project.id}/>
         </div>
       </div>
     )
