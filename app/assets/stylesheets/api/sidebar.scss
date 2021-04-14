@@ -1,0 +1,138 @@
+
+.home-page-full {
+  display: flex;
+}
+
+.nav-contents {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  position: sticky;
+	top: 0;
+  background-color: white;
+
+  border-right: 1px solid rgb(248, 255, 251);
+	box-shadow: 0 0 25px  rgba(21, 27, 38, 8%);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar > div {
+  height: 100%;
+}
+
+.sidebar-logo-container {
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sidebar-logo-container img {
+  max-width: 125px;
+}
+
+.sidebar-logo-container > div {
+  margin-left: 5px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-collapse {
+  margin-left: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sidebar-collapse:hover {
+  transition: all 250ms ease;
+	color: rgb(89, 177, 123);
+	font-size: 24px;
+}
+
+
+.sidebar-main-link {
+  height: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+
+.sidebar-main-link-item-cont {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sidebar-main-link-item-cont:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+.sidebar-main-link-item-cont:hover .sidebar-main-link-item {
+  transition: all 250ms ease;
+	color: rgb(89, 177, 123);
+}
+
+.sidebar-main-link-item {
+  font-size: 20px;
+  padding-left: 20px;
+  color: rgb(119, 119, 119);
+}
+
+.sidebar-projects-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(206, 206, 206);
+  width: 85%;
+  margin: 0 auto;
+}
+
+.sidebar-projects-header span {
+  font-size: 18px;  
+  padding-left: 10px;
+  color: rgb(119, 119, 119);
+}
+
+.sidebar-proj-links {
+  height: auto;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.sidebar-proj-links ul {
+  padding-top: 5px;
+}
+
+.sidebar-proj-items {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  border-radius: 8px;
+  cursor: pointer;
+  color: black;
+}
+
+.sidebar-proj-items:hover {
+  transition: all 250ms ease;
+  background-color: rgb(230, 230, 230);
+	color: rgb(89, 177, 123);
+}
+
+.sidebar-proj-items span {
+  padding-left: 10px;
+  font-size: 16px;
+  font-family: 'Segoe UI';
+}

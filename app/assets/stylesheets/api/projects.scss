@@ -11,8 +11,7 @@
 	background-color: white;
 	height: 8vh;
 	align-items: center;
-	margin: 0 auto;
-	padding: 0 150px;
+	padding: 0 50px;
 	overflow: hidden;
 	border-bottom: 1px solid rgb(248, 255, 251);
 	box-shadow: 0 5px 20px 0 rgba(21, 27, 38, 8%);
@@ -22,7 +21,7 @@
 }
 	
 .header-group h1 {
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: 800;
 }
 
@@ -50,7 +49,7 @@
 	display: flex;
 	flex-direction: column;
 	padding-top: 40px;
-	width: 50%;
+	width: 60%;
 	margin: 0 auto;
 }
 
@@ -137,6 +136,7 @@
 	padding-top: 10px;
 	color: black;
 	word-wrap: break-word;
+	font-family: 'Segoe UI';
 }
 
 .home-newproject-name {
