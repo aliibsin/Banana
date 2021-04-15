@@ -11,8 +11,7 @@
 	background-color: white;
 	height: 8vh;
 	align-items: center;
-	margin: 0 auto;
-	padding: 0 150px;
+	padding: 0 130px;
 	overflow: hidden;
 	border-bottom: 1px solid rgb(248, 255, 251);
 	box-shadow: 0 5px 20px 0 rgba(21, 27, 38, 8%);
@@ -22,7 +21,7 @@
 }
 	
 .header-group h1 {
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: 800;
 }
 
@@ -50,7 +49,7 @@
 	display: flex;
 	flex-direction: column;
 	padding-top: 40px;
-	width: 50%;
+	width: 60%;
 	margin: 0 auto;
 }
 
@@ -82,6 +81,8 @@
 
 .project-list-element {
 	cursor: pointer;
+	margin-left: 20px;
+	margin-right: 20px;
 	padding: 20px;
 	border-radius: 10px;
 	height: 180px;
@@ -137,6 +138,7 @@
 	padding-top: 10px;
 	color: black;
 	word-wrap: break-word;
+	font-family: 'Segoe UI';
 }
 
 .home-newproject-name {
@@ -153,9 +155,9 @@
 
 .create-project-modal-background {
 	transition: all 500ms ease;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.6);
+	width: 100vw;
+	height: 100vh;
+	background: rgba(39, 50, 64, 0.6);
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -163,9 +165,10 @@
 	justify-content: center;
 	align-items: center;
 	z-index: 2000;
+	cursor: default;
 }
 
-.create-project-modal {
+.create-project-modal, .delete-project-modal {
 	width: 400px;
 	height: 500px;
 	background-color: white;
@@ -181,9 +184,9 @@
 }
 
 .close-icon {
-	font-size: 30px;
+	font-size: 24px;
 	cursor: pointer;
-	margin: 20px;
+	margin: 15px;
 }
 
 .close-icon:hover {
@@ -275,8 +278,8 @@
 	color: rgb(112, 112, 112);
 	cursor: pointer;
 	position: absolute;
-	top: 17px;
-	left: 135px;
+	top: 15px;
+	left: 115px;
 }
 
 .delete-project-button:hover {
@@ -286,19 +289,111 @@
 
 .dd-list {
 	position: absolute;
-	top: 35px;
-	left: 55px;
+	top: 30px;
+	left: 35px;
 	padding: 5px;
 	cursor: pointer;
 	border: .5px solid rgb(255, 103, 82);
-	background-color: rgb(255, 215, 211);
+	background-color: rgb(255, 226, 224);
 	border-radius: 4px;
 }
 
+.dd-list:hover {
+	background-color: rgb(255, 203, 199);
+}
 
-
-.dd-list-item > div {
+.dd-list-item {
 	font-size: 14px;
 	color: red
 }
 
+
+.delete-project-modal {
+	height: 280px;
+	width: 550px;
+}
+
+.delete-confirm {
+	position: absolute;
+	top: 8%;
+	margin-left: 20px;
+}
+
+.delete-confirm h2 {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.delete-line {
+	width: 99.8%;
+	border-color: rgb(230, 230, 230);
+	background-color: rgb(230, 230, 230);
+}
+
+.del-cond-list {
+	width: 100%;
+}
+
+.del-cond-list-start {
+	width: 64%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.del-cond-list ul {
+	width: 70%;
+	margin: 0 auto;
+	padding-top: 10px;
+	margin-bottom: 30px;
+}
+
+.del-cond-list-el {
+	width: 380px;
+	margin-left: 20px;
+	list-style-type: circle;
+	list-style-position: inside;
+	font-size: 15px;
+	padding-top: 5px;
+}
+
+.del-modal-buttons {
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 15px;
+}
+
+.cancel-del {
+	margin: 6px;
+	cursor: pointer;
+
+	border: 1px solid rgb(219, 219, 219);
+	border-radius: 6px;
+}
+
+.cancel-del p {
+	margin: 8px;
+	margin-left: 12px;
+	margin-right: 12px;
+}
+
+.dd-list-item-cont p {
+	margin: 8px;
+	margin-left: 12px;
+	margin-right: 12px;
+	color: white;
+}
+
+.cancel-del:hover {
+	background-color: rgb(235, 235, 235);
+}
+
+.dd-list-item-cont {
+	margin: 6px;
+	border: 1px solid rgb(255, 65, 65);
+	border-radius: 6px;
+	background-color: rgb(255, 97, 97);
+}
+
+.dd-list-item-cont:hover {
+	background-color: rgb(255, 72, 72);
+}

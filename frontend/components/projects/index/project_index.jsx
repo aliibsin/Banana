@@ -5,7 +5,7 @@ import ProjectCreateModalContainer from '../create/project_create_modal';
 class ProjectIndex extends React.Component {
   constructor(props) {
     super(props);
-
+    
   }
 
   componentDidMount() {

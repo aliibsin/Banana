@@ -1,6 +1,7 @@
 
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+
+import ProjectDeleteModal from './project_delete_modal';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -24,8 +25,8 @@ class Dropdown extends React.Component {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
-  handleClickOutside(event) {
-    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+  handleClickOutside(e) {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(e.target)) {
       this.setState({
         open: false,
       });
@@ -35,11 +36,6 @@ class Dropdown extends React.Component {
   toggle() {
     this.setState({open: !this.state.open})
   };
-
-
-  deleteProj() {
-    this.props.deleteProject(this.props.projectId);
-  }
 
   render() {
     
@@ -61,13 +57,10 @@ class Dropdown extends React.Component {
         </div>
         { this.state.open && (
           <ul className="dd-list">
-            <Link to="/home">
-              <li className="dd-list-item" onClick={() => this.deleteProj()}>
-                <div>
-                  Delete Project
-                </div>
-              </li>
-            </Link>
+            <ProjectDeleteModal 
+              deleteProject={this.props.deleteProject} 
+              projectId={this.props.projectId}
+            />
           </ul>
         )}
       </div>
