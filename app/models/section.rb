@@ -7,7 +7,9 @@ class Section < ApplicationRecord
     class_name: :Project
 
   
-  
+  has_many :tasks,
+    foreign_key: :section_id,
+    class_name: :Task
 
 
 end

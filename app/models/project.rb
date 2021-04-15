@@ -10,5 +10,7 @@ class Project < ApplicationRecord
   foreign_key: :project_id,
   class_name: :Section
 
-
+  has_many :tasks,
+    foreign_key: :project_id,
+    class_name: :Task
 end
