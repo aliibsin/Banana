@@ -10,15 +10,15 @@ class TaskItem extends React.Component {
 
   render() {
     return (
-      <div className="task-table-header">
-        <div className="tth-task-name">
+      <div className="task-header">
+        <div className="task-name">
           <h4>{this.props.task.name}</h4>
         </div>
-        <div className="tth-task-status">
-          <div className="tth-task-due">
+        <div className="task-status">
+          <div className="task-due">
             <h4>{this.props.task.due_date}</h4>
           </div>
-          <div className="tth-task-priority">
+          <div className="task-priority">
             <h4>{this.props.task.priority}</h4>
           </div>
         </div>
