@@ -11,7 +11,7 @@ const Sidebar = props => {
       <div>
         <div className="sidebar-logo-container">
           <Link to="/home">
-            <img src={window.logo} /> 
+            <img src={window.darkLogo} /> 
           </Link>
           <div>
             <div className="sidebar-collapse" onClick={() => props.toggleSidebar()}>
