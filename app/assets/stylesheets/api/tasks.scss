@@ -1,3 +1,20 @@
 // Place all the styles related to the Api::Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.create-task-button {
+  margin-bottom: 20px;
+}
+
+.create-task-button {
+  background-color: rgb(248, 255, 251);
+  font-weight: 600;
+  color: gray;
+  border: none;
+  cursor: pointer;
+}
+
+.create-task-button:hover {
+  transition: all 250ms ease;
+  color: rgb(102, 189, 3);
+}

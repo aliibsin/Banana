@@ -52,3 +52,10 @@ testTask = Task.create!({
   project_id: 1,
   section_id: 2
 })
+
+testTask = Task.create!({
+  name: "Unique Task",
+  description: "I am a test task",
+  done: false,
+  creator_id: 1
+})

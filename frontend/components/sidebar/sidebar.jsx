@@ -30,7 +30,7 @@ const Sidebar = props => {
                 </span>
               </li>
             </Link>
-            <Link to="/home">
+            <Link to="/tasks">
               <div className="sidebar-main-link-item-cont"> 
                 <span className="sidebar-main-link-item" >
                   <FontAwesomeIcon icon={faCheckCircle} />

@@ -6,7 +6,7 @@ import configureStore from './store/store';
 // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
 // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
 // import {fetchSections, createSection, updateSection, deleteSection} from './util/section_api_util'
-// import {fetchSections, createSection, updateSection, deleteSection} from './actions/section_actions'
+import {fetchSections, createSection, updateSection, deleteSection} from './actions/section_actions'
 // import { fetchTasks, fetchTask, createTask, updateTask, deleteTask } from './util/task_api_util';
 import { fetchTasks, fetchTask, createTask, updateTask, deleteTask } from './actions/task_actions';
 
@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         users: { [window.currentUser.id]: window.currentUser },
         projects: window.currentUserProjects,
         sections: window.currentUserSections,
+        tasks: window.currentUserTasks
       },
       session: { id: window.currentUser.id },
   };
@@ -43,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //all work
   // window.fetchSections = fetchSections;
-  // window.createSection = createSection;
+  window.createSection = createSection;
   // window.updateSection = updateSection;
   // window.deleteSection = deleteSection;
   

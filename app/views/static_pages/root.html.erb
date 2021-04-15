@@ -11,6 +11,10 @@
   	window.currentUserSections = <%= render("api/sections/sections.json.jbuilder",
   		sections: current_user.sections).html_safe %>
   </script>
+  <script id="bootstrap-user-tasks" type="text/javascript">
+  	window.currentUserTasks = <%= render("api/tasks/tasks.json.jbuilder",
+  		tasks: current_user.tasks).html_safe %>
+  </script>
  
 <% end %>
 
