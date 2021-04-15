@@ -36,7 +36,8 @@ class TaskIndex extends React.Component {
                 </span>
               </div>
             </div>
-            <div className="section-container">
+              <SectionDisplayContainer />
+            {/* <div className="section-container">
               <div className="task-table-header">
                 <div className="tth-task-name">
                   <h4>Task Name</h4>
@@ -50,7 +51,7 @@ class TaskIndex extends React.Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

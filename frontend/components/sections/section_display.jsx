@@ -24,6 +24,7 @@ class SectionDisplay extends React.Component {
 
   render() {
     let filteredSections = this.props.sections.filter(section => section.project_id === this.props.project_id);
+    let independentSections = this.props.sections.filter(section => section.project_id === null);
     return (
       <div className="section-container">
         <div className="task-table-header">
@@ -42,7 +43,16 @@ class SectionDisplay extends React.Component {
 
         <ul className="sections-list">
           {
+            this.props.project_id ? 
             filteredSections.map(section => (
+              <SectionDisplayItem 
+                key={section.id}
+                section={section}
+                updateSection={this.props.updateSection}
+                deleteSection={this.props.deleteSection}
+              />
+            )) :
+            independentSections.map(section => (
               <SectionDisplayItem 
                 key={section.id}
                 section={section}

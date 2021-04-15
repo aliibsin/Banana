@@ -15052,6 +15052,9 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
       var filteredSections = this.props.sections.filter(function (section) {
         return section.project_id === _this2.props.project_id;
       });
+      var independentSections = this.props.sections.filter(function (section) {
+        return section.project_id === null;
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "section-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -15066,7 +15069,14 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
         className: "tth-task-priority"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Priority")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "sections-list"
-      }, filteredSections.map(function (section) {
+      }, this.props.project_id ? filteredSections.map(function (section) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_section_display_item__WEBPACK_IMPORTED_MODULE_1__.default, {
+          key: section.id,
+          section: section,
+          updateSection: _this2.props.updateSection,
+          deleteSection: _this2.props.deleteSection
+        });
+      }) : independentSections.map(function (section) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_section_display_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           key: section.id,
           section: section,
@@ -15846,19 +15856,7 @@ var TaskIndex = /*#__PURE__*/function (_React$Component) {
         className: "section-disp-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "create-task-button"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "New Task"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "section-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "task-table-header"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "tth-task-name"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Task Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "tth-task-status"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "tth-task-due"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Due Date")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "tth-task-priority"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Priority"))))))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "New Task"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_sections_section_display_container__WEBPACK_IMPORTED_MODULE_2__.default, null))));
     }
   }]);
 
@@ -53096,7 +53094,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _actions_section_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/section_actions */ "./frontend/actions/section_actions.js");
+/* harmony import */ var _util_section_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/section_api_util */ "./frontend/util/section_api_util.js");
 /* harmony import */ var _actions_task_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/task_actions */ "./frontend/actions/task_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -53106,9 +53104,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  // import { signin, signout, signup } from './actions/session_actions';
 // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './util/project_api_util';
 // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
-// import {fetchSections, createSection, updateSection, deleteSection} from './util/section_api_util'
 
- // import { fetchTasks, fetchTask, createTask, updateTask, deleteTask } from './util/task_api_util';
+ // import {fetchSections, createSection, updateSection, deleteSection} from './actions/section_actions'
+// import { fetchTasks, fetchTask, createTask, updateTask, deleteTask } from './util/task_api_util';
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -53144,9 +53142,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // window.updateProject = updateProject;
   // window.deleteProject = deleteProject;
   //all work
-  // window.fetchSections = fetchSections;
 
-  window.createSection = _actions_section_actions__WEBPACK_IMPORTED_MODULE_4__.createSection; // window.updateSection = updateSection;
+  window.fetchSections = _util_section_api_util__WEBPACK_IMPORTED_MODULE_4__.fetchSections;
+  window.createSection = _util_section_api_util__WEBPACK_IMPORTED_MODULE_4__.createSection; // window.updateSection = updateSection;
   // window.deleteSection = deleteSection;
   //all work
 

@@ -4,6 +4,7 @@ class Api::SectionsController < ApplicationController
 
   def create
     @section = Section.new(section_params)
+    @section.creator_id = current_user.id
     if @section.save
       render :show
     else
