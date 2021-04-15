@@ -1,5 +1,6 @@
 import React from 'react';
-import SectionDisplayItem from './section_display_item'
+import SectionDisplayItem from './section_display_item';
+import TaskItem from '../tasks/index/task_item';
 
 class SectionDisplay extends React.Component {
   constructor(props) {
@@ -25,6 +26,9 @@ class SectionDisplay extends React.Component {
   render() {
     let filteredSections = this.props.sections.filter(section => section.project_id === this.props.project_id);
     let independentSections = this.props.sections.filter(section => section.project_id === null);
+    let nPnSTasks = this.props.tasks.filter(task => task.project_id === null && task.section_id === null);
+    let yPnSTasks = this.props.tasks.filter(task => task.project_id === this.props.project_id && task.section_id === null);
+    
     return (
       <div className="section-container">
         <div className="task-table-header">
@@ -40,6 +44,21 @@ class SectionDisplay extends React.Component {
             </div>
           </div>
         </div>
+        <ul>
+          {
+            this.props.project_id ? 
+            yPnSTasks.map(task => (
+              <li key={task.id}>
+                <TaskItem task={task} />
+              </li>
+            )) :
+            nPnSTasks.map(task => (
+              <li key={task.id}>
+                <TaskItem task={task} />
+              </li>
+            ))
+          }
+        </ul>
 
         <ul className="sections-list">
           {
@@ -48,6 +67,8 @@ class SectionDisplay extends React.Component {
               <SectionDisplayItem 
                 key={section.id}
                 section={section}
+                project_id={this.props.project_id}
+                tasks={this.props.tasks}
                 updateSection={this.props.updateSection}
                 deleteSection={this.props.deleteSection}
               />
@@ -56,6 +77,8 @@ class SectionDisplay extends React.Component {
               <SectionDisplayItem 
                 key={section.id}
                 section={section}
+                project_id={this.props.project_id}
+                tasks={this.props.tasks}
                 updateSection={this.props.updateSection}
                 deleteSection={this.props.deleteSection}
               />

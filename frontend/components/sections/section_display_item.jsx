@@ -1,4 +1,6 @@
 import React from 'react';
+import TaskItem from '../tasks/index/task_item';
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,8 +23,8 @@ class SectionDisplayItem extends React.Component {
   }
 
   handleNameUpdate(e) {
-    const { name: stateName } = this.state;
-    this.props.updateSection({ id: this.props.section.id, name: stateName });
+    // const { name: stateName } = this.state;
+    this.props.updateSection({ id: this.props.section.id, name: this.state.name });
   }
 
   deleteSection() {
@@ -30,7 +32,9 @@ class SectionDisplayItem extends React.Component {
   }
 
   render () {
-    const { name: stateName } = this.state;
+    let nPySTasks = this.props.tasks.filter(task => task.project_id === null && task.section_id === this.props.section.id);
+    let yPySTasks = this.props.tasks.filter(task => task.project_id === this.props.project_id && task.section_id === this.props.section.id);
+
     return (
       
       <li className="indiv-section-cont">
@@ -46,7 +50,7 @@ class SectionDisplayItem extends React.Component {
             onChange={this.handleNameChange}
             onBlur={this.handleNameUpdate}
             ref={this.nameInput}
-            value={stateName}
+            value={this.state.name}
             placeholder="Section name can't be blank"
             autoComplete="off" 
             autoCorrect="off" 
@@ -54,7 +58,21 @@ class SectionDisplayItem extends React.Component {
             spellCheck="false"
           />
         </div>
-        
+        <ul>
+          {
+            this.props.project_id ? 
+            yPySTasks.map(task => (
+              <li key={task.id}>
+                <TaskItem task={task} />
+              </li>
+            )) :
+            nPySTasks.map(task => (
+              <li key={task.id}>
+                <TaskItem task={task} />
+              </li>
+            ))
+          }
+        </ul>
       </li>
     )
   }

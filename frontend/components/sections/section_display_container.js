@@ -13,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   let project_id = ownProps.project_id;
   return ({
     sections: Object.values(state.entities.sections),
+    tasks: Object.values(state.entities.tasks),
     project_id: project_id
   })
 }

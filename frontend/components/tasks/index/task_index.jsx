@@ -8,14 +8,30 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 class TaskIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      name: "Untitled Task",
+      description: "",
+      priority: "",
+      due_date: "",
+      done: false,
+      project_id: "",
+      section_id: ""
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchTasks();
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const task = Object.assign({}, this.state);
+    this.props.createTask(task);
+  }
+
   render() {
-    // console.log(this.props)
     return (
       <div className="home-page-full">
         <div className="sidebar-expand" onClick={() => this.props.toggleSidebar()}>
@@ -30,28 +46,11 @@ class TaskIndex extends React.Component {
           
           <div className="section-disp-cont">
             <div>
-              <div className="create-task-button">
-                <span>
-                  New Task
-                </span>
-              </div>
+              <form onSubmit={this.handleSubmit}>
+                <input className="create-task-button" type="submit" value='New Task' />
+              </form>
             </div>
-              <SectionDisplayContainer />
-            {/* <div className="section-container">
-              <div className="task-table-header">
-                <div className="tth-task-name">
-                  <h4>Task Name</h4>
-                </div>
-                <div className="tth-task-status">
-                  <div className="tth-task-due">
-                    <h4 >Due Date</h4>
-                  </div>
-                  <div className="tth-task-priority">
-                    <h4 >Priority</h4>
-                  </div>
-                </div>
-              </div>
-            </div> */}
+            <SectionDisplayContainer />
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
-import { fetchProject, deleteProject, updateProject } from '../../../../actions/project_actions'
+import { fetchProject, deleteProject, updateProject } from '../../../../actions/project_actions';
+import { createTask } from '../../../../actions/task_actions';
 import { signout } from '../../../../actions/session_actions';
 import ProjectShow from './project_show';
 import { toggleSidebar } from '../../../../actions/sidebar_actions';
@@ -22,6 +23,7 @@ const mapDispatchToProps = dispatch => {
     fetchProject: projectId => dispatch(fetchProject(projectId)),
     deleteProject: projectId => dispatch(deleteProject(projectId)),
     updateProject: project => dispatch(updateProject(project)),
+    createTask: task => dispatch(createTask(task)),
     signout: () => dispatch(signout()),
     toggleSidebar: () => dispatch(toggleSidebar)
   });

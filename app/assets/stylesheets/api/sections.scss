@@ -46,16 +46,21 @@
 }
 
 .indiv-section-cont {
-  height: 50px;
+  min-height: 50px;
   width: 100%;
   border-bottom: 1px solid rgb(185, 185, 185);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .indiv-section-cont > div {
   width: 100%;
   display: flex;
+}
+
+.indiv-section-cont > div input {
+  min-height: 34px;
 }
 
 .show-section-name {
@@ -99,6 +104,7 @@
   margin: auto;
   margin-right: 4px;
 }
+
 
 .delete-section-button {
 	font-size: 14px;
