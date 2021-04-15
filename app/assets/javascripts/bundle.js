@@ -13521,6 +13521,106 @@ var toggleSidebar = {
 
 /***/ }),
 
+/***/ "./frontend/actions/task_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/task_actions.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_TASKS": () => (/* binding */ RECEIVE_TASKS),
+/* harmony export */   "RECEIVE_TASK": () => (/* binding */ RECEIVE_TASK),
+/* harmony export */   "REMOVE_TASK": () => (/* binding */ REMOVE_TASK),
+/* harmony export */   "RECEIVE_TASK_ERRORS": () => (/* binding */ RECEIVE_TASK_ERRORS),
+/* harmony export */   "fetchTasks": () => (/* binding */ fetchTasks),
+/* harmony export */   "fetchTask": () => (/* binding */ fetchTask),
+/* harmony export */   "createTask": () => (/* binding */ createTask),
+/* harmony export */   "updateTask": () => (/* binding */ updateTask),
+/* harmony export */   "deleteTask": () => (/* binding */ deleteTask)
+/* harmony export */ });
+/* harmony import */ var _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/task_api_util */ "./frontend/util/task_api_util.js");
+
+var RECEIVE_TASKS = "RECEIVE_TASKS";
+var RECEIVE_TASK = "RECEIVE_TASK";
+var REMOVE_TASK = "REMOVE_TASK";
+var RECEIVE_TASK_ERRORS = "RECEIVE_TASK_ERRORS";
+
+var receiveTasks = function receiveTasks(tasks) {
+  return {
+    type: RECEIVE_TASKS,
+    tasks: tasks
+  };
+};
+
+var receiveTask = function receiveTask(task) {
+  return {
+    type: RECEIVE_TASK,
+    task: task
+  };
+};
+
+var removeTask = function removeTask(taskId) {
+  return {
+    type: REMOVE_TASK,
+    taskId: taskId
+  };
+};
+
+var receiveErrors = function receiveErrors(errs) {
+  return {
+    type: RECEIVE_TASK_ERRORS,
+    errors: {
+      errs: errs
+    }
+  };
+};
+
+var fetchTasks = function fetchTasks() {
+  return function (dispatch) {
+    return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchTasks().then(function (tasks) {
+      return dispatch(receiveTasks(tasks));
+    });
+  };
+};
+var fetchTask = function fetchTask(taskId) {
+  return function (dispatch) {
+    return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchTask(taskId).then(function (task) {
+      return dispatch(receiveTask(task));
+    });
+  };
+};
+var createTask = function createTask(task) {
+  return function (dispatch) {
+    return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__.createTask(task).then(function (task) {
+      return dispatch(receiveTask(task));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+var updateTask = function updateTask(task) {
+  return function (dispatch) {
+    return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__.updateTask(task).then(function (task) {
+      return dispatch(receiveTask(task));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+var deleteTask = function deleteTask(taskId) {
+  return function (dispatch) {
+    return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__.deleteTask(taskId).then(function () {
+      return dispatch(removeTask(taskId));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/app.jsx ***!
@@ -15694,18 +15794,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _projects_projects_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects/projects_reducer */ "./frontend/reducers/projects/projects_reducer.js");
 /* harmony import */ var _sections_sections_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sections/sections_reducer */ "./frontend/reducers/sections/sections_reducer.js");
+/* harmony import */ var _tasks_tasks_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tasks/tasks_reducer */ "./frontend/reducers/tasks/tasks_reducer.js");
 
 
 
 
-var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
   projects: _projects_projects_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
-  sections: _sections_sections_reducer__WEBPACK_IMPORTED_MODULE_2__.default
+  sections: _sections_sections_reducer__WEBPACK_IMPORTED_MODULE_2__.default,
+  tasks: _tasks_tasks_reducer__WEBPACK_IMPORTED_MODULE_3__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
 
@@ -15722,18 +15825,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 /* harmony import */ var _projects_project_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects/project_errors_reducer */ "./frontend/reducers/projects/project_errors_reducer.js");
 /* harmony import */ var _sections_section_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sections/section_errors_reducer */ "./frontend/reducers/sections/section_errors_reducer.js");
+/* harmony import */ var _tasks_task_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tasks/task_errors_reducer */ "./frontend/reducers/tasks/task_errors_reducer.js");
 
 
 
 
-var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+
+var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   sessionErr: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
   projectErr: _projects_project_errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
-  sectionErr: _sections_section_errors_reducer__WEBPACK_IMPORTED_MODULE_2__.default
+  sectionErr: _sections_section_errors_reducer__WEBPACK_IMPORTED_MODULE_2__.default,
+  taskErr: _tasks_task_errors_reducer__WEBPACK_IMPORTED_MODULE_3__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
 
@@ -16037,6 +16143,85 @@ var sideBarReducer = function sideBarReducer() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sideBarReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/tasks/task_errors_reducer.js":
+/*!********************************************************!*\
+  !*** ./frontend/reducers/tasks/task_errors_reducer.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/task_actions */ "./frontend/actions/task_actions.js");
+
+
+var taskErrorsReducer = function taskErrorsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TASK_ERRORS:
+      return action.errors.errs;
+
+    case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TASK:
+      return [];
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (taskErrorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/tasks/tasks_reducer.js":
+/*!**************************************************!*\
+  !*** ./frontend/reducers/tasks/tasks_reducer.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/task_actions */ "./frontend/actions/task_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var tasksReducer = function tasksReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TASKS:
+      return action.tasks;
+
+    case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TASK:
+      var newTask = _defineProperty({}, action.task.id, action.task);
+
+      return Object.assign({}, state, newTask);
+
+    case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_TASK:
+      var newState = Object.assign({}, state);
+      delete newState[action.taskId];
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tasksReducer);
 
 /***/ }),
 
@@ -52757,7 +52942,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _util_task_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/task_api_util */ "./frontend/util/task_api_util.js");
+/* harmony import */ var _actions_task_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/task_actions */ "./frontend/actions/task_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -52768,6 +52953,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
 // import {fetchSections, createSection, updateSection, deleteSection} from './util/section_api_util'
 // import {fetchSections, createSection, updateSection, deleteSection} from './actions/section_actions'
+// import { fetchTasks, fetchTask, createTask, updateTask, deleteTask } from './util/task_api_util';
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -52806,12 +52992,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // window.createSection = createSection;
   // window.updateSection = updateSection;
   // window.deleteSection = deleteSection;
+  //all work
 
-  window.fetchTasks = _util_task_api_util__WEBPACK_IMPORTED_MODULE_4__.fetchTasks;
-  window.fetchTask = _util_task_api_util__WEBPACK_IMPORTED_MODULE_4__.fetchTask;
-  window.createTask = _util_task_api_util__WEBPACK_IMPORTED_MODULE_4__.createTask;
-  window.updateTask = _util_task_api_util__WEBPACK_IMPORTED_MODULE_4__.updateTask;
-  window.deleteTask = _util_task_api_util__WEBPACK_IMPORTED_MODULE_4__.deleteTask;
+  window.fetchTasks = _actions_task_actions__WEBPACK_IMPORTED_MODULE_4__.fetchTasks;
+  window.fetchTask = _actions_task_actions__WEBPACK_IMPORTED_MODULE_4__.fetchTask;
+  window.createTask = _actions_task_actions__WEBPACK_IMPORTED_MODULE_4__.createTask;
+  window.updateTask = _actions_task_actions__WEBPACK_IMPORTED_MODULE_4__.updateTask;
+  window.deleteTask = _actions_task_actions__WEBPACK_IMPORTED_MODULE_4__.deleteTask;
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__.default, {
     store: store
   }), root);
