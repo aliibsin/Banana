@@ -32,8 +32,13 @@ class SectionDisplay extends React.Component {
     return (
       <div className="section-container">
         <div className="task-table-header">
-          <div className="tth-task-name">
-            <h4>Task Name</h4>
+          <div className="tth-task-info">
+            <div className="tth-task-name">
+              <h4>Task Name</h4>
+            </div>
+            <div className="tth-task-desc">
+              <h4>Description</h4>
+            </div>
           </div>
           <div className="tth-task-status">
             <div className="tth-task-due">

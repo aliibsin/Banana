@@ -24,29 +24,29 @@
   display: flex;
 }
 
-.tth-task-name {
+.tth-task-info {
   width: 80%;
+}
+
+.tth-task-name {
+  width: 35%;
 }
 
 .tth-task-status {
   width: 20%;
 }
 
-.tth-task-due, .tth-task-priority {
+.tth-task-due, .tth-task-priority, .tth-task-desc {
   width: 50%;
   border-left: 1px solid rgb(185, 185, 185);
 }
 
 .task-table-header h4 {
   margin: auto 0;
-}
-
-.tth-task-status h4 {
   margin-left: 10px;
 }
 
 .indiv-section-cont {
-  
   width: 100%;
   border-bottom: 1px solid rgb(185, 185, 185);
   display: flex;
