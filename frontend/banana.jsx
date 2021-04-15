@@ -7,6 +7,7 @@ import configureStore from './store/store';
 // import { fetchProjects, fetchProject, createProject, updateProject, deleteProject } from './actions/project_actions';
 // import {fetchSections, createSection, updateSection, deleteSection} from './util/section_api_util'
 // import {fetchSections, createSection, updateSection, deleteSection} from './actions/section_actions'
+import { fetchTasks, fetchTask, createTask, updateTask, deleteTask } from './util/task_api_util';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -45,6 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.updateSection = updateSection;
   // window.deleteSection = deleteSection;
   
+  window.fetchTasks = fetchTasks;
+  window.fetchTask = fetchTask;
+  window.createTask = createTask;
+  window.updateTask = updateTask;
+  window.deleteTask = deleteTask;
   
 
   ReactDOM.render(<Root store={store} />, root);

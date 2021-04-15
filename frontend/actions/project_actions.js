@@ -15,7 +15,6 @@ const receiveProject = project => ({
   project: project
 });
 
-
 const removeProject = projectId => ({
   type: REMOVE_PROJECT,
   projectId: projectId

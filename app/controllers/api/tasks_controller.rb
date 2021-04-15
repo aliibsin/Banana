@@ -5,7 +5,7 @@ class Api::TasksController < ApplicationController
     @task.creator_id = current_user.id
     @task.done = false
     if @task.save
-      render: show
+      render :show
     else
       render json: @task.errors.full_messages, status: 422
     end
