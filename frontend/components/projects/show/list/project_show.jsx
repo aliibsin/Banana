@@ -14,7 +14,6 @@ class ProjectShow extends React.Component {
     this.state = {
       name: this.props.project.name,
       description: this.props.project.description,
-      
     };
 
     this.descriptionInput = React.createRef();
@@ -28,6 +27,15 @@ class ProjectShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.projectId !== this.props.match.params.projectId) {
+      this.setState({
+        name: this.props.project.name,
+        description: this.props.project.description
+      })      
+    }
   }
 
   deleteProj() {
@@ -44,20 +52,15 @@ class ProjectShow extends React.Component {
     this.setState({ name: editedName });
   }
 
-  handleDescriptionUpdate(e) {
-    const { description: stateDescription } = this.state;
-    this.props.updateProject({ id: this.props.projectId, description: stateDescription });
+  handleDescriptionUpdate() {
+    this.props.updateProject({ id: this.props.projectId, description: this.state.description });
   }
 
-  handleNameUpdate(e) {
-    const { name: stateName } = this.state;
-    this.props.updateProject({ id: this.props.projectId, name: stateName });
+  handleNameUpdate() {
+    this.props.updateProject({ id: this.props.projectId, name: this.state.name });
   }
 
   render() {
-    const { description: stateDescription } = this.state;
-    const { name: stateName } = this.state;
-    
     return (
       <div className="home-page-full">
         <div className="sidebar-expand" onClick={() => this.props.toggleSidebar()}>
@@ -66,13 +69,6 @@ class ProjectShow extends React.Component {
         <SidebarContainer />
         <div className="nav-contents">
           <hgroup className="header-group">
-            {/* <div className="back-button-container">
-              <Link to="/home">
-                <div className="back-button">
-                <FontAwesomeIcon icon={faChevronLeft} />
-                </div>
-              </Link>
-            </div> */}
             <div className="header-project-info">
               <div className="project-name-container">
                 <Dropdown deleteProject={this.props.deleteProject } projectId={this.props.projectId} />
@@ -83,12 +79,13 @@ class ProjectShow extends React.Component {
                     onChange={this.handleNameChange}
                     onBlur={this.handleNameUpdate}
                     ref={this.nameInput}
-                    value={stateName}
+                    value={this.state.name}
                     placeholder="Project Name can't be blank"
                     autoComplete="off" 
                     autoCorrect="off" 
                     autoCapitalize="off"
                     spellCheck="false"
+                    
                   />
                 </div>
               </div>
@@ -99,12 +96,13 @@ class ProjectShow extends React.Component {
                   onChange={this.handleDescriptionChange}
                   onBlur={this.handleDescriptionUpdate}
                   ref={this.descriptionInput}
-                  value={stateDescription}
+                  value={this.state.description}
                   placeholder={"Click to add a description..."}
                   autoComplete="off" 
                   autoCorrect="off" 
                   autoCapitalize="off"
                   spellCheck="false"
+                  
                 />
               </div>
             </div>

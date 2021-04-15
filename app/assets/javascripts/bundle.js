@@ -14664,6 +14664,16 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
       this.props.fetchProject(this.props.match.params.projectId);
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.match.params.projectId !== this.props.match.params.projectId) {
+        this.setState({
+          name: this.props.project.name,
+          description: this.props.project.description
+        });
+      }
+    }
+  }, {
     key: "deleteProj",
     value: function deleteProj() {
       this.props.deleteProject(this.props.match.params.projectId);
@@ -14686,20 +14696,18 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleDescriptionUpdate",
-    value: function handleDescriptionUpdate(e) {
-      var stateDescription = this.state.description;
+    value: function handleDescriptionUpdate() {
       this.props.updateProject({
         id: this.props.projectId,
-        description: stateDescription
+        description: this.state.description
       });
     }
   }, {
     key: "handleNameUpdate",
-    value: function handleNameUpdate(e) {
-      var stateName = this.state.name;
+    value: function handleNameUpdate() {
       this.props.updateProject({
         id: this.props.projectId,
-        name: stateName
+        name: this.state.name
       });
     }
   }, {
@@ -14707,8 +14715,6 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var stateDescription = this.state.description;
-      var stateName = this.state.name;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "home-page-full"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -14737,7 +14743,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleNameChange,
         onBlur: this.handleNameUpdate,
         ref: this.nameInput,
-        value: stateName,
+        value: this.state.name,
         placeholder: "Project Name can't be blank",
         autoComplete: "off",
         autoCorrect: "off",
@@ -14751,7 +14757,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleDescriptionChange,
         onBlur: this.handleDescriptionUpdate,
         ref: this.descriptionInput,
-        value: stateDescription,
+        value: this.state.description,
         placeholder: "Click to add a description...",
         autoComplete: "off",
         autoCorrect: "off",
