@@ -17,6 +17,14 @@ class SectionDisplay extends React.Component {
     this.props.fetchSections();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.project_id !== this.props.project_id) {
+      this.setState({
+        project_id: this.props.project_id
+      })      
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const section = Object.assign({}, this.state);
