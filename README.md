@@ -27,3 +27,8 @@ Banana is a full-stack web application inspired by Asana. Users can create proje
  * Projects - A user can create, edit or delete their projects
  * Tasks - A user can create, edit or delete their tasks based off of their personal or project's needs
  * Sections - A user can further organize projects by separating it into sections
+
+
+## Future Considerations
+ * Teams to implement collaboration between users
+ * User profiles
