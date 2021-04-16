@@ -68,10 +68,17 @@
 }
 
 .task-due, .task-priority {
-  width: 50%;
   border-left: 1px solid rgb(226, 226, 226);
   display: flex;
   align-items: center;  
+}
+
+.task-due {
+  width: 65%;
+} 
+
+.task-priority {
+  width: 35%;
 }
 
 .task-status {
@@ -82,7 +89,7 @@
   margin-left: 10px;
 }
 
-.show-task-name, .show-task-desc, .show-task-priority {
+.show-task-name, .show-task-desc, .show-task-priority, .show-task-date {
   outline: none;
   border: #fafffc;
   border-radius: 6px;
@@ -90,12 +97,12 @@
   height: 20px;
 }
 
-.show-task-name:hover, .show-task-desc:hover, .show-task-priority:hover {
+.show-task-name:hover, .show-task-desc:hover, .show-task-priority:hover, .show-task-date:hover {
   background-color: #ebffee;
   transition: all 500ms ease;
 }
 
-.show-task-name:focus, .show-task-desc:focus, .show-task-priority:focus {
+.show-task-name:focus, .show-task-desc:focus, .show-task-priority:focus, .show-task-date:focus {
   background-color: #ebffee;
   border: 0.5px solid black;
 }

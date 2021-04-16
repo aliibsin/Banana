@@ -7,11 +7,18 @@ import { faTimes, faCheckCircle as fasCheckCircle } from '@fortawesome/free-soli
 class TaskItem extends React.Component {
   constructor(props) {
     super(props);
+    
+    if (this.props.task.due_date === null) {
+      this.date = "";
+    } else {
+      this.date = this.props.task.due_date.substring(0, 10);
+    }
+
     this.state = {
       name: this.props.task.name,
       description: this.props.task.description,
       priority: this.props.task.priority,
-      due_date: this.props.task.due_date,
+      due_date: this.date,
       done: this.props.task.done,
     }
 
@@ -25,6 +32,8 @@ class TaskItem extends React.Component {
     this.handleDescriptionUpdate = this.handleDescriptionUpdate.bind(this);
     this.handlePriorityChange = this.handlePriorityChange.bind(this);
     this.handlePriorityUpdate = this.handlePriorityUpdate.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleDateUpdate = this.handleDateUpdate.bind(this);
 
   }
 
@@ -41,6 +50,14 @@ class TaskItem extends React.Component {
   handlePriorityChange(e) {
     const editedPriority = e.target.value.replace(/[\t]+/g, '');
     this.setState({ priority: editedPriority });
+  }
+
+  handleDateChange(e) {
+    this.setState({ due_date: e.target.value });   
+  }
+
+  handleDateUpdate() {
+    this.props.updateTask({ id: this.props.task.id, due_date: this.state.due_date });
   }
 
   handleNameUpdate() {
@@ -65,6 +82,7 @@ class TaskItem extends React.Component {
   }
 
   render() {
+ 
     if (this.state.priority === null) this.state.priority = "";
     return (
       <div className={`task-header ${this.state.done ? "done-active" : ""}`}>
@@ -118,7 +136,13 @@ class TaskItem extends React.Component {
         </div>
         <div className="task-status">
           <div className="task-due">
-            <h4>{this.props.task.due_date}</h4>
+            <input 
+              type="date" 
+              className={`show-task-date ${this.state.done ? "done-active" : ""}`}
+              defaultValue={this.state.due_date}
+              onChange={this.handleDateChange}
+              onBlur={this.handleDateUpdate}
+            />
           </div>
           <div className="task-priority">
             <input

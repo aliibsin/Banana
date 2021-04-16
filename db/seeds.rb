@@ -23,7 +23,7 @@ testSection = Section.create!({name: "TestSection3", creator_id: 1, project_id: 
 testTask = Task.create!({
   name: "TestTask",
   description: "I am a test task",
-  due_date: "4/16/2021",
+  due_date: "2021-04-16",
   priority: "high",
   done: false,
   creator_id: 1,
@@ -34,7 +34,7 @@ testTask = Task.create!({
 testTask = Task.create!({
   name: "Another TestTask",
   description: "I am another test task",
-  due_date: "4/16/2021",
+  due_date: "2021-04-16",
   priority: "high",
   done: false,
   creator_id: 1,
@@ -45,7 +45,7 @@ testTask = Task.create!({
 testTask = Task.create!({
   name: "Last TestTask",
   description: "I am the last test task",
-  due_date: "4/16/2021",
+  due_date: "2021-04-16",
   priority: "medium",
   done: false,
   creator_id: 1,

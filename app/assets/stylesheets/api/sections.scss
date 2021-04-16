@@ -36,8 +36,18 @@
   width: 20%;
 }
 
-.tth-task-due, .tth-task-priority, .tth-task-desc {
+.tth-task-desc {
   width: 50%;
+  border-left: 1px solid rgb(185, 185, 185);
+}
+
+.tth-task-due {
+  width: 65%;
+  border-left: 1px solid rgb(185, 185, 185);
+} 
+
+.tth-task-priority {
+  width: 35%;
   border-left: 1px solid rgb(185, 185, 185);
 }
 

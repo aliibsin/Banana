@@ -49,27 +49,31 @@ const Landing = (props) => {
           <img src={window.teamwork} /> 
         </div>
       </div>
-      <footer>
-        <a 
-          href="https://www.linkedin.com/in/ali-ibsin-1b9732132" 
-          target={"_blank"} 
-          rel="noreferrer noopener"
-          onClick={(evt) => evt.currentTarget.blur()}
-        >
-          <div className="splash-external">
-            <FontAwesomeIcon icon={faLinkedin} />
-          </div>
-        </a>
-        <a 
-          href="https://github.com/aliibsin/Banana" 
-          target={"_blank"} 
-          rel="noreferrer noopener"
-          onClick={(evt) => evt.currentTarget.blur()}
-        >
-          <div className="splash-external">
-            <FontAwesomeIcon icon={faGithub} />
-          </div>
-        </a>
+      <footer className="footer">
+        <div>
+          <a 
+            href="https://www.linkedin.com/in/ali-ibsin-1b9732132" 
+            target={"_blank"} 
+            rel="noreferrer noopener"
+            onClick={(evt) => evt.currentTarget.blur()}
+          >
+            <div className="splash-external">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </div>
+          </a>
+        </div>
+        <div>
+          <a 
+            href="https://github.com/aliibsin/Banana" 
+            target={"_blank"} 
+            rel="noreferrer noopener"
+            onClick={(evt) => evt.currentTarget.blur()}
+          >
+            <div className="splash-external">
+              <FontAwesomeIcon icon={faGithub} />
+            </div>
+          </a>
+        </div>
       </footer>
     </div>
   );

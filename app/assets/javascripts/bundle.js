@@ -14995,7 +14995,9 @@ var Landing = function Landing(props) {
       className: "home-image"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
       src: window.teamwork
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
+      className: "footer"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
       href: "https://www.linkedin.com/in/ali-ibsin-1b9732132",
       target: "_blank",
       rel: "noreferrer noopener",
@@ -15006,7 +15008,7 @@ var Landing = function Landing(props) {
       className: "splash-external"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
       icon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLinkedin
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
       href: "https://github.com/aliibsin/Banana",
       target: "_blank",
       rel: "noreferrer noopener",
@@ -15017,7 +15019,7 @@ var Landing = function Landing(props) {
       className: "splash-external"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
       icon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faGithub
-    })))));
+    }))))));
   };
 
   return sessionLinks();
@@ -17207,11 +17209,18 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, TaskItem);
 
     _this = _super.call(this, props);
+
+    if (_this.props.task.due_date === null) {
+      _this.date = "";
+    } else {
+      _this.date = _this.props.task.due_date.substring(0, 10);
+    }
+
     _this.state = {
       name: _this.props.task.name,
       description: _this.props.task.description,
       priority: _this.props.task.priority,
-      due_date: _this.props.task.due_date,
+      due_date: _this.date,
       done: _this.props.task.done
     };
     _this.nameInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
@@ -17223,6 +17232,8 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
     _this.handleDescriptionUpdate = _this.handleDescriptionUpdate.bind(_assertThisInitialized(_this));
     _this.handlePriorityChange = _this.handlePriorityChange.bind(_assertThisInitialized(_this));
     _this.handlePriorityUpdate = _this.handlePriorityUpdate.bind(_assertThisInitialized(_this));
+    _this.handleDateChange = _this.handleDateChange.bind(_assertThisInitialized(_this));
+    _this.handleDateUpdate = _this.handleDateUpdate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -17248,6 +17259,21 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
       var editedPriority = e.target.value.replace(/[\t]+/g, '');
       this.setState({
         priority: editedPriority
+      });
+    }
+  }, {
+    key: "handleDateChange",
+    value: function handleDateChange(e) {
+      this.setState({
+        due_date: e.target.value
+      });
+    }
+  }, {
+    key: "handleDateUpdate",
+    value: function handleDateUpdate() {
+      this.props.updateTask({
+        id: this.props.task.id,
+        due_date: this.state.due_date
       });
     }
   }, {
@@ -17353,7 +17379,13 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
         className: "task-status"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-due"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, this.props.task.due_date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "date",
+        className: "show-task-date ".concat(this.state.done ? "done-active" : ""),
+        defaultValue: this.state.due_date,
+        onChange: this.handleDateChange,
+        onBlur: this.handleDateUpdate
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-priority"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
