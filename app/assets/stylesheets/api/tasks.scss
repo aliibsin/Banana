@@ -1,0 +1,153 @@
+// Place all the styles related to the Api::Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.create-task-button {
+  background-color: rgb(248, 255, 251);
+  font-weight: 600;
+  color: gray;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.create-task-button:hover {
+  transition: all 250ms ease;
+  color: rgb(102, 189, 3);
+}
+
+.task-header {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 14px;
+  color: gray;
+  border-top: 1px solid rgb(226, 226, 226);
+  background-color: #fafffc;
+  border-radius: 8px;
+}
+
+.task-info {
+  width: 80%;
+}
+
+.task-name {
+  width: 35%;
+}
+
+.task-desc {
+  border-left: 1px solid rgb(226, 226, 226);
+  width: 65%;
+}
+
+.task-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.task-check:hover {
+  color:rgb(102, 189, 3);
+}
+
+.task-header div {
+  display: flex;
+}
+
+.task-header input {
+  width: 100%;
+  margin: auto 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: black;
+}
+
+.task-due, .task-priority {
+  border-left: 1px solid rgb(226, 226, 226);
+  display: flex;
+  align-items: center;  
+}
+
+.task-due {
+  width: 65%;
+} 
+
+.task-priority {
+  width: 35%;
+}
+
+.task-status {
+  width: 20%;
+}
+
+.task-status h4 {
+  margin-left: 10px;
+}
+
+.show-task-name, .show-task-desc, .show-task-priority, .show-task-date {
+  outline: none;
+  border: #fafffc;
+  border-radius: 6px;
+  background-color: #fafffc;
+  height: 20px;
+}
+
+.show-task-name:hover, .show-task-desc:hover, .show-task-priority:hover, .show-task-date:hover {
+  background-color: #ebffee;
+  transition: all 500ms ease;
+}
+
+.show-task-name:focus, .show-task-desc:focus, .show-task-priority:focus, .show-task-date:focus {
+  background-color: #ebffee;
+  border: 0.5px solid black;
+}
+
+.create-task-button-cont {
+  margin-top: 10px;
+}
+
+.create-task-button {
+  background-color: rgb(248, 255, 251);
+  font-weight: 600;
+  color: gray;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.create-task-button:hover {
+  transition: all 250ms ease;
+  color: rgb(102, 189, 3);
+}
+
+.delete-task-button-cont {
+  position: relative;
+  left: -9999px;
+}
+
+.delete-task-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+}
+
+.delete-task-button:hover {
+	transition: all 250ms ease;
+	color: rgb(255, 103, 82);
+  font-size: 20px;
+}
+
+.task-header:hover .delete-task-button-cont {
+  left: 3px;
+}
+
+.done-active {
+  background-color: #d1ffe5;
+}

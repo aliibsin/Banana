@@ -22,6 +22,7 @@ class ProjectShow extends React.Component {
     this.handleDescriptionUpdate = this.handleDescriptionUpdate.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleNameUpdate = this.handleNameUpdate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
@@ -58,6 +59,20 @@ class ProjectShow extends React.Component {
 
   handleNameUpdate() {
     this.props.updateProject({ id: this.props.projectId, name: this.state.name });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const task = Object.assign({}, {
+      name: "Untitled Task",
+      description: "",
+      priority: "",
+      due_date: "",
+      done: false,
+      project_id: this.props.projectId,
+      section_id: ""
+    });
+    this.props.createTask(task);
   }
 
   render() {
@@ -109,6 +124,11 @@ class ProjectShow extends React.Component {
             <div className="signout-button" onClick={this.props.signout}>Sign Out</div>
           </hgroup>
           <div className="section-disp-cont">
+            <div>
+              <form onSubmit={this.handleSubmit}>
+                <input className="create-task-button" type="submit" value='New Task' />
+              </form>
+            </div>
             <SectionDisplayContainer project_id={this.props.project.id}/>
           </div>
         </div>

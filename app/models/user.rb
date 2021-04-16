@@ -12,8 +12,12 @@ class User < ApplicationRecord
     class_name: :Project
 
   has_many :sections,
-    through: :projects,
-    source: :sections
+    foreign_key: :creator_id,
+    class_name: :Section
+
+  has_many :tasks,
+    foreign_key: :creator_id,
+    class_name: :Task
 
 
   def self.find_by_credentials(email, password)

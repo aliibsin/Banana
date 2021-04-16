@@ -1,5 +1,6 @@
 import React from 'react';
-import SectionDisplayItem from './section_display_item'
+import SectionDisplayItem from './section_display_item';
+import TaskItem from '../tasks/index/task_item';
 
 class SectionDisplay extends React.Component {
   constructor(props) {
@@ -16,6 +17,14 @@ class SectionDisplay extends React.Component {
     this.props.fetchSections();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.project_id !== this.props.project_id) {
+      this.setState({
+        project_id: this.props.project_id
+      })      
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const section = Object.assign({}, this.state);
@@ -24,11 +33,19 @@ class SectionDisplay extends React.Component {
 
   render() {
     let filteredSections = this.props.sections.filter(section => section.project_id === this.props.project_id);
+    let independentSections = this.props.sections.filter(section => section.project_id === null);
+    let nPnSTasks = this.props.tasks.filter(task => task.project_id === null && task.section_id === null);
+    let yPnSTasks = this.props.tasks.filter(task => task.project_id === this.props.project_id && task.section_id === null);
     return (
       <div className="section-container">
         <div className="task-table-header">
-          <div className="tth-task-name">
-            <h4>Task Name</h4>
+          <div className="tth-task-info">
+            <div className="tth-task-name">
+              <h4>Task Name</h4>
+            </div>
+            <div className="tth-task-desc">
+              <h4>Description</h4>
+            </div>
           </div>
           <div className="tth-task-status">
             <div className="tth-task-due">
@@ -39,15 +56,57 @@ class SectionDisplay extends React.Component {
             </div>
           </div>
         </div>
+        <ul>
+          {
+            this.props.project_id ? 
+            yPnSTasks.map(task => (
+              <li key={task.id}>
+                <TaskItem 
+                  task={task} 
+                  updateTask={this.props.updateTask} 
+                  deleteTask={this.props.deleteTask}
+                />
+              </li>
+            )) :
+            nPnSTasks.map(task => (
+              <li key={task.id}>
+                <TaskItem 
+                  task={task} 
+                  updateTask={this.props.updateTask} 
+                  deleteTask={this.props.deleteTask}
+                />
+              </li>
+            ))
+          }
+        </ul>
 
         <ul className="sections-list">
           {
+            this.props.project_id ? 
             filteredSections.map(section => (
               <SectionDisplayItem 
                 key={section.id}
                 section={section}
+                project_id={this.props.project_id}
+                tasks={this.props.tasks}
                 updateSection={this.props.updateSection}
                 deleteSection={this.props.deleteSection}
+                createTask={this.props.createTask} 
+                updateTask={this.props.updateTask} 
+                deleteTask={this.props.deleteTask}
+              />
+            )) :
+            independentSections.map(section => (
+              <SectionDisplayItem 
+                key={section.id}
+                section={section}
+                project_id={this.props.project_id}
+                tasks={this.props.tasks}
+                createTask={this.props.createTask} 
+                updateSection={this.props.updateSection}
+                deleteSection={this.props.deleteSection}
+                updateTask={this.props.updateTask} 
+                deleteTask={this.props.deleteTask}
               />
             ))
           }

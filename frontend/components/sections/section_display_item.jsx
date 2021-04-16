@@ -1,6 +1,8 @@
 import React from 'react';
+import TaskItem from '../tasks/index/task_item';
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faChevronDown, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 class SectionDisplayItem extends React.Component {
   constructor(props) {
@@ -11,8 +13,23 @@ class SectionDisplayItem extends React.Component {
     };
 
     this.nameInput = React.createRef();
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleNameUpdate = this.handleNameUpdate.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const task = Object.assign({}, {
+      name: "Untitled Task",
+      description: "",
+      priority: "",
+      due_date: "",
+      done: false,
+      project_id: this.props.project_id,
+      section_id: this.props.section.id
+    });
+    this.props.createTask(task);
   }
 
   handleNameChange(e) {
@@ -21,8 +38,7 @@ class SectionDisplayItem extends React.Component {
   }
 
   handleNameUpdate(e) {
-    const { name: stateName } = this.state;
-    this.props.updateSection({ id: this.props.section.id, name: stateName });
+    this.props.updateSection({ id: this.props.section.id, name: this.state.name });
   }
 
   deleteSection() {
@@ -30,9 +46,9 @@ class SectionDisplayItem extends React.Component {
   }
 
   render () {
-    const { name: stateName } = this.state;
+    let nPySTasks = this.props.tasks.filter(task => task.project_id === null && task.section_id === this.props.section.id);
+    let yPySTasks = this.props.tasks.filter(task => task.project_id === this.props.project_id && task.section_id === this.props.section.id);
     return (
-      
       <li className="indiv-section-cont">
         <div >
           <div id="del-sec-but-cont">
@@ -46,7 +62,7 @@ class SectionDisplayItem extends React.Component {
             onChange={this.handleNameChange}
             onBlur={this.handleNameUpdate}
             ref={this.nameInput}
-            value={stateName}
+            value={this.state.name}
             placeholder="Section name can't be blank"
             autoComplete="off" 
             autoCorrect="off" 
@@ -54,7 +70,36 @@ class SectionDisplayItem extends React.Component {
             spellCheck="false"
           />
         </div>
-        
+        <ul>
+          {
+            this.props.project_id ? 
+            yPySTasks.map(task => (
+              <li key={task.id}>
+                <TaskItem 
+                  task={task} 
+                  updateTask={this.props.updateTask} 
+                  deleteTask={this.props.deleteTask}
+                />
+              </li>
+            )) :
+            nPySTasks.map(task => (
+              <li key={task.id}>
+                <TaskItem 
+                  task={task} 
+                  updateTask={this.props.updateTask}
+                  deleteTask={this.props.deleteTask}
+                />
+              </li>
+            ))
+          }
+          <li>
+            <div className="create-task-button-cont">
+              <form onSubmit={this.handleSubmit}>
+                <input className="create-task-button" type="submit" value='New Task' />
+              </form>
+            </div>
+          </li>
+        </ul>
       </li>
     )
   }

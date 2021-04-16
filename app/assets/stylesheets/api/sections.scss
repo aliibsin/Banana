@@ -10,7 +10,7 @@
 
 .task-table-header {
   width: 100%;
-  height: 36px;
+  height: 30px;
   display: flex;
   justify-content: space-between;
 
@@ -24,44 +24,65 @@
   display: flex;
 }
 
-.tth-task-name {
+.tth-task-info {
   width: 80%;
+}
+
+.tth-task-name {
+  width: 35%;
 }
 
 .tth-task-status {
   width: 20%;
 }
 
-.tth-task-due, .tth-task-priority {
+.tth-task-desc {
   width: 50%;
+  border-left: 1px solid rgb(185, 185, 185);
+}
+
+.tth-task-due {
+  width: 65%;
+  border-left: 1px solid rgb(185, 185, 185);
+} 
+
+.tth-task-priority {
+  width: 35%;
   border-left: 1px solid rgb(185, 185, 185);
 }
 
 .task-table-header h4 {
   margin: auto 0;
-}
-
-.tth-task-status h4 {
   margin-left: 10px;
 }
 
 .indiv-section-cont {
-  height: 50px;
   width: 100%;
   border-bottom: 1px solid rgb(185, 185, 185);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .indiv-section-cont > div {
   width: 100%;
+  min-height: 50px;
   display: flex;
+  align-items: center;
+}
+
+.indiv-section-cont > div input {
+  min-height: 26px;
 }
 
 .show-section-name {
   display: block;
   height: 55%;
   width: 99%;
+  font-size: 16px;
   font-weight: 700;
   padding: 8px;
   outline: none; 
@@ -72,7 +93,7 @@
 
 .show-section-name:hover, .show-section-name:focus {
   background-color: rgb(230, 255, 233);
-  transition: all 250ms ease;
+  transition: all 500ms ease;
 }
 
 .show-section-name:focus {
@@ -99,6 +120,7 @@
   margin: auto;
   margin-right: 4px;
 }
+
 
 .delete-section-button {
 	font-size: 14px;

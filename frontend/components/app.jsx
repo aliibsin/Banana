@@ -5,6 +5,7 @@ import LandingContainer from './landing/landing_container'
 import SigninFormContainer from './session/signin_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import HomeContainer from './home/home_container';
+import TaskIndexContainer from './tasks/index/task_index_container';
 import ProjectShowContainer from './projects/show/list/project_show_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -18,6 +19,7 @@ const App = () => {
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <Route exact path="/" component={LandingContainer} />
         <ProtectedRoute exact path="/home" component={HomeContainer} />
+        <ProtectedRoute exact path="/tasks" component={TaskIndexContainer} />
         <ProtectedRoute exact path="/home/:projectId/list" component={ProjectShowContainer}/>
 
         <Redirect exact from="/signin/*" to="/signin" />
