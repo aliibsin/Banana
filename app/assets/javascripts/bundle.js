@@ -16402,8 +16402,7 @@ var SectionDisplayItem = /*#__PURE__*/function (_React$Component) {
       });
       var yPySTasks = this.props.tasks.filter(function (task) {
         return task.project_id === _this2.props.project_id && task.section_id === _this2.props.section.id;
-      }); // console.log(this.props)
-
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "indiv-section-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -16431,13 +16430,15 @@ var SectionDisplayItem = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: task.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tasks_index_task_item__WEBPACK_IMPORTED_MODULE_1__.default, {
-          task: task
+          task: task,
+          updateTask: _this2.props.updateTask
         }));
       }) : nPySTasks.map(function (task) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: task.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tasks_index_task_item__WEBPACK_IMPORTED_MODULE_1__.default, {
-          task: task
+          task: task,
+          updateTask: _this2.props.updateTask
         }));
       })));
     }

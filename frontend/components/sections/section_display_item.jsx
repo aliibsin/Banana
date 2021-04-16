@@ -33,9 +33,7 @@ class SectionDisplayItem extends React.Component {
   render () {
     let nPySTasks = this.props.tasks.filter(task => task.project_id === null && task.section_id === this.props.section.id);
     let yPySTasks = this.props.tasks.filter(task => task.project_id === this.props.project_id && task.section_id === this.props.section.id);
-    // console.log(this.props)
     return (
-      
       <li className="indiv-section-cont">
         <div >
           <div id="del-sec-but-cont">
@@ -62,12 +60,12 @@ class SectionDisplayItem extends React.Component {
             this.props.project_id ? 
             yPySTasks.map(task => (
               <li key={task.id}>
-                <TaskItem task={task} />
+                <TaskItem task={task} updateTask={this.props.updateTask} />
               </li>
             )) :
             nPySTasks.map(task => (
               <li key={task.id}>
-                <TaskItem task={task} />
+                <TaskItem task={task} updateTask={this.props.updateTask} />
               </li>
             ))
           }
