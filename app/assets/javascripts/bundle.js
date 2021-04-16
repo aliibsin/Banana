@@ -16178,8 +16178,7 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
       });
       var yPnSTasks = this.props.tasks.filter(function (task) {
         return task.project_id === _this2.props.project_id && task.section_id === null;
-      }); // console.log(this.props)
-
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "section-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -16222,6 +16221,7 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
           tasks: _this2.props.tasks,
           updateSection: _this2.props.updateSection,
           deleteSection: _this2.props.deleteSection,
+          createTask: _this2.props.createTask,
           updateTask: _this2.props.updateTask,
           deleteTask: _this2.props.deleteTask
         });
@@ -16231,6 +16231,7 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
           section: section,
           project_id: _this2.props.project_id,
           tasks: _this2.props.tasks,
+          createTask: _this2.props.createTask,
           updateSection: _this2.props.updateSection,
           deleteSection: _this2.props.deleteSection,
           updateTask: _this2.props.updateTask,
@@ -16295,6 +16296,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteSection: function deleteSection(sectionId) {
       return dispatch((0,_actions_section_actions__WEBPACK_IMPORTED_MODULE_2__.deleteSection)(sectionId));
+    },
+    createTask: function createTask(task) {
+      return dispatch((0,_actions_task_actions__WEBPACK_IMPORTED_MODULE_3__.createTask)(task));
     },
     updateTask: function updateTask(task) {
       return dispatch((0,_actions_task_actions__WEBPACK_IMPORTED_MODULE_3__.updateTask)(task));
@@ -16366,12 +16370,28 @@ var SectionDisplayItem = /*#__PURE__*/function (_React$Component) {
       name: _this.props.section.name
     };
     _this.nameInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleNameChange = _this.handleNameChange.bind(_assertThisInitialized(_this));
     _this.handleNameUpdate = _this.handleNameUpdate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SectionDisplayItem, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var task = Object.assign({}, {
+        name: "Untitled Task",
+        description: "",
+        priority: "",
+        due_date: "",
+        done: false,
+        project_id: this.props.project_id,
+        section_id: this.props.section.id
+      });
+      this.props.createTask(task);
+    }
+  }, {
     key: "handleNameChange",
     value: function handleNameChange(e) {
       var editedName = e.target.value.replace(/[\t]+/g, '');
@@ -16431,16 +16451,26 @@ var SectionDisplayItem = /*#__PURE__*/function (_React$Component) {
           key: task.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tasks_index_task_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           task: task,
-          updateTask: _this2.props.updateTask
+          updateTask: _this2.props.updateTask,
+          deleteTask: _this2.props.deleteTask
         }));
       }) : nPySTasks.map(function (task) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: task.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tasks_index_task_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           task: task,
-          updateTask: _this2.props.updateTask
+          updateTask: _this2.props.updateTask,
+          deleteTask: _this2.props.deleteTask
         }));
-      })));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "create-task-button-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "create-task-button",
+        type: "submit",
+        value: "New Task"
+      }))))));
     }
   }]);
 
@@ -17235,6 +17265,7 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      if (this.state.priority === null) this.state.priority = "";
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

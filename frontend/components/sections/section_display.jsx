@@ -28,7 +28,6 @@ class SectionDisplay extends React.Component {
     let independentSections = this.props.sections.filter(section => section.project_id === null);
     let nPnSTasks = this.props.tasks.filter(task => task.project_id === null && task.section_id === null);
     let yPnSTasks = this.props.tasks.filter(task => task.project_id === this.props.project_id && task.section_id === null);
-    // console.log(this.props)
     return (
       <div className="section-container">
         <div className="task-table-header">
@@ -84,6 +83,7 @@ class SectionDisplay extends React.Component {
                 tasks={this.props.tasks}
                 updateSection={this.props.updateSection}
                 deleteSection={this.props.deleteSection}
+                createTask={this.props.createTask} 
                 updateTask={this.props.updateTask} 
                 deleteTask={this.props.deleteTask}
               />
@@ -94,6 +94,7 @@ class SectionDisplay extends React.Component {
                 section={section}
                 project_id={this.props.project_id}
                 tasks={this.props.tasks}
+                createTask={this.props.createTask} 
                 updateSection={this.props.updateSection}
                 deleteSection={this.props.deleteSection}
                 updateTask={this.props.updateTask} 

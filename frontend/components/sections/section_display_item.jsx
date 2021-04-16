@@ -13,8 +13,23 @@ class SectionDisplayItem extends React.Component {
     };
 
     this.nameInput = React.createRef();
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleNameUpdate = this.handleNameUpdate.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const task = Object.assign({}, {
+      name: "Untitled Task",
+      description: "",
+      priority: "",
+      due_date: "",
+      done: false,
+      project_id: this.props.project_id,
+      section_id: this.props.section.id
+    });
+    this.props.createTask(task);
   }
 
   handleNameChange(e) {
@@ -60,15 +75,30 @@ class SectionDisplayItem extends React.Component {
             this.props.project_id ? 
             yPySTasks.map(task => (
               <li key={task.id}>
-                <TaskItem task={task} updateTask={this.props.updateTask} />
+                <TaskItem 
+                  task={task} 
+                  updateTask={this.props.updateTask} 
+                  deleteTask={this.props.deleteTask}
+                />
               </li>
             )) :
             nPySTasks.map(task => (
               <li key={task.id}>
-                <TaskItem task={task} updateTask={this.props.updateTask} />
+                <TaskItem 
+                  task={task} 
+                  updateTask={this.props.updateTask}
+                  deleteTask={this.props.deleteTask}
+                />
               </li>
             ))
           }
+          <li>
+            <div className="create-task-button-cont">
+              <form onSubmit={this.handleSubmit}>
+                <input className="create-task-button" type="submit" value='New Task' />
+              </form>
+            </div>
+          </li>
         </ul>
       </li>
     )

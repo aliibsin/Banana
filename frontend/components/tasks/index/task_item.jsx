@@ -56,6 +56,7 @@ class TaskItem extends React.Component {
 
 
   render() {
+    if (this.state.priority === null) this.state.priority = "";
     return (
       <div className="task-header">
         <div className="task-info">
