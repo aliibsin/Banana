@@ -28,7 +28,7 @@ class SectionDisplay extends React.Component {
     let independentSections = this.props.sections.filter(section => section.project_id === null);
     let nPnSTasks = this.props.tasks.filter(task => task.project_id === null && task.section_id === null);
     let yPnSTasks = this.props.tasks.filter(task => task.project_id === this.props.project_id && task.section_id === null);
-    
+    // console.log(this.props)
     return (
       <div className="section-container">
         <div className="task-table-header">
@@ -54,12 +54,20 @@ class SectionDisplay extends React.Component {
             this.props.project_id ? 
             yPnSTasks.map(task => (
               <li key={task.id}>
-                <TaskItem task={task} />
+                <TaskItem 
+                  task={task} 
+                  updateTask={this.props.updateTask} 
+                  deleteTask={this.props.deleteTask}
+                />
               </li>
             )) :
             nPnSTasks.map(task => (
               <li key={task.id}>
-                <TaskItem task={task} />
+                <TaskItem 
+                  task={task} 
+                  updateTask={this.props.updateTask} 
+                  deleteTask={this.props.deleteTask}
+                />
               </li>
             ))
           }
@@ -76,6 +84,8 @@ class SectionDisplay extends React.Component {
                 tasks={this.props.tasks}
                 updateSection={this.props.updateSection}
                 deleteSection={this.props.deleteSection}
+                updateTask={this.props.updateTask} 
+                deleteTask={this.props.deleteTask}
               />
             )) :
             independentSections.map(section => (
@@ -86,6 +96,8 @@ class SectionDisplay extends React.Component {
                 tasks={this.props.tasks}
                 updateSection={this.props.updateSection}
                 deleteSection={this.props.deleteSection}
+                updateTask={this.props.updateTask} 
+                deleteTask={this.props.deleteTask}
               />
             ))
           }

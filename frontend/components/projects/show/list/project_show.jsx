@@ -76,7 +76,6 @@ class ProjectShow extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="home-page-full">
         <div className="sidebar-expand" onClick={() => this.props.toggleSidebar()}>

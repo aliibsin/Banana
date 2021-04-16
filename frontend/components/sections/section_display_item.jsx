@@ -23,7 +23,6 @@ class SectionDisplayItem extends React.Component {
   }
 
   handleNameUpdate(e) {
-    // const { name: stateName } = this.state;
     this.props.updateSection({ id: this.props.section.id, name: this.state.name });
   }
 
@@ -34,7 +33,7 @@ class SectionDisplayItem extends React.Component {
   render () {
     let nPySTasks = this.props.tasks.filter(task => task.project_id === null && task.section_id === this.props.section.id);
     let yPySTasks = this.props.tasks.filter(task => task.project_id === this.props.project_id && task.section_id === this.props.section.id);
-
+    // console.log(this.props)
     return (
       
       <li className="indiv-section-cont">

@@ -8,6 +8,7 @@ import {
   deleteSection
 } from '../../actions/section_actions' ;
 
+import { updateTask, deleteTask } from '../../actions/task_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let project_id = ownProps.project_id;
@@ -23,7 +24,9 @@ const mapDispatchToProps = dispatch => {
     fetchSections: () => dispatch(fetchSections()),
     createSection: section => dispatch(createSection(section)),
     updateSection: section => dispatch(updateSection(section)),
-    deleteSection: sectionId => dispatch(deleteSection(sectionId))
+    deleteSection: sectionId => dispatch(deleteSection(sectionId)),
+    updateTask: task => dispatch(updateTask(task)),
+    deleteTask: taskId => dispatch(deleteTask(taskId))
   });
 };
 

@@ -15926,7 +15926,6 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log(this.props);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "home-page-full"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -16179,7 +16178,8 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
       });
       var yPnSTasks = this.props.tasks.filter(function (task) {
         return task.project_id === _this2.props.project_id && task.section_id === null;
-      });
+      }); // console.log(this.props)
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "section-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -16200,13 +16200,17 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: task.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tasks_index_task_item__WEBPACK_IMPORTED_MODULE_2__.default, {
-          task: task
+          task: task,
+          updateTask: _this2.props.updateTask,
+          deleteTask: _this2.props.deleteTask
         }));
       }) : nPnSTasks.map(function (task) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: task.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tasks_index_task_item__WEBPACK_IMPORTED_MODULE_2__.default, {
-          task: task
+          task: task,
+          updateTask: _this2.props.updateTask,
+          deleteTask: _this2.props.deleteTask
         }));
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "sections-list"
@@ -16217,7 +16221,9 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
           project_id: _this2.props.project_id,
           tasks: _this2.props.tasks,
           updateSection: _this2.props.updateSection,
-          deleteSection: _this2.props.deleteSection
+          deleteSection: _this2.props.deleteSection,
+          updateTask: _this2.props.updateTask,
+          deleteTask: _this2.props.deleteTask
         });
       }) : independentSections.map(function (section) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_section_display_item__WEBPACK_IMPORTED_MODULE_1__.default, {
@@ -16226,7 +16232,9 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
           project_id: _this2.props.project_id,
           tasks: _this2.props.tasks,
           updateSection: _this2.props.updateSection,
-          deleteSection: _this2.props.deleteSection
+          deleteSection: _this2.props.deleteSection,
+          updateTask: _this2.props.updateTask,
+          deleteTask: _this2.props.deleteTask
         });
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit
@@ -16259,6 +16267,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _section_display__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./section_display */ "./frontend/components/sections/section_display.jsx");
 /* harmony import */ var _actions_section_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/section_actions */ "./frontend/actions/section_actions.js");
+/* harmony import */ var _actions_task_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/task_actions */ "./frontend/actions/task_actions.js");
+
 
 
 
@@ -16285,6 +16295,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteSection: function deleteSection(sectionId) {
       return dispatch((0,_actions_section_actions__WEBPACK_IMPORTED_MODULE_2__.deleteSection)(sectionId));
+    },
+    updateTask: function updateTask(task) {
+      return dispatch((0,_actions_task_actions__WEBPACK_IMPORTED_MODULE_3__.updateTask)(task));
+    },
+    deleteTask: function deleteTask(taskId) {
+      return dispatch((0,_actions_task_actions__WEBPACK_IMPORTED_MODULE_3__.deleteTask)(taskId));
     }
   };
 };
@@ -16366,7 +16382,6 @@ var SectionDisplayItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleNameUpdate",
     value: function handleNameUpdate(e) {
-      // const { name: stateName } = this.state;
       this.props.updateSection({
         id: this.props.section.id,
         name: this.state.name
@@ -16387,7 +16402,8 @@ var SectionDisplayItem = /*#__PURE__*/function (_React$Component) {
       });
       var yPySTasks = this.props.tasks.filter(function (task) {
         return task.project_id === _this2.props.project_id && task.section_id === _this2.props.section.id;
-      });
+      }); // console.log(this.props)
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "indiv-section-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -17149,18 +17165,73 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      name: "Untitled Task",
-      description: "",
-      priority: "",
-      due_date: "",
-      done: false,
-      project_id: "",
-      section_id: ""
+      name: _this.props.task.name,
+      description: _this.props.task.description,
+      priority: _this.props.task.priority,
+      due_date: _this.props.task.due_date,
+      done: _this.props.task.done
     };
+    _this.nameInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+    _this.descriptionInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+    _this.priorityInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+    _this.handleNameChange = _this.handleNameChange.bind(_assertThisInitialized(_this));
+    _this.handleNameUpdate = _this.handleNameUpdate.bind(_assertThisInitialized(_this));
+    _this.handleDescriptionChange = _this.handleDescriptionChange.bind(_assertThisInitialized(_this));
+    _this.handleDescriptionUpdate = _this.handleDescriptionUpdate.bind(_assertThisInitialized(_this));
+    _this.handlePriorityChange = _this.handlePriorityChange.bind(_assertThisInitialized(_this));
+    _this.handlePriorityUpdate = _this.handlePriorityUpdate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(TaskItem, [{
+    key: "handleNameChange",
+    value: function handleNameChange(e) {
+      var editedName = e.target.value.replace(/[\t]+/g, '');
+      this.setState({
+        name: editedName
+      });
+    }
+  }, {
+    key: "handleDescriptionChange",
+    value: function handleDescriptionChange(e) {
+      var editedDescription = e.target.value.replace(/[\t]+/g, '');
+      this.setState({
+        description: editedDescription
+      });
+    }
+  }, {
+    key: "handlePriorityChange",
+    value: function handlePriorityChange(e) {
+      var editedPriority = e.target.value.replace(/[\t]+/g, '');
+      this.setState({
+        priority: editedPriority
+      });
+    }
+  }, {
+    key: "handleNameUpdate",
+    value: function handleNameUpdate(e) {
+      this.props.updateTask({
+        id: this.props.task.id,
+        name: this.state.name
+      });
+    }
+  }, {
+    key: "handleDescriptionUpdate",
+    value: function handleDescriptionUpdate(e) {
+      this.props.updateTask({
+        id: this.props.task.id,
+        description: this.state.description
+      });
+    }
+  }, {
+    key: "handlePriorityUpdate",
+    value: function handlePriorityUpdate(e) {
+      this.props.updateTask({
+        id: this.props.task.id,
+        priority: this.state.priority
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -17173,15 +17244,51 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
         className: "task-check"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__.faCheckCircle
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, this.props.task.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "show-task-name",
+        onChange: this.handleNameChange,
+        onBlur: this.handleNameUpdate,
+        ref: this.nameInput,
+        value: this.state.name,
+        placeholder: "Task name can't be blank",
+        autoComplete: "off",
+        autoCorrect: "off",
+        autoCapitalize: "off",
+        spellCheck: "false"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-desc"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, this.props.task.description))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "show-task-desc",
+        onChange: this.handleDescriptionChange,
+        onBlur: this.handleDescriptionUpdate,
+        ref: this.descriptionInput,
+        value: this.state.description,
+        placeholder: "Add a description...",
+        autoComplete: "off",
+        autoCorrect: "off",
+        autoCapitalize: "off",
+        spellCheck: "false"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-status"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-due"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, this.props.task.due_date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-priority"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, this.props.task.priority))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "show-task-priority",
+        onChange: this.handlePriorityChange,
+        onBlur: this.handlePriorityUpdate,
+        ref: this.priorityInput,
+        value: this.state.priority,
+        placeholder: "e.g. low...",
+        autoComplete: "off",
+        autoCorrect: "off",
+        autoCapitalize: "off",
+        spellCheck: "false"
+      }))));
     }
   }]);
 
