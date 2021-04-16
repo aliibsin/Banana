@@ -17157,7 +17157,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -17179,6 +17180,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -17240,7 +17242,7 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleNameUpdate",
-    value: function handleNameUpdate(e) {
+    value: function handleNameUpdate() {
       this.props.updateTask({
         id: this.props.task.id,
         name: this.state.name
@@ -17248,7 +17250,7 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleDescriptionUpdate",
-    value: function handleDescriptionUpdate(e) {
+    value: function handleDescriptionUpdate() {
       this.props.updateTask({
         id: this.props.task.id,
         description: this.state.description
@@ -17256,29 +17258,64 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handlePriorityUpdate",
-    value: function handlePriorityUpdate(e) {
+    value: function handlePriorityUpdate() {
       this.props.updateTask({
         id: this.props.task.id,
         priority: this.state.priority
       });
     }
   }, {
+    key: "handleDone",
+    value: function handleDone() {
+      this.setState({
+        done: !this.state.done
+      });
+      this.props.updateTask({
+        id: this.props.task.id,
+        done: !this.state.done
+      });
+    }
+  }, {
+    key: "deleteTask",
+    value: function deleteTask() {
+      this.props.deleteTask(this.props.task.id);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       if (this.state.priority === null) this.state.priority = "";
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "task-header"
+        className: "task-header ".concat(this.state.done ? "done-active" : "")
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-name"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "delete-task-button-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+        className: "delete-task-button"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__.faTimes,
+        onClick: function onClick() {
+          return _this2.deleteTask();
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-check"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
-        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__.faCheckCircle
+      }, this.state.done ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__.faCheckCircle,
+        onClick: function onClick() {
+          return _this2.handleDone();
+        }
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCheckCircle,
+        onClick: function onClick() {
+          return _this2.handleDone();
+        }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
-        className: "show-task-name",
+        className: "show-task-name ".concat(this.state.done ? "done-active" : ""),
         onChange: this.handleNameChange,
         onBlur: this.handleNameUpdate,
         ref: this.nameInput,
@@ -17292,7 +17329,7 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
         className: "task-desc"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
-        className: "show-task-desc",
+        className: "show-task-desc ".concat(this.state.done ? "done-active" : ""),
         onChange: this.handleDescriptionChange,
         onBlur: this.handleDescriptionUpdate,
         ref: this.descriptionInput,
@@ -17310,7 +17347,7 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
         className: "task-priority"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
-        className: "show-task-priority",
+        className: "show-task-priority ".concat(this.state.done ? "done-active" : ""),
         onChange: this.handlePriorityChange,
         onBlur: this.handlePriorityUpdate,
         ref: this.priorityInput,

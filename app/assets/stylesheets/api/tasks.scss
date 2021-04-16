@@ -51,6 +51,10 @@
   cursor: pointer;
 }
 
+.task-check:hover {
+  color:rgb(102, 189, 3);
+}
+
 .task-header div {
   display: flex;
 }
@@ -86,12 +90,6 @@
   height: 20px;
 }
 
-// .task-name:hover .show-task-name, .task-name:hover, 
-// .task-desc:hover .show-task-desc, .task-desc:hover,
-// .task-priority:hover .show-task-priority, .task-priority:hover{
-//   background-color: #e6ffe9;
-// }
-
 .show-task-name:hover, .show-task-desc:hover, .show-task-priority:hover {
   background-color: #ebffee;
   transition: all 500ms ease;
@@ -118,4 +116,31 @@
 .create-task-button:hover {
   transition: all 250ms ease;
   color: rgb(102, 189, 3);
+}
+
+.delete-task-button-cont {
+  position: relative;
+  left: -9999px;
+}
+
+.delete-task-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+}
+
+.delete-task-button:hover {
+	transition: all 250ms ease;
+	color: rgb(255, 103, 82);
+  font-size: 20px;
+}
+
+.task-header:hover .delete-task-button-cont {
+  left: 3px;
+}
+
+.done-active {
+  background-color: #d1ffe5;
 }

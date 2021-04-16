@@ -1,7 +1,7 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
-
+import { faTimes, faCheckCircle as fasCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 class TaskItem extends React.Component {
   constructor(props) {
@@ -42,33 +42,52 @@ class TaskItem extends React.Component {
     this.setState({ priority: editedPriority });
   }
 
-  handleNameUpdate(e) {
+  handleNameUpdate() {
     this.props.updateTask({ id: this.props.task.id, name: this.state.name });
   }
 
-  handleDescriptionUpdate(e) {
+  handleDescriptionUpdate() {
     this.props.updateTask({ id: this.props.task.id, description: this.state.description });
   }
 
-  handlePriorityUpdate(e) {
+  handlePriorityUpdate() {
     this.props.updateTask({ id: this.props.task.id, priority: this.state.priority });
   }
 
+  handleDone() {
+    this.setState({ done: !this.state.done });
+    this.props.updateTask({ id: this.props.task.id, done: !this.state.done });
+  }
+
+  deleteTask() {
+    this.props.deleteTask(this.props.task.id);
+  }
 
   render() {
     if (this.state.priority === null) this.state.priority = "";
     return (
-      <div className="task-header">
+      <div className={`task-header ${this.state.done ? "done-active" : ""}`}>
         <div className="task-info">
           <div className="task-name">
-            <div className="task-check">
-              <span>
-                <FontAwesomeIcon icon={faCheckCircle} />
+            <div className="delete-task-button-cont">
+              <span className="delete-task-button" >
+                <FontAwesomeIcon icon={faTimes} onClick={() => this.deleteTask()} />
               </span>
+            </div>
+            <div className="task-check">
+              {
+                this.state.done ? 
+                <span>
+                  <FontAwesomeIcon icon={fasCheckCircle} onClick={() => this.handleDone()}/>
+                </span> :
+                <span>
+                  <FontAwesomeIcon icon={faCheckCircle} onClick={() => this.handleDone()}/>
+                </span>
+              }
             </div>
             <input
               type="text"
-              className="show-task-name"
+              className={`show-task-name ${this.state.done ? "done-active" : ""}`}
               onChange={this.handleNameChange}
               onBlur={this.handleNameUpdate}
               ref={this.nameInput}
@@ -83,7 +102,7 @@ class TaskItem extends React.Component {
           <div className="task-desc">
             <input
               type="text"
-              className="show-task-desc"
+              className={`show-task-desc ${this.state.done ? "done-active" : ""}`}
               onChange={this.handleDescriptionChange}
               onBlur={this.handleDescriptionUpdate}
               ref={this.descriptionInput}
@@ -103,7 +122,7 @@ class TaskItem extends React.Component {
           <div className="task-priority">
             <input
                 type="text"
-                className="show-task-priority"
+                className={`show-task-priority ${this.state.done ? "done-active" : ""}`}
                 onChange={this.handlePriorityChange}
                 onBlur={this.handlePriorityUpdate}
                 ref={this.priorityInput}
