@@ -82,7 +82,7 @@ class TaskItem extends React.Component {
   }
 
   render() {
- 
+    // console.log(this.props)
     if (this.state.priority === null) this.state.priority = "";
     return (
       <div className={`task-header ${this.state.done ? "done-active" : ""}`}>

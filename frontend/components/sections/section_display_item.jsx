@@ -76,6 +76,7 @@ class SectionDisplayItem extends React.Component {
             yPySTasks.map(task => (
               <li key={task.id}>
                 <TaskItem 
+                  key={task.id}
                   task={task} 
                   updateTask={this.props.updateTask} 
                   deleteTask={this.props.deleteTask}
@@ -85,6 +86,7 @@ class SectionDisplayItem extends React.Component {
             nPySTasks.map(task => (
               <li key={task.id}>
                 <TaskItem 
+                  key={task.id}
                   task={task} 
                   updateTask={this.props.updateTask}
                   deleteTask={this.props.deleteTask}

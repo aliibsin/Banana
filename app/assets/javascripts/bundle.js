@@ -15860,6 +15860,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchProject(this.props.match.params.projectId);
+      this.props.fetchTasks();
     }
   }, {
     key: "componentDidUpdate",
@@ -16049,6 +16050,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     createTask: function createTask(task) {
       return dispatch((0,_actions_task_actions__WEBPACK_IMPORTED_MODULE_2__.createTask)(task));
     },
+    fetchTasks: function fetchTasks() {
+      return dispatch((0,_actions_task_actions__WEBPACK_IMPORTED_MODULE_2__.fetchTasks)());
+    },
     signout: function signout() {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__.signout)());
     },
@@ -16158,15 +16162,6 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
       this.props.fetchSections();
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      if (prevProps.project_id !== this.props.project_id) {
-        this.setState({
-          project_id: this.props.project_id
-        });
-      }
-    }
-  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
@@ -16210,6 +16205,7 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: task.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tasks_index_task_item__WEBPACK_IMPORTED_MODULE_2__.default, {
+          key: task.id,
           task: task,
           updateTask: _this2.props.updateTask,
           deleteTask: _this2.props.deleteTask
@@ -16218,6 +16214,7 @@ var SectionDisplay = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: task.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tasks_index_task_item__WEBPACK_IMPORTED_MODULE_2__.default, {
+          key: task.id,
           task: task,
           updateTask: _this2.props.updateTask,
           deleteTask: _this2.props.deleteTask
@@ -16461,6 +16458,7 @@ var SectionDisplayItem = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: task.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tasks_index_task_item__WEBPACK_IMPORTED_MODULE_1__.default, {
+          key: task.id,
           task: task,
           updateTask: _this2.props.updateTask,
           deleteTask: _this2.props.deleteTask
@@ -16469,6 +16467,7 @@ var SectionDisplayItem = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: task.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tasks_index_task_item__WEBPACK_IMPORTED_MODULE_1__.default, {
+          key: task.id,
           task: task,
           updateTask: _this2.props.updateTask,
           deleteTask: _this2.props.deleteTask
@@ -17078,6 +17077,7 @@ var TaskIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      console.log();
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "home-page-full"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -17321,6 +17321,7 @@ var TaskItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      // console.log(this.props)
       if (this.state.priority === null) this.state.priority = "";
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "task-header ".concat(this.state.done ? "done-active" : "")

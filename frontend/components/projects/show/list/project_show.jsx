@@ -28,6 +28,7 @@ class ProjectShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId);
+    this.props.fetchTasks();
   }
 
   componentDidUpdate(prevProps) {
