@@ -17,14 +17,6 @@ class SectionDisplay extends React.Component {
     this.props.fetchSections();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.project_id !== this.props.project_id) {
-      this.setState({
-        project_id: this.props.project_id
-      })      
-    }
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     const section = Object.assign({}, this.state);
@@ -62,6 +54,7 @@ class SectionDisplay extends React.Component {
             yPnSTasks.map(task => (
               <li key={task.id}>
                 <TaskItem 
+                  key={task.id}
                   task={task} 
                   updateTask={this.props.updateTask} 
                   deleteTask={this.props.deleteTask}
@@ -71,6 +64,7 @@ class SectionDisplay extends React.Component {
             nPnSTasks.map(task => (
               <li key={task.id}>
                 <TaskItem 
+                  key={task.id}
                   task={task} 
                   updateTask={this.props.updateTask} 
                   deleteTask={this.props.deleteTask}
