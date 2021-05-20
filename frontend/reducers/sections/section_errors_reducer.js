@@ -3,6 +3,8 @@ import {
   RECEIVE_SECTION_ERRORS
 } from '../../actions/section_actions';
 
+import { SIGNOUT_CURRENT_USER } from '../../actions/session_actions';
+
 const sectionErrorsReducer = (state = [], action) => {
   Object.freeze(state);
   
@@ -11,6 +13,8 @@ const sectionErrorsReducer = (state = [], action) => {
       return action.errors.errs;
     case RECEIVE_SECTION:
       return [];  
+    case SIGNOUT_CURRENT_USER:
+      return [];
     default:
       return state;
   }

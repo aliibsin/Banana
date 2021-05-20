@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-
+import { signout } from '../../../actions/session_actions';
 import {fetchTasks, createTask } from '../../../actions/task_actions';
 import TaskIndex from './task_index'
 
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
+    signout: () => dispatch(signout()),
     fetchTasks: () => dispatch(fetchTasks()),
     createTask: task => dispatch(createTask(task))
   });

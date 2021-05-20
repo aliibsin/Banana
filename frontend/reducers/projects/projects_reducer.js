@@ -4,6 +4,8 @@ import {
   REMOVE_PROJECT
 } from '../../actions/project_actions'
 
+import { SIGNOUT_CURRENT_USER } from '../../actions/session_actions';
+
 const projectsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
@@ -16,6 +18,8 @@ const projectsReducer = (state = {}, action) => {
       let newState = Object.assign({}, state);
       delete newState[action.projectId];
       return newState;
+    case SIGNOUT_CURRENT_USER:
+      return {};
     default:
       return state;
   }

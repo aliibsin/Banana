@@ -17081,7 +17081,6 @@ var TaskIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log();
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "home-page-full"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -17129,8 +17128,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_task_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/task_actions */ "./frontend/actions/task_actions.js");
-/* harmony import */ var _task_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./task_index */ "./frontend/components/tasks/index/task_index.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_task_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/task_actions */ "./frontend/actions/task_actions.js");
+/* harmony import */ var _task_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./task_index */ "./frontend/components/tasks/index/task_index.jsx");
+
 
 
 
@@ -17146,16 +17147,19 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    signout: function signout() {
+      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.signout)());
+    },
     fetchTasks: function fetchTasks() {
-      return dispatch((0,_actions_task_actions__WEBPACK_IMPORTED_MODULE_1__.fetchTasks)());
+      return dispatch((0,_actions_task_actions__WEBPACK_IMPORTED_MODULE_2__.fetchTasks)());
     },
     createTask: function createTask(task) {
-      return dispatch((0,_actions_task_actions__WEBPACK_IMPORTED_MODULE_1__.createTask)(task));
+      return dispatch((0,_actions_task_actions__WEBPACK_IMPORTED_MODULE_2__.createTask)(task));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_task_index__WEBPACK_IMPORTED_MODULE_2__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_task_index__WEBPACK_IMPORTED_MODULE_3__.default));
 
 /***/ }),
 
@@ -17518,6 +17522,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 var projectErrorsReducer = function projectErrorsReducer() {
@@ -17530,6 +17536,9 @@ var projectErrorsReducer = function projectErrorsReducer() {
       return action.errors.errs;
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_PROJECT:
+      return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.SIGNOUT_CURRENT_USER:
       return [];
 
     default:
@@ -17553,7 +17562,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -17575,6 +17586,9 @@ var projectsReducer = function projectsReducer() {
       var newState = Object.assign({}, state);
       delete newState[action.projectId];
       return newState;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.SIGNOUT_CURRENT_USER:
+      return {};
 
     default:
       return state;
@@ -17628,6 +17642,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/section_actions */ "./frontend/actions/section_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 var sectionErrorsReducer = function sectionErrorsReducer() {
@@ -17640,6 +17656,9 @@ var sectionErrorsReducer = function sectionErrorsReducer() {
       return action.errors.errs;
 
     case _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SECTION:
+      return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.SIGNOUT_CURRENT_USER:
       return [];
 
     default:
@@ -17663,7 +17682,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/section_actions */ "./frontend/actions/section_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -17685,6 +17706,9 @@ var sectionsReducer = function sectionsReducer() {
       var newState = Object.assign({}, state);
       delete newState[action.sectionId];
       return newState;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.SIGNOUT_CURRENT_USER:
+      return {};
 
     default:
       return state;
@@ -17719,6 +17743,9 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
       return action.errors.errs;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
+      return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.SIGNOUT_CURRENT_USER:
       return [];
 
     default:
@@ -17819,6 +17846,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/task_actions */ "./frontend/actions/task_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 var taskErrorsReducer = function taskErrorsReducer() {
@@ -17831,6 +17860,9 @@ var taskErrorsReducer = function taskErrorsReducer() {
       return action.errors.errs;
 
     case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TASK:
+      return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.SIGNOUT_CURRENT_USER:
       return [];
 
     default:
@@ -17854,7 +17886,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/task_actions */ "./frontend/actions/task_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -17876,6 +17910,9 @@ var tasksReducer = function tasksReducer() {
       var newState = Object.assign({}, state);
       delete newState[action.taskId];
       return newState;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.SIGNOUT_CURRENT_USER:
+      return {};
 
     default:
       return state;
@@ -17910,6 +17947,9 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
       return Object.assign({}, state, _defineProperty({}, action.currentUser.user.id, action.currentUser.user));
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.SIGNOUT_CURRENT_USER:
+      return {};
 
     default:
       return state;
