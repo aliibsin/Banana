@@ -4,6 +4,8 @@ import {
   REMOVE_TASK
 } from '../../actions/task_actions';
 
+import { SIGNOUT_CURRENT_USER } from '../../actions/session_actions';
+
 const tasksReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
@@ -15,7 +17,9 @@ const tasksReducer = (state = {}, action) => {
     case REMOVE_TASK:
       let newState = Object.assign({}, state);
       delete newState[action.taskId];
-      return newState
+      return newState;
+    case SIGNOUT_CURRENT_USER:
+      return {};
     default:
       return state;
   }

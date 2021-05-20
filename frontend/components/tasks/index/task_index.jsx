@@ -32,7 +32,7 @@ class TaskIndex extends React.Component {
   }
 
   render() {
-    console.log()
+    
     return (
       <div className="home-page-full">
         <div className="sidebar-expand" onClick={() => this.props.toggleSidebar()}>

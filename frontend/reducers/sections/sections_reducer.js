@@ -4,6 +4,8 @@ import {
   REMOVE_SECTION
 } from '../../actions/section_actions';
 
+import { SIGNOUT_CURRENT_USER } from '../../actions/session_actions';
+
 const sectionsReducer = (state = {}, action) => {
   Object.freeze(state);
 
@@ -17,6 +19,8 @@ const sectionsReducer = (state = {}, action) => {
       let newState = Object.assign({}, state);
       delete newState[action.sectionId];
       return newState;
+    case SIGNOUT_CURRENT_USER:
+      return {};
     default:
       return state;
   }

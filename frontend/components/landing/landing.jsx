@@ -39,17 +39,21 @@ const Landing = (props) => {
             <p>Banana is the one stop shop for </p>
             <p>all of your project management needs.</p>
           </div>
-          <Link to="/signup">
-            <div className="text-sign-up-button">
-                Try for free
+          <div className="text-sign-up-wrapper">
+            <div className="text-sign-up-cont">
+              <Link to="/signup">
+                <div className="text-sign-up-button">
+                    Try for free
+                </div>
+              </Link>
             </div>
-          </Link>
+          </div>
         </div>
         <div className="home-image">
           <img src={window.teamwork} /> 
         </div>
       </div>
-      <footer className="footer">
+      <div className="footer">
         <div>
           <a 
             href="https://www.linkedin.com/in/ali-ibsin-1b9732132" 
@@ -74,7 +78,7 @@ const Landing = (props) => {
             </div>
           </a>
         </div>
-      </footer>
+      </div>
     </div>
   );
 
