@@ -32,7 +32,7 @@
 .signin-form {
 	display: flex;
 	flex-direction: column;
-
+	width: 80%;
 	position: absolute;
 	left: 50%;
 	top: 60%;
@@ -45,8 +45,8 @@
 
 .signin-form label input {
 	padding: 6px;
-	height: 18px;
-	width: 330px;
+	height: 20px;
+	width: 96.5%;
 	border-radius: 5px;
 	border: .5px solid #9ca6af;
 	
@@ -69,10 +69,11 @@ label h3 {
 	overflow: hidden;
 	background-color: #796eff;
 	color: white;
-	margin: 10px;
+	margin: 0 auto;
+	margin-top: 10px;
 	padding: 10px;
 	padding-top: 10px;
-
+	width: 50%;
 	cursor: pointer;
 }
 
