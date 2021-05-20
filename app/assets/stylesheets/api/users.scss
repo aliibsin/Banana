@@ -118,23 +118,27 @@ hr {
 	padding-top: 10px;
 }
 
+.text-sign-up-wrapper {
+	width: 100%;
+}
+
+.text-sign-up-cont {
+	width: 25%;
+}
+
 .text-sign-up-button {
-	padding-left: 20px;
 	background-color: #273240;
 	border-radius: 10px;
 	padding: 10px;
 	font-size: 16px;
 	text-align: center;
 	cursor: pointer;
+	color: white;
 }
 
 .text-sign-up-button:hover {
 	transition: all 250ms ease;
 	background-color: #476149;
-}
-
-.text-sign-up-button {
-	color: white;
 }
 
 .home-image {
