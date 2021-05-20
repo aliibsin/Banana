@@ -77,6 +77,8 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+	max-height: 80vh;
+	overflow-y: auto;
 }
 
 .project-list-element {
