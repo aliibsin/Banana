@@ -53,7 +53,7 @@ const Landing = (props) => {
           <img src={window.teamwork} /> 
         </div>
       </div>
-      <footer className="footer">
+      <div className="footer">
         <div>
           <a 
             href="https://www.linkedin.com/in/ali-ibsin-1b9732132" 
@@ -78,7 +78,7 @@ const Landing = (props) => {
             </div>
           </a>
         </div>
-      </footer>
+      </div>
     </div>
   );
 

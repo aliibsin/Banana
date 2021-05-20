@@ -2,8 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.landing-nav-bar {
+html,
+body,
+#root,
+#root > div,
+.home-page {
 	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.home-page {
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.landing-nav-bar {
+	height: 10%;
 	max-width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -21,12 +36,13 @@
 }
 
 .landing-logo-container {
-	width: 150px;
+	max-width: 150px;
+	min-width: 150px;
 }
 
 .landing-logo-container img {
-	max-width: 100%;
-	max-height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .signin-signup {
@@ -75,43 +91,51 @@ a {
 .home-page-proper {
 	display: flex;
 	justify-content: space-between;
+	max-width: 100%;
+	max-height: 75%;
+	min-width: 100%;
+	min-height: 75%;
+	z-index: 0;
+	overflow: auto;
 }
 
 .home-text-container {
 	display: flex;
 	flex-direction: column;
-	width: 820px;
-	padding: 70px;
-	padding-left: 150px;
+	min-width: 50%;
+	max-width: 50%;
+	min-height: 100%;
+	max-height: 100%;
+	flex-shrink: 0;
+	margin: auto 0;
 }
 
 .home-big-text {
-	font-size: 60px;
-	padding-top: 20px;
-	padding-bottom: 100px;
-	padding-left: 20px;
-}
-
-.home-big-text h1 {
-	padding-top: 10px;
+	font-size: 3vw;
+	padding-bottom: 8vh;
+	padding-left: 1vw;
+	margin-bottom: 7vh;
+	margin-left: 7vw;
 }
 
 .home-page-line {
-	padding-left: 20px;
-	padding-top: 70px;
+	padding-left: 1vw;
+	padding-top: 3vh;
+	margin-left: 7vw;
 }
 
 hr {
-	width: 150px;
+	width: 10vw;
 	text-align: left;
-	margin-left :0;
+	margin-left: 0;
 }
 
 .home-small-text {
-	font-size: 24px;
-	padding-left: 20px;
-	padding-top: 50px;
-	padding-bottom: 60px;
+	font-size: 1.25vw;
+	padding-left: 1vw;
+	padding-top: 5vh;
+	margin-bottom: 6vh;
+	margin-left: 7vw;
 }
 
 .home-small-text p {
@@ -120,17 +144,18 @@ hr {
 
 .text-sign-up-wrapper {
 	width: 100%;
+	margin-left: 7.5vw;
 }
 
 .text-sign-up-cont {
-	width: 25%;
+	width: 20%;
 }
 
 .text-sign-up-button {
 	background-color: #273240;
 	border-radius: 10px;
 	padding: 10px;
-	font-size: 16px;
+	font-size: 1vw;
 	text-align: center;
 	cursor: pointer;
 	color: white;
@@ -142,13 +167,16 @@ hr {
 }
 
 .home-image {
-	max-width: 960px;
-	height: 750px;
+	// max-width: 50%;
+	min-width: 50%;
+	max-width: 50%;
 }
 
 .home-image img { 
-	width: 100%;
-	height: 100%;
+	min-width: 100%;
+	min-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 }
 
 .footer {
@@ -159,7 +187,7 @@ hr {
 	background-color: white;
 	color: black;
   text-align: center;
-	height: 16vh;
+	height: 15%;
 	border-top: 1px solid rgb(248, 255, 251);
 	box-shadow: 0px 0px #888, 0 5px 20px 0 rgba(21, 27, 38, 8%);
 	z-index: 100;
@@ -169,7 +197,7 @@ hr {
 	align-items: center;
 }
 
-footer > div {
+.footer > div {
 	width: 60px;
 	height: 60px;
 	margin: 10px;
