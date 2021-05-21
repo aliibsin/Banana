@@ -9,11 +9,20 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
-  <script type="text/javascript">
-    window.logo = "<%= image_url('logo.png') %>";
-    window.darkLogo = "<%= image_url('logo-dark.png') %>";
-    window.teamwork = "<%= image_url('teamwork.jpg') %>"
-  </script>
+    <meta property="og:title" content="Banana" />
+    <meta property="og:image" content="<%= image_url("linkedin.png") %>" /> 
+    <meta property="og:description" 
+      content="Banana is a full-stack web application inspired by Asana. Users can create projects and tasks and follow their life cycle from start to finish."
+    />
+    <meta property="og:url"
+      content="https://banana-asana.herokuapp.com/#/"
+    />
+
+    <script type="text/javascript">
+      window.logo = "<%= image_url('logo.png') %>";
+      window.darkLogo = "<%= image_url('logo-dark.png') %>";
+      window.teamwork = "<%= image_url('teamwork.jpg') %>"
+    </script>
 
   </head>
 
