@@ -1,6 +1,9 @@
 
 .home-page-full {
   display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .nav-contents {
@@ -12,7 +15,7 @@
 
 .sidebar {
   width: 280px;
-  height: 100vh;
+  height: 100%;
   background-color: #151b26;
 
   border-right: 1px solid rgb(21, 27, 38);
@@ -25,6 +28,7 @@
   position: sticky;
 	top: 0;
   left: 0;
+  bottom: 0;
 }
 
 .sidebar-collapsed {

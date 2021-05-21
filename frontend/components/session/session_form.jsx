@@ -73,52 +73,54 @@ class SessionForm extends React.Component {
   render() {
     
     return (
-      <div className="signin-form-container">
-        <div className="signup-logo-container">
-          <Link to="/">
-            <img src={window.logo} /> 
-          </Link>
-        </div>
-
-        <div className="demo-login" onClick={this.demoLogin}>Sign In with a DEMO</div>
-
-        <div className="err-messages"> 
-          {this.renderErrors()} 
-        </div>
-
-        <form onSubmit={this.handleSubmit} className="signin-form-box">
-            
-          <div className="signin-form">
-
-            <label>
-              <h3>Email</h3>
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                className="signin-input"
-              />
-            </label>
-
-            {this.displayUsername()}
-            
-            <label>
-              <h3>Password</h3>
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="signin-input"
-              />
-            </label>
-            
-            <input className="session-submit" type="submit" value={this.props.formType} />
-
+      <div className="signin-form-wrapper"> 
+        <div className="signin-form-container">
+          <div className="signup-logo-container">
+            <Link to="/">
+              <img src={window.logo} /> 
+            </Link>
           </div>
-        </form>
 
-        <div id="change-session">
-          {this.props.message} <p onClick={this.clearErrs}> {this.props.navLink} </p>
+          <div className="demo-login" onClick={this.demoLogin}>Sign In with a DEMO</div>
+
+          <div className="err-messages"> 
+            {this.renderErrors()} 
+          </div>
+
+          <form onSubmit={this.handleSubmit} className="signin-form-box">
+              
+            <div className="signin-form">
+
+              <label>
+                <h3>Email</h3>
+                <input type="text"
+                  value={this.state.email}
+                  onChange={this.update('email')}
+                  className="signin-input"
+                />
+              </label>
+
+              {this.displayUsername()}
+              
+              <label>
+                <h3>Password</h3>
+                <input type="password"
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  className="signin-input"
+                />
+              </label>
+              
+              <input className="session-submit" type="submit" value={this.props.formType} />
+
+            </div>
+          </form>
+
+          <div id="change-session">
+            {this.props.message} <p onClick={this.clearErrs}> {this.props.navLink} </p>
+          </div>
+
         </div>
-
       </div>
     );
   }
