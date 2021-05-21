@@ -16618,6 +16618,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "signin-form-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signin-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "signup-logo-container"
@@ -16653,7 +16655,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         id: "change-session"
       }, this.props.message, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         onClick: this.clearErrs
-      }, " ", this.props.navLink, " ")));
+      }, " ", this.props.navLink, " "))));
     }
   }]);
 
