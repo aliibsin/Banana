@@ -1,3 +1,5 @@
+### Banana is not actively maintained, and is in an archived state.
+
 # Banana
 
 <div align="center">
@@ -5,8 +7,7 @@
 </div>
 <br/>
 
-Banana is a full-stack web application inspired by Asana. Users can create projects and tasks and follow their life cycle from start to finish. You can access the live version of the website [here](https://banana-asana.herokuapp.com/#/).
-
+Banana is a full-stack web application inspired by Asana. Users can create projects and tasks and follow their life cycle from start to finish.
 
 ## Technologies Used
 
